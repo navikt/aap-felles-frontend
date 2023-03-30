@@ -1,5 +1,5 @@
 {
-  "name": "@navikt/aap-felles-eslint",
+  "name": "@navikt/eslint-config-aap",
   "author": "NAV",
   "version": "0.0.55",
   "main": "index.js",
