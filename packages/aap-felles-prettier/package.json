@@ -1,0 +1,11 @@
+{
+  "name": "@navikt/aap-felles-prettier",
+  "author": "NAV",
+  "version": "0.0.57",
+  "main": "index.json",
+  "license": "MIT",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "prettier": "^2.8.7"
+  }
+}
