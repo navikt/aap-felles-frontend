@@ -1,11 +1,11 @@
 {
   "version": "0.0.61",
-  "name": "@navikt/aap-felles-innbygger-utils",
+  "name": "@navikt/aap-felles-utils",
   "author": "NAV",
-  "homepage": "https://github.com/navikt/aap-felles-innbygger#readme",
+  "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/navikt/aap-felles-innbygger"
+    "url": "https://github.com/navikt/aap-felles-frontend"
   },
   "sideEffects": false,
   "license": "MIT",

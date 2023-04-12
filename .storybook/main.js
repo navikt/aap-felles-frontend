@@ -1,7 +1,7 @@
 module.exports = {
   stories: [
-    "../packages/aap-felles-innbygger-react/**/*.stories.mdx",
-    "../packages/aap-felles-innbygger-react/**/*.stories.tsx",
+    "../packages/aap-felles-react/**/*.stories.mdx",
+    "../packages/aap-felles-react/**/*.stories.tsx",
   ],
   addons: [
     "@storybook/addon-links",
