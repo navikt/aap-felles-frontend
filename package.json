@@ -1,5 +1,5 @@
 {
-  "name": "aap-felles-innbygger",
+  "name": "aap-felles-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navikt/aap-felles-innbygger.git"
+    "url": "git+https://github.com/navikt/aap-felles-frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/navikt/aap-felles-innbygger/issues"
+    "url": "https://github.com/navikt/aap-felles-frontend/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

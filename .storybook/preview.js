@@ -1,5 +1,5 @@
 import "@navikt/ds-css";
-import "@navikt/aap-felles-innbygger-css/src/index.css";
+import "@navikt/aap-felles-css/src/index.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
