@@ -1,1 +1,1 @@
-export * from "./beskyttetApi"
+export * from './beskyttetApi';

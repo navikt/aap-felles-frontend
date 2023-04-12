@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.tsx?$': 'ts-jest',
   },
-  modulePathIgnorePatterns: ["cjs", "esm"],
+  modulePathIgnorePatterns: ['cjs', 'esm'],
 };

@@ -1,1 +1,1 @@
-export * from "./beskyttetSide"
+export * from './beskyttetSide';

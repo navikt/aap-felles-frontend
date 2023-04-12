@@ -21,8 +21,10 @@
   "bugs": {
     "url": "https://github.com/navikt/aap-felles-frontend/issues"
   },
+  "prettier": "@navikt/aap-felles-prettier",
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@navikt/aap-felles-prettier": "^0.0.63",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",

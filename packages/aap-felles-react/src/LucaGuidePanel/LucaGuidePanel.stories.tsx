@@ -1,12 +1,12 @@
-import { BodyShort } from "@navikt/ds-react";
-import React from "react";
-import {Meta, Story} from "@storybook/react";
+import { BodyShort } from '@navikt/ds-react';
+import { Meta, Story } from '@storybook/react';
+import React from 'react';
 
-import {LucaGuidePanel, LucaGuidePanelProps} from "./LucaGuidePanel";
+import { LucaGuidePanel, LucaGuidePanelProps } from './LucaGuidePanel';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "LucaGuidePanel",
+  title: 'LucaGuidePanel',
   component: LucaGuidePanel,
 } as Meta;
 
@@ -16,7 +16,5 @@ const Template: Story<LucaGuidePanelProps> = (args) => <LucaGuidePanel {...args}
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  children: (
-    <BodyShort spacing>Dette er tekst som havner inne i Luca</BodyShort>
-  ),
+  children: <BodyShort spacing>Dette er tekst som havner inne i Luca</BodyShort>,
 };
