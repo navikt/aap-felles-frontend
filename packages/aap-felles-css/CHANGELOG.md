@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.62 (2023-04-12)
+
+**Note:** Version bump only for package @navikt/aap-felles-css
+
 ## 0.0.61 (2023-04-11)
 
 ### Reverts
