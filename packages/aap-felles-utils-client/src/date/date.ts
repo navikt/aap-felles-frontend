@@ -1,22 +1,18 @@
-import {format, parseISO} from "date-fns";
-import {nb} from "date-fns/locale";
-
-const DATO_FORMATER= Object.freeze({
-    ddMMyyyy: 'dd.MM.yyyy',
-    ddMMMyyyy: 'dd. MMM yyyy',
-    ddMMyyyy_HHmm: 'dd.MM.yyyy HH:mm',
-});
+import { format, parseISO } from 'date-fns';
+import { nb } from 'date-fns/locale';
 
 export function formaterDatoForVisning(dato: string | Date): string {
-    if (typeof dato === 'string'){
-        return format(parseISO(dato), DATO_FORMATER.ddMMyyyy, { locale: nb });
-    } else {
-        return format(new Date(dato), DATO_FORMATER.ddMMyyyy, { locale: nb });
-    }
+  if (typeof dato === 'string') {
+    return format(parseISO(dato), 'dd.MM.yyyy', { locale: nb });
+  } else {
+    return format(new Date(dato), 'dd.MM.yyyy', { locale: nb });
+  }
 }
 
-
-
-
-
-
+export function formaterDatoTidForVisning(dato: string | Date): string {
+  if (typeof dato === 'string') {
+    return format(new Date(dato), 'dd.MM.yyyy HH:mm');
+  } else {
+    return format(dato, 'dd.MM.yyyy HH:mm');
+  }
+}
