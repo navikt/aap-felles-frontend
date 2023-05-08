@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.65 (2023-05-08)
+
+**Note:** Version bump only for package @navikt/aap-felles-react
+
 ## 0.0.64 (2023-04-12)
 
 **Note:** Version bump only for package @navikt/aap-felles-react
