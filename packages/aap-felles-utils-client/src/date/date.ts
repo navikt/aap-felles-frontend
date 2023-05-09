@@ -1,11 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import { nb } from 'date-fns/locale';
 
-/**
- * This is my cool function
- *
- * @param dato
- */
 export function formaterDatoForVisning(dato: string | Date): string {
   if (typeof dato === 'string') {
     return format(parseISO(dato), 'dd.MM.yyyy', { locale: nb });
