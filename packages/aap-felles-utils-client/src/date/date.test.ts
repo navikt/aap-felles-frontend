@@ -47,18 +47,6 @@ describe('formaterDatoMedDag', () => {
   });
 });
 
-describe('formaterDatoMedDag', () => {
-  it('skal returnere formatert dato når man sender inn en string', function () {
-    const dato = '2022-03-25T12:22:43';
-    expect(formaterDatoMedDag(dato)).toBe('25. mars 2022');
-  });
-
-  it('skal returnere formatert dato når man sender inn et datoobjekt', function () {
-    const dato = '2022-03-25T12:22:43';
-    expect(formaterDatoMedDag(new Date(dato))).toBe('25. mars 2022');
-  });
-});
-
 describe('formaterDatoUtenDag', () => {
   it('skal returnere formatert dato når man sender inn en string', function () {
     const dato = '2022-03-25T12:22:43';
