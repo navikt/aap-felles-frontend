@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.67 (2023-05-15)
+
+**Note:** Version bump only for package @navikt/eslint-config-aap
+
 ## 0.0.66 (2023-05-09)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
