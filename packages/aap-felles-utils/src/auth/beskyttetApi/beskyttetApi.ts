@@ -1,14 +1,12 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 import { isMock } from '../../environments';
 import { logger } from '../../logger';
 import { ErrorMedStatus } from '../lib/ErrorMedStatus';
 import { verifyIdportenAccessToken } from '../lib/verifyIdPortenAccessToken';
 
-type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>;
-
-export function beskyttetApi(handler: ApiHandler): ApiHandler {
-  return async function withBearerTokenHandler(req, res) {
+export function beskyttetApi(handler: NextApiHandler): unknown | Promise<unknown> {
+  return async function withBearerTokenHandler(req: NextApiRequest, res: NextApiResponse) {
     function send401() {
       return res.status(401).json({ message: 'Access denied' });
     }
