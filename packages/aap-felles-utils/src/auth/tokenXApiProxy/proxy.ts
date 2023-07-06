@@ -99,7 +99,7 @@ export const tokenXApiProxy = async (opts: Opts) => {
   if (opts.rawResonse) {
     return response;
   }
-  return await response.json();
+  return await response?.json();
 };
 
 interface AxiosOpts {
