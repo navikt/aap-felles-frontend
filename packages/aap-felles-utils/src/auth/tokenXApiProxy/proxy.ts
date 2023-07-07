@@ -11,6 +11,7 @@ import { ErrorMedStatus } from '../lib/ErrorMedStatus';
 import Logger = pino.Logger;
 
 const NAV_CALLID = 'Nav-CallId';
+
 interface ErrorLog {
   status?: number;
   message: string;
@@ -18,6 +19,7 @@ interface ErrorLog {
   error?: string;
   data?: string;
 }
+
 interface Opts {
   url: string;
   prometheusPath: string;
@@ -94,12 +96,15 @@ export const tokenXApiProxy = async (opts: Opts) => {
   }
   logger.info(`Vellyket tokenXProxy-request mot ${opts.url}. Status: ${response.status}`);
   if (opts.noResponse) {
-    return;
+    return undefined;
   }
   if (opts.rawResonse) {
     return response;
   }
-  return await response?.json();
+  if (response.status === 204) {
+    return undefined;
+  }
+  return await response.json();
 };
 
 interface AxiosOpts {
