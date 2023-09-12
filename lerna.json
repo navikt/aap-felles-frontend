@@ -1,13 +1,16 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useNx": true,
-  "version": "0.0.76",
+  "version": "0.0.77",
   "private": true,
   "command": {
     "publish": {
       "registry": "https://npm.pkg.github.com",
       "conventionalCommits": true,
-      "ignoreChanges": ["ignored-file", "*.{md|mdx}"],
+      "ignoreChanges": [
+        "ignored-file",
+        "*.{md|mdx}"
+      ],
       "message": ":money_with_wings: publish %s"
     }
   }
