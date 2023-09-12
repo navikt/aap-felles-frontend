@@ -1,6 +1,6 @@
-import { Error, Success } from '@navikt/ds-icons';
-import { BodyShort, Label } from '@navikt/ds-react';
-import React, { useMemo } from 'react';
+import {CheckmarkCircleIcon, XMarkOctagonIcon} from '@navikt/aksel-icons';
+import {BodyShort, Label} from '@navikt/ds-react';
+import React, {useMemo} from 'react';
 
 import ScanningIcon from './ScanningIcon';
 import nb from './nb';
@@ -48,7 +48,7 @@ export const ScanningGuide = ({ className, locale = 'nb' }: ScanningGuideProps) 
           <ScanningIcon status={'good'} title={tekster?.alert?.exampleLabelGood} />
           <div className="scanning-example-item">
             <span className={'scanning-example-status'}>
-              <Success color={'var(--a-green-600)'} />
+              <CheckmarkCircleIcon color={'var(--a-green-600)'} />
               <Label as="span">{tekster?.alert?.exampleLabelGood}</Label>
             </span>
             <BodyShort>{tekster?.alert?.exampleGood}</BodyShort>
@@ -58,7 +58,7 @@ export const ScanningGuide = ({ className, locale = 'nb' }: ScanningGuideProps) 
           <ScanningIcon status={'keystone'} title={tekster?.alert?.exampleLabelBad} />
           <div className="scanning-example-item">
             <span className={'scanning-example-status'}>
-              <Error color={'var(--a-nav-red)'} />
+              <XMarkOctagonIcon color={'var(--a-nav-red)'} />
               <Label as="span">{tekster?.alert?.exampleLabelBad}</Label>
             </span>
             <BodyShort>{tekster?.alert?.exampleKeystone}</BodyShort>
@@ -68,7 +68,7 @@ export const ScanningGuide = ({ className, locale = 'nb' }: ScanningGuideProps) 
           <ScanningIcon status={'horizontal'} title={tekster?.alert?.exampleLabelBad} />
           <div className="scanning-example-item">
             <span className={'scanning-example-status'}>
-              <Error color={'var(--a-nav-red)'} />
+              <XMarkOctagonIcon color={'var(--a-nav-red)'} />
               <Label as="span">{tekster?.alert?.exampleLabelBad}</Label>
             </span>
             <BodyShort>{tekster?.alert?.exampleHorizontal}</BodyShort>
@@ -78,7 +78,7 @@ export const ScanningGuide = ({ className, locale = 'nb' }: ScanningGuideProps) 
           <ScanningIcon status={'shadow'} title={tekster?.alert?.exampleLabelBad} />
           <div className="scanning-example-item">
             <span className={'scanning-example-status'}>
-              <Error color={'var(--a-nav-red)'} />
+              <XMarkOctagonIcon color={'var(--a-nav-red)'} />
               <Label as="span">{tekster?.alert?.exampleLabelBad}</Label>
             </span>
             <BodyShort>{tekster?.alert?.exampleShaddow}</BodyShort>
