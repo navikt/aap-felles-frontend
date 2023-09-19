@@ -9,4 +9,11 @@ export default {
   component: FileInput,
 } as Meta;
 
-export const Primary: StoryFn<FileInputProps> = (args) => <FileInput {...args} heading={'Annen dokumentasjon'} />;
+export const Primary: StoryFn<FileInputProps> = (args) => (
+  <FileInput
+    {...args}
+    heading={'Annen dokumentasjon'}
+    ingress={'Her kan du laste opp filer'}
+    inputId={'annenDokumentasjon'}
+  />
+);
