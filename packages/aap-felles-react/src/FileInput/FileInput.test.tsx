@@ -15,30 +15,30 @@ describe('FileInput', () => {
   const user = userEvent.setup();
 
   it('Skal ha overskrift', () => {
-    render(<FileInput heading={heading} inputId={inputId} />);
+    render(<FileInput heading={heading} inputid={inputId} />);
     expect(screen.getByText(heading)).toBeVisible();
   });
 
   it('Skal ha ingress hvis ingress har en verdi', () => {
     const ingress = 'Last opp minst tre filer';
-    render(<FileInput heading={heading} ingress={ingress} inputId={inputId} />);
+    render(<FileInput heading={heading} ingress={ingress} inputid={inputId} />);
     expect(screen.getByText(ingress)).toBeVisible();
   });
 
   it('Skal ha heading i tittelen på opplastningsknapp', () => {
-    render(<FileInput heading={heading} inputId={inputId} />);
+    render(<FileInput heading={heading} inputid={inputId} />);
     expect(screen.getByText(`Velg dine filer for ${heading.toLowerCase()}`)).toBeVisible();
   });
 
   it('Skal gå an å laste opp en fil', async () => {
-    render(<FileInput heading={heading} name={'dokumenter'} inputId={inputId} />);
+    render(<FileInput heading={heading} name={'dokumenter'} inputid={inputId} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal gå an å laste opp flere filer av gangen', async () => {
-    render(<FileInput heading={heading} name={'dokumenter'} inputId={inputId} />);
+    render(<FileInput heading={heading} name={'dokumenter'} inputid={inputId} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, [fileOne, fileTwo]);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -46,14 +46,14 @@ describe('FileInput', () => {
   });
 
   it('Skal gå an å laste opp en fil ved drag & drop', async () => {
-    render(<FileInput heading={heading} name={'dokumenter'} inputId={inputId} />);
+    render(<FileInput heading={heading} name={'dokumenter'} inputid={inputId} />);
     const dropZone = screen.getByTestId('dropzone');
     fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne] } });
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal gå an å laste opp flere filer ved drag & drop', async () => {
-    render(<FileInput heading={heading} name={'dokumenter'} inputId={inputId} />);
+    render(<FileInput heading={heading} name={'dokumenter'} inputid={inputId} />);
     const dropZone = screen.getByTestId('dropzone');
     fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne, fileTwo] } });
     expect(await screen.findByText(fileOneName)).toBeVisible();

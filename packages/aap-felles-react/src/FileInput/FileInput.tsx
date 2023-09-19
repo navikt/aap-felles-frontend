@@ -4,12 +4,12 @@ import { UploadIcon } from '@navikt/aksel-icons';
 
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
-  inputId: string;
+  inputid: string;
   ingress?: string;
 }
 
 export const FileInput = (props: FileInputProps) => {
-  const { heading, inputId, ingress } = props;
+  const { heading, inputid, ingress } = props;
   const [files, setFiles] = useState<File[]>([]);
 
   return (
@@ -30,7 +30,7 @@ export const FileInput = (props: FileInputProps) => {
           {...props}
           data-testid={'fileinput'}
           type={'file'}
-          id={inputId}
+          id={inputid}
           multiple={true}
           className={'visuallyHidden'}
           onChange={(e) => {
@@ -42,11 +42,11 @@ export const FileInput = (props: FileInputProps) => {
         />
         <BodyShort>{'Dra og slipp'}</BodyShort>
         <BodyShort>{'eller'}</BodyShort>
-        <label htmlFor={inputId} aria-labelledby={inputId}>
+        <label htmlFor={inputid} aria-labelledby={inputid}>
           <span
             className={'fileInputButton navds-button navds-button__inner navds-body-short navds-button--secondary'}
             role={'button'}
-            aria-controls={inputId}
+            aria-controls={inputid}
             tabIndex={0}
           >
             <UploadIcon title="" aria-hidden />

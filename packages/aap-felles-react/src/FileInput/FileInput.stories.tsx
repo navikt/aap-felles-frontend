@@ -14,6 +14,6 @@ export const Primary: StoryFn<FileInputProps> = (args) => (
     {...args}
     heading={'Annen dokumentasjon'}
     ingress={'Her kan du laste opp filer'}
-    inputId={'annenDokumentasjon'}
+    inputid={'annenDokumentasjon'}
   />
 );
