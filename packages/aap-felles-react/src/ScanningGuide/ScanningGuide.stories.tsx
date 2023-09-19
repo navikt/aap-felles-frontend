@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 
 import { ScanningGuide, ScanningGuideProps } from './ScanningGuide';
@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: Story<ScanningGuideProps> = (args) => <ScanningGuide {...args} />;
+const Template: StoryFn<ScanningGuideProps> = (args) => <ScanningGuide {...args} />;
 
 export const Bokmål = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

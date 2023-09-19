@@ -1,8 +1,7 @@
+import { Meta, StoryFn } from '@storybook/react';
 
-import { Meta } from '@storybook/react';
+import { FileInput, FileInputProps } from './FileInput';
 import React from 'react';
-
-import { FileInput} from './FileInput';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -10,5 +9,4 @@ export default {
   component: FileInput,
 } as Meta;
 
-
-export const Primary = {};
+export const Primary: StoryFn<FileInputProps> = (args) => <FileInput {...args} heading={'Annen dokumentasjon'} />;
