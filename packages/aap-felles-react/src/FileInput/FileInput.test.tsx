@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import { FileInput, FileInputProps } from './FileInput';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
@@ -118,6 +118,19 @@ describe('FileInput', () => {
         'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.'
       )
     );
+  });
+
+  it('Skal være mulig å fjerne en fil', async () => {
+    render(<FileInputWithState heading={heading} />);
+    const input = screen.getByTestId('fileinput');
+    await user.upload(input, fileOne);
+
+    expect(await screen.findByText(fileOneName)).toBeVisible();
+
+    const slettKnapp = await screen.findByTestId('slett-knapp');
+    await waitFor(() => slettKnapp.click());
+
+    expect(await screen.queryByText(fileOneName)).not.toBeInTheDocument();
   });
 });
 
