@@ -1,15 +1,8 @@
 import { BodyShort, Heading } from '@navikt/ds-react';
-import React, { Dispatch, InputHTMLAttributes } from 'react';
+import React, { Dispatch, InputHTMLAttributes, useState } from 'react';
 import { UploadIcon } from '@navikt/aksel-icons';
-
-/**
- *
- * Flytter onChange logikk ut av komponenten
- * Kjører internal error på filtype, størrelse,
- *
- *
- *
- */
+import { FilePanelError } from './FilePanelError';
+import { FilePanelSuccess } from './FilePanelSuccess';
 
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
@@ -25,45 +18,71 @@ export interface Vedlegg extends File {
 const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
 export const FileInput = (props: FileInputProps) => {
   const { heading, ingress, files = [], setFiles, ...rest } = props;
+  const [dragOver, setDragOver] = useState<boolean>(false);
 
-  function validate(fileToUpload: File): boolean {
-    let vedlegg: Vedlegg;
+  function validate(fileToUpload: File): string | undefined {
     const totalUploadedBytes = files.reduce((acc, curr) => acc + curr.size, 0);
 
     if (!['image/png', 'image/jpg', 'image/jpeg', 'application/pdf'].includes(fileToUpload?.type)) {
-      vedlegg = Object.assign(fileToUpload, {
-        errorMessage: 'Filtypen kan ikke lastes opp. Last opp dokumentet i et annet format (PDF, PNG, JPG eller heic).',
-      });
-      setFiles([...files, vedlegg]);
-      return true;
+      return 'Filtypen kan ikke lastes opp. Last opp dokumentet i et annet format (PDF, PNG, JPG eller heic).';
     }
 
     if (totalUploadedBytes + fileToUpload?.size > MAX_TOTAL_FILE_SIZE) {
-      vedlegg = Object.assign(fileToUpload, {
-        errorMessage: 'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.',
-      });
-      setFiles([...files, vedlegg]);
-      return true;
+      return 'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.';
     }
-    return false;
   }
 
   return (
     <div className={'fileInput'}>
       <Heading size={'medium'}>{heading}</Heading>
       {ingress && <BodyShort>{ingress}</BodyShort>}
-      <div data-testid={'dropzone'} className={'dropzone'} onDrop={props.onDrop}>
+      {files?.map((file, index) => {
+        if (file.errorMessage) {
+          return (
+            <FilePanelError
+              file={file}
+              key={index}
+              onDelete={() => {
+                setFiles(files.filter((fileInMap) => fileInMap.name !== file.name));
+              }}
+            />
+          );
+        } else {
+          return (
+            <FilePanelSuccess
+              file={file}
+              key={index}
+              onDelete={() => {
+                setFiles(files.filter((fileInMap) => fileInMap.name !== file.name));
+              }}
+            />
+          );
+        }
+      })}
+      <div
+        data-testid={'dropzone'}
+        className={`dropzone ${dragOver ? 'dragover' : ''}`}
+        onDragEnter={() => setDragOver(true)}
+        onDragLeave={() => setDragOver(false)}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={props.onDrop}
+      >
         <input
           {...rest}
           onChange={(e) => {
             if (e.target.files) {
-              Array.from(e.target.files).forEach((file) => {
-                const hasError = validate(file);
+              const filesToUpload = Array.from(e.target.files).map((file) => {
+                const errorMessage = validate(file);
 
-                if (!hasError && props.onChange !== undefined) {
-                  props.onChange(e);
+                if (errorMessage) {
+                  return Object.assign(file, {
+                    errorMessage: errorMessage,
+                  });
+                } else {
+                  return file;
                 }
               });
+              setFiles([...files, ...filesToUpload]);
             }
           }}
           data-testid={'fileinput'}
@@ -86,12 +105,6 @@ export const FileInput = (props: FileInputProps) => {
           </span>
         </label>
       </div>
-      {files?.map((file, index) => (
-        <div key={index}>
-          <span>{file.name}</span>
-          <span>{file.errorMessage}</span>
-        </div>
-      ))}
     </div>
   );
 };
