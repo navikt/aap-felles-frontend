@@ -15,6 +15,7 @@ export const Primary: StoryFn<FileInputProps> = (args) => {
     <FileInput
       {...args}
       heading={'Annen dokumentasjon'}
+      ingress={'Du kan laste opp flere filer.'}
       id={'filopplasting'}
       files={files}
       onChange={(e) => {
