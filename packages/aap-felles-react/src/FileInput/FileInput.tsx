@@ -1,5 +1,6 @@
 import { BodyShort, Heading } from '@navikt/ds-react';
 import React, { Dispatch, InputHTMLAttributes, useState } from 'react';
+import { v4 as uuidV4 } from 'uuid';
 import { UploadIcon } from '@navikt/aksel-icons';
 import { FilePanelError } from './FilePanelError';
 import { FilePanelSuccess } from './FilePanelSuccess';
@@ -12,6 +13,7 @@ export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export interface Vedlegg extends File {
+  id: uuidV4;
   errorMessage?: string;
 }
 
@@ -31,6 +33,17 @@ export const FileInput = (props: FileInputProps) => {
       return 'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.';
     }
   }
+  const validateAndSetFiles = (filelist: FileList) => {
+    const filesToUpload = Array.from(filelist).map((file) => {
+      const errorMessage = validate(file);
+
+      return Object.assign(file, {
+        id: uuidV4(),
+        ...(errorMessage ? { errorMessage } : {}),
+      });
+    });
+    setFiles([...files, ...filesToUpload]);
+  };
 
   return (
     <div className={'fileInput'}>
@@ -43,7 +56,7 @@ export const FileInput = (props: FileInputProps) => {
               file={file}
               key={index}
               onDelete={() => {
-                setFiles(files.filter((fileInMap) => fileInMap.name !== file.name));
+                setFiles(files.filter((fileInMap) => fileInMap.id !== file.id));
               }}
             />
           );
@@ -53,7 +66,7 @@ export const FileInput = (props: FileInputProps) => {
               file={file}
               key={index}
               onDelete={() => {
-                setFiles(files.filter((fileInMap) => fileInMap.name !== file.name));
+                setFiles(files.filter((fileInMap) => fileInMap.id !== file.id));
               }}
             />
           );
@@ -65,24 +78,17 @@ export const FileInput = (props: FileInputProps) => {
         onDragEnter={() => setDragOver(true)}
         onDragLeave={() => setDragOver(false)}
         onDragOver={(e) => e.preventDefault()}
-        onDrop={props.onDrop}
+        onDrop={(e) => {
+          if (e.dataTransfer.files) {
+            validateAndSetFiles(e.dataTransfer.files);
+          }
+        }}
       >
         <input
           {...rest}
           onChange={(e) => {
             if (e.target.files) {
-              const filesToUpload = Array.from(e.target.files).map((file) => {
-                const errorMessage = validate(file);
-
-                if (errorMessage) {
-                  return Object.assign(file, {
-                    errorMessage: errorMessage,
-                  });
-                } else {
-                  return file;
-                }
-              });
-              setFiles([...files, ...filesToUpload]);
+              validateAndSetFiles(e.target.files);
             }
           }}
           data-testid={'fileinput'}

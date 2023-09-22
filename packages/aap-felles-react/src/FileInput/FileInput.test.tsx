@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react';
-import { FileInput, FileInputProps } from './FileInput';
+import { FileInput, FileInputProps, Vedlegg } from './FileInput';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
@@ -135,26 +135,7 @@ describe('FileInput', () => {
 });
 
 export function FileInputWithState(props: Omit<FileInputProps, 'setFiles'>): ReactElement {
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<Vedlegg[]>([]);
 
-  return (
-    <FileInput
-      id={'filopplasting'}
-      files={files}
-      onChange={(e) => {
-        if (e.target.files) {
-          const fileArray = Array.from(e.target.files);
-          setFiles([...files, ...fileArray]);
-        }
-      }}
-      setFiles={setFiles}
-      onDrop={(e) => {
-        if (e.dataTransfer.files) {
-          const fileArray = Array.from(e.dataTransfer.files);
-          setFiles([...files, ...fileArray]);
-        }
-      }}
-      {...props}
-    />
-  );
+  return <FileInput id={'filopplasting'} files={files} setFiles={setFiles} {...props} />;
 }
