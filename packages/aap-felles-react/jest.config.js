@@ -3,5 +3,6 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   modulePathIgnorePatterns: ['cjs', 'esm'],
-  testEnvironment: "jsdom"
+  testEnvironment: 'jsdom',
+  setupFiles: ['<rootDir>/setUpJest.ts'],
 };

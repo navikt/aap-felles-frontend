@@ -1,6 +1,11 @@
+import { enableFetchMocks } from 'jest-fetch-mock';
+enableFetchMocks();
+
+import { v4 as uuidV4 } from 'uuid';
 import React, { ReactElement, useState } from 'react';
 import { FileInput, FileInputProps, Vedlegg } from './FileInput';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
@@ -11,33 +16,41 @@ const fileTwo: File = new File(['fil to'], fileTwoName, { type: 'application/pdf
 const heading = 'Last opp fil';
 
 describe('FileInput', () => {
+  beforeEach(() => {
+    fetchMock.resetMocks();
+  });
   const user = userEvent.setup();
 
   it('Skal ha overskrift', () => {
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     expect(screen.getByText(heading)).toBeVisible();
   });
 
   it('Skal ha ingress hvis ingress har en verdi', () => {
     const ingress = 'Last opp minst tre filer';
-    render(<FileInputWithState heading={heading} ingress={ingress} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} ingress={ingress} />);
     expect(screen.getByText(ingress)).toBeVisible();
   });
 
   it('Skal ha heading i tittelen på opplastningsknapp', () => {
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     expect(screen.getByText(`Velg dine filer for ${heading.toLowerCase()}`)).toBeVisible();
   });
 
   it('Skal gå an å laste opp en fil', async () => {
-    render(<FileInputWithState heading={heading} />);
+    mockUploadFile();
+
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal gå an å laste opp flere filer av gangen', async () => {
-    render(<FileInputWithState heading={heading} name={'dokumenter'} />);
+    mockUploadFile();
+    mockUploadFile();
+
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} name={'dokumenter'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, [fileOne, fileTwo]);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -45,14 +58,19 @@ describe('FileInput', () => {
   });
 
   it('Skal gå an å laste opp en fil ved drag & drop', async () => {
-    render(<FileInputWithState heading={heading} name={'dokumenter'} />);
+    mockUploadFile();
+
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} name={'dokumenter'} />);
     const dropZone = screen.getByTestId('dropzone');
     fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne] } });
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal gå an å laste opp flere filer ved drag & drop', async () => {
-    render(<FileInputWithState heading={heading} name={'dokumenter'} />);
+    mockUploadFile();
+    mockUploadFile();
+
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} name={'dokumenter'} />);
     const dropZone = screen.getByTestId('dropzone');
     fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne, fileTwo] } });
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -60,32 +78,40 @@ describe('FileInput', () => {
   });
 
   it('Skal akseptere pdf', async () => {
+    mockUploadFile();
+
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'application/pdf' });
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal akseptere jpeg', async () => {
+    mockUploadFile();
+
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'image/jpeg' });
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal akseptere jpg', async () => {
+    mockUploadFile();
+
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'image/jpg' });
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
   });
 
   it('Skal akseptere png', async () => {
+    mockUploadFile();
+
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'image/png' });
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -93,7 +119,7 @@ describe('FileInput', () => {
 
   it('Skal ikke akseptere JSON', async () => {
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'application/json' });
-    render(<FileInputWithState heading={heading} />);
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(
@@ -104,7 +130,11 @@ describe('FileInput', () => {
   });
 
   it('Skal ikke akseptere flere filer når total fil størrelse er nådd ', async () => {
-    render(<FileInputWithState heading={heading} />);
+    mockUploadFile();
+    mockUploadFile();
+    mockUploadFile();
+
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
     await user.upload(input, fileTwo);
@@ -121,7 +151,9 @@ describe('FileInput', () => {
   });
 
   it('Skal være mulig å fjerne en fil', async () => {
-    render(<FileInputWithState heading={heading} />);
+    mockUploadFile();
+
+    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
 
@@ -138,4 +170,13 @@ export function FileInputWithState(props: Omit<FileInputProps, 'setFiles'>): Rea
   const [files, setFiles] = useState<Vedlegg[]>([]);
 
   return <FileInput id={'filopplasting'} files={files} setFiles={setFiles} {...props} />;
+}
+
+interface ErrorInterface {
+  status: number;
+  substatus: string;
+}
+
+function mockUploadFile(error?: ErrorInterface) {
+  fetchMock.mockResponseOnce(JSON.stringify(error ? error : uuidV4()));
 }
