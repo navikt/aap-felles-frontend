@@ -17,20 +17,9 @@ export const Primary: StoryFn<FileInputProps> = (args) => {
       heading={'Annen dokumentasjon'}
       ingress={'Du kan laste opp flere filer.'}
       id={'filopplasting'}
+      uploadUrl={'/test'}
       files={files}
-      onChange={(e) => {
-        if (e.target.files) {
-          const fileArray = Array.from(e.target.files);
-          setFiles([...files, ...fileArray]);
-        }
-      }}
       setFiles={setFiles}
-      onDrop={(e) => {
-        if (e.dataTransfer.files) {
-          const fileArray = Array.from(e.dataTransfer.files);
-          setFiles([...files, ...fileArray]);
-        }
-      }}
     />
   );
 };
