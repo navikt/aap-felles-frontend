@@ -22,25 +22,25 @@ describe('FileInput', () => {
   const user = userEvent.setup();
 
   it('Skal ha overskrift', () => {
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     expect(screen.getByText(heading)).toBeVisible();
   });
 
   it('Skal ha ingress hvis ingress har en verdi', () => {
     const ingress = 'Last opp minst tre filer';
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} ingress={ingress} />);
+    render(<FileInputWithState ingress={ingress} />);
     expect(screen.getByText(ingress)).toBeVisible();
   });
 
   it('Skal ha heading i tittelen på opplastningsknapp', () => {
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     expect(screen.getByText(`Velg dine filer for ${heading.toLowerCase()}`)).toBeVisible();
   });
 
   it('Skal gå an å laste opp en fil', async () => {
     mockUploadFile();
 
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -50,7 +50,7 @@ describe('FileInput', () => {
     mockUploadFile();
     mockUploadFile();
 
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} name={'dokumenter'} />);
+    render(<FileInputWithState name={'dokumenter'} />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, [fileOne, fileTwo]);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -60,7 +60,7 @@ describe('FileInput', () => {
   it('Skal gå an å laste opp en fil ved drag & drop', async () => {
     mockUploadFile();
 
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} name={'dokumenter'} />);
+    render(<FileInputWithState name={'dokumenter'} />);
     const dropZone = screen.getByTestId('dropzone');
     fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne] } });
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -70,7 +70,7 @@ describe('FileInput', () => {
     mockUploadFile();
     mockUploadFile();
 
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} name={'dokumenter'} />);
+    render(<FileInputWithState name={'dokumenter'} />);
     const dropZone = screen.getByTestId('dropzone');
     fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne, fileTwo] } });
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -81,7 +81,7 @@ describe('FileInput', () => {
     mockUploadFile();
 
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'application/pdf' });
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -91,7 +91,7 @@ describe('FileInput', () => {
     mockUploadFile();
 
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'image/jpeg' });
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -101,7 +101,7 @@ describe('FileInput', () => {
     mockUploadFile();
 
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'image/jpg' });
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -111,7 +111,7 @@ describe('FileInput', () => {
     mockUploadFile();
 
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'image/png' });
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(await screen.findByText(fileOneName)).toBeVisible();
@@ -119,7 +119,7 @@ describe('FileInput', () => {
 
   it('Skal ikke akseptere JSON', async () => {
     const pdfFile: File = new File(['fil en'], fileOneName, { type: 'application/json' });
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, pdfFile);
     expect(
@@ -134,7 +134,7 @@ describe('FileInput', () => {
     mockUploadFile();
     mockUploadFile();
 
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
     await user.upload(input, fileTwo);
@@ -153,7 +153,7 @@ describe('FileInput', () => {
   it('Skal være mulig å fjerne en fil', async () => {
     mockUploadFile();
 
-    render(<FileInputWithState heading={heading} uploadUrl={'api/vedlegg/lagre'} />);
+    render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
 
@@ -164,19 +164,72 @@ describe('FileInput', () => {
 
     expect(await screen.queryByText(fileOneName)).not.toBeInTheDocument();
   });
+
+  it('Skal vise feilmelding dersom respons fra backend er passordbeskyttet', async () => {
+    mockUploadFile({ status: 422, substatus: 'PASSWORD_PROTECTED' });
+
+    render(<FileInputWithState />);
+    const input = screen.getByTestId('fileinput');
+    await user.upload(input, fileOne);
+    expect(
+      await screen.findByText(
+        'Filen er passord-beskyttet og vil ikke kunne leses av en saksbehandler, fjern beskyttelsen og prøv igjen'
+      )
+    ).toBeVisible();
+  });
+
+  it('Skal vise feilmelding dersom respons fra backend er virus', async () => {
+    mockUploadFile({ status: 422, substatus: 'VIRUS' });
+
+    render(<FileInputWithState />);
+    const input = screen.getByTestId('fileinput');
+    await user.upload(input, fileOne);
+    expect(
+      await screen.findByText('Det er oppdaget virus på filen du prøver å laste opp. Velg en annen fil å laste opp.')
+    ).toBeVisible();
+  });
+
+  it('Skal vise feilmelding dersom respons fra backend er for stor filstørrelse', async () => {
+    mockUploadFile({ status: 422, substatus: 'SIZE' });
+
+    render(<FileInputWithState />);
+    const input = screen.getByTestId('fileinput');
+    await user.upload(input, fileOne);
+    expect(
+      await screen.findByText('Maksimal samlet størrelse på vedlegg per bruker(50MB) er oversteget.')
+    ).toBeVisible();
+  });
+
+  it('Skal vise feilmelding dersom noe går galt i kallet mot backend', async () => {
+    fetchMock.mockAbortOnce();
+
+    render(<FileInputWithState />);
+    const input = screen.getByTestId('fileinput');
+    await user.upload(input, fileOne);
+    expect(await screen.findByText('Opplastingen feilet. Prøv på nytt')).toBeVisible();
+  });
 });
 
-export function FileInputWithState(props: Omit<FileInputProps, 'setFiles'>): ReactElement {
+export function FileInputWithState(props: Omit<FileInputProps, 'setFiles' | 'uploadUrl' | 'heading'>): ReactElement {
   const [files, setFiles] = useState<Vedlegg[]>([]);
 
-  return <FileInput id={'filopplasting'} files={files} setFiles={setFiles} {...props} />;
+  return (
+    <FileInput
+      heading={heading}
+      id={'filopplasting'}
+      uploadUrl={'/test'}
+      files={files}
+      setFiles={setFiles}
+      {...props}
+    />
+  );
 }
 
 interface ErrorInterface {
   status: number;
-  substatus: string;
+  substatus: 'PASSWORD_PROTECTED' | 'VIRUS' | 'SIZE';
 }
 
 function mockUploadFile(error?: ErrorInterface) {
-  fetchMock.mockResponseOnce(JSON.stringify(error ? error : uuidV4()));
+  fetchMock.mockResponseOnce(JSON.stringify(error ? error : uuidV4()), { status: error ? error.status : 200 });
 }

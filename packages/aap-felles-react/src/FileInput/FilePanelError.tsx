@@ -1,5 +1,5 @@
 import { BodyShort, Label, Panel } from '@navikt/ds-react';
-import { FileTextIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { ArrowUndoIcon, FileTextIcon } from '@navikt/aksel-icons';
 import React from 'react';
 import { Vedlegg } from './FileInput';
 
@@ -21,7 +21,7 @@ export const FilePanelError = ({ file, onDelete }: Props) => {
           </div>
         </div>
         <button type={'button'} onClick={onDelete} tabIndex={0} className={'deleteAttachment'}>
-          <XMarkIcon title={'Avbryt'} />
+          <ArrowUndoIcon title={'Avbryt'} />
           <BodyShort>{'Avbryt'}</BodyShort>
         </button>
       </Panel>

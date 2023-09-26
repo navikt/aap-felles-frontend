@@ -8,18 +8,20 @@ import { FilePanelSuccess } from './FilePanelSuccess';
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
   setFiles: Dispatch<Vedlegg[]>;
+  uploadUrl: string;
   files?: Vedlegg[];
   ingress?: string;
 }
 
 export interface Vedlegg extends File {
-  id: uuidV4;
+  id: string;
+  isUploaded: boolean;
   errorMessage?: string;
 }
 
 const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
 export const FileInput = (props: FileInputProps) => {
-  const { heading, ingress, files = [], setFiles, ...rest } = props;
+  const { heading, ingress, files = [], setFiles, uploadUrl, ...rest } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
 
   function validate(fileToUpload: File): string | undefined {
@@ -33,17 +35,52 @@ export const FileInput = (props: FileInputProps) => {
       return 'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.';
     }
   }
-  const validateAndSetFiles = (filelist: FileList) => {
-    const filesToUpload = Array.from(filelist).map((file) => {
-      const errorMessage = validate(file);
 
-      return Object.assign(file, {
-        id: uuidV4(),
-        ...(errorMessage ? { errorMessage } : {}),
-      });
-    });
+  async function validateAndSetFiles(filelist: FileList) {
+    const filesToUpload: Vedlegg[] = await Promise.all(
+      Array.from(filelist).map(async (file) => {
+        const internalErrorMessage = validate(file);
+
+        if (!internalErrorMessage) {
+          try {
+            const data = new FormData();
+            data.append('vedlegg', file);
+            const res = await fetch(uploadUrl, { method: 'POST', body: data });
+            const resData = await res.json();
+
+            if (!res.ok) {
+              const externalErrorMessage = errorText(res.status, resData.substatus);
+              return Object.assign(file, {
+                id: uuidV4(),
+                errorMessage: externalErrorMessage,
+                isUploaded: false,
+              });
+            } else {
+              return Object.assign(file, {
+                id: resData,
+                isUploaded: true,
+              });
+            }
+          } catch (err: any) {
+            const message = errorText(err?.status || 500);
+            return Object.assign(file, {
+              id: uuidV4(),
+              errorMessage: message,
+              isUploaded: false,
+            });
+          }
+        } else {
+          return Object.assign(file, {
+            id: uuidV4(),
+            errorMessage: internalErrorMessage,
+            isUploaded: false,
+          });
+        }
+      })
+    );
+
     setFiles([...files, ...filesToUpload]);
-  };
+  }
 
   return (
     <div className={'fileInput'}>
@@ -114,3 +151,28 @@ export const FileInput = (props: FileInputProps) => {
     </div>
   );
 };
+
+function errorText(statusCode: number, substatus = '') {
+  switch (statusCode) {
+    case 422:
+      return error422Text(substatus);
+    case 413:
+      return 'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.';
+    case 415:
+      return 'Filtypen kan ikke lastes opp. Last opp dokumentet i et annet format (PDF, PNG, JPG eller heic).';
+    default:
+      return 'Opplastingen feilet. Prøv på nytt';
+  }
+}
+function error422Text(subType: string) {
+  switch (subType) {
+    case 'PASSWORD_PROTECTED':
+      return 'Filen er passord-beskyttet og vil ikke kunne leses av en saksbehandler, fjern beskyttelsen og prøv igjen';
+    case 'VIRUS':
+      return 'Det er oppdaget virus på filen du prøver å laste opp. Velg en annen fil å laste opp.';
+    case 'SIZE':
+      return 'Maksimal samlet størrelse på vedlegg per bruker(50MB) er oversteget.';
+    default:
+      return '';
+  }
+}
