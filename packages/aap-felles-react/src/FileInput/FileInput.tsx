@@ -80,12 +80,12 @@ export const FileInput = (props: FileInputProps) => {
     <div className={'fileInput'} id={props.id}>
       <Heading size={'medium'}>{heading}</Heading>
       {ingress && <BodyShort>{ingress}</BodyShort>}
-      {files?.map((file, index) => {
+      {files?.map((file) => {
         if (file.errorMessage) {
           return (
             <FilePanelError
               file={file}
-              key={index}
+              key={file.id}
               onDelete={() => {
                 setFiles(files.filter((fileInMap) => fileInMap.id !== file.id));
               }}
@@ -95,7 +95,7 @@ export const FileInput = (props: FileInputProps) => {
           return (
             <FilePanelSuccess
               file={file}
-              key={index}
+              key={file.id}
               onDelete={() => {
                 setFiles(files.filter((fileInMap) => fileInMap.id !== file.id));
               }}
