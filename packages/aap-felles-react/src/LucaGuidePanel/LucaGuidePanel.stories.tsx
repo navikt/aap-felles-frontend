@@ -1,5 +1,5 @@
 import { BodyShort } from '@navikt/ds-react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 
 import { LucaGuidePanel, LucaGuidePanelProps } from './LucaGuidePanel';
@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: Story<LucaGuidePanelProps> = (args) => <LucaGuidePanel {...args} />;
+const Template: StoryFn<LucaGuidePanelProps> = (args) => <LucaGuidePanel {...args} />;
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
