@@ -1,5 +1,5 @@
-import { BodyShort, Heading, Loader } from '@navikt/ds-react';
-import React, { Dispatch, InputHTMLAttributes, useRef, useState } from 'react';
+import { BodyShort, Heading } from '@navikt/ds-react';
+import React, { Dispatch, InputHTMLAttributes, useMemo, useRef, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { UploadIcon } from '@navikt/aksel-icons';
 import { FilePanelError } from './FilePanelError';
@@ -25,6 +25,7 @@ export const FileInput = (props: FileInputProps) => {
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const fileInputElement = useRef<HTMLInputElement>(null);
+  const inputId = useMemo(() => uuidV4(), []);
 
   function internalValidate(fileToUpload: File): string | undefined {
     const totalUploadedSize = files.reduce((acc, curr) => acc + curr.size, 0);
@@ -71,19 +72,18 @@ export const FileInput = (props: FileInputProps) => {
       })
     );
 
-    setFiles([...files, ...uploadedFiles]);
     setIsUploading(false);
+    setFiles([...files, ...uploadedFiles]);
   }
 
   return (
-    <div className={'fileInput'}>
+    <div className={'fileInput'} id={props.id}>
       <Heading size={'medium'}>{heading}</Heading>
       {ingress && <BodyShort>{ingress}</BodyShort>}
       {files?.map((file, index) => {
         if (file.errorMessage) {
           return (
             <FilePanelError
-              id={props.id}
               file={file}
               key={index}
               onDelete={() => {
@@ -116,11 +116,12 @@ export const FileInput = (props: FileInputProps) => {
         }}
       >
         {isUploading ? (
-          <Loader />
+          // <Loader title={'Laster'} />
+          <div>JEG LASTER</div>
         ) : (
           <>
             <input
-              id={props.id}
+              id={inputId}
               type={'file'}
               value={''}
               onChange={(e) => {
@@ -138,11 +139,11 @@ export const FileInput = (props: FileInputProps) => {
             />
             <BodyShort>{'Dra og slipp'}</BodyShort>
             <BodyShort>{'eller'}</BodyShort>
-            <label htmlFor={props.id} aria-labelledby={props.id}>
+            <label htmlFor={inputId} aria-labelledby={props.id}>
               <span
                 className={'fileInputButton navds-button navds-button__inner navds-body-short navds-button--secondary'}
                 role={'button'}
-                aria-controls={props.id}
+                aria-controls={inputId}
                 tabIndex={0}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {

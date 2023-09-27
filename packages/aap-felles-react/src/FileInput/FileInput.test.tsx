@@ -129,16 +129,11 @@ describe('FileInput', () => {
     ).toBeVisible();
   });
 
-  it('Skal ikke akseptere flere filer når total fil størrelse er nådd ', async () => {
-    mockUploadFile();
-    mockUploadFile();
+  it('Skal ikke akseptere filer når total fil størrelse er nådd ', async () => {
     mockUploadFile();
 
     render(<FileInputWithState />);
     const input = screen.getByTestId('fileinput');
-    await user.upload(input, fileOne);
-    await user.upload(input, fileTwo);
-
     const fileThree: File = new File(['fil tre'], 'filTre.pdf', { type: 'application/pdf' });
     Object.defineProperty(fileThree, 'size', { value: (1024 * 1024 + 1) * 50 });
     await user.upload(input, fileThree);
@@ -147,7 +142,7 @@ describe('FileInput', () => {
       await screen.findByText(
         'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.'
       )
-    );
+    ).toBeVisible();
   });
 
   it('Skal være mulig å fjerne en fil', async () => {

@@ -5,14 +5,13 @@ import { Vedlegg } from './FileInput';
 
 interface Props {
   file: Vedlegg;
-  id: string;
   onDelete: () => void;
 }
 
-export const FilePanelError = ({ file, onDelete, id }: Props) => {
+export const FilePanelError = ({ file, onDelete }: Props) => {
   return (
     <>
-      <Panel id={id} className={'fileCard error'} tabIndex={0}>
+      <Panel className={'fileCard error'} tabIndex={0}>
         <div className={'fileCardLeftContent'}>
           <div className={'fileError'}>
             <FileTextIcon color={'var(--a-surface-danger-hover)'} />
