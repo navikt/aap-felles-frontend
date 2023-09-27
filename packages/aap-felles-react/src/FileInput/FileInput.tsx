@@ -1,5 +1,5 @@
-import { BodyShort, Heading } from '@navikt/ds-react';
-import React, { Dispatch, InputHTMLAttributes, useState } from 'react';
+import { BodyShort, Heading, Loader } from '@navikt/ds-react';
+import React, { Dispatch, InputHTMLAttributes, useRef, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { UploadIcon } from '@navikt/aksel-icons';
 import { FilePanelError } from './FilePanelError';
@@ -23,6 +23,8 @@ const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
 export const FileInput = (props: FileInputProps) => {
   const { heading, ingress, files = [], setFiles, uploadUrl, id, ...rest } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const fileInputElement = useRef<HTMLInputElement>(null);
 
   function internalValidate(fileToUpload: File): string | undefined {
     const totalUploadedSize = files.reduce((acc, curr) => acc + curr.size, 0);
@@ -37,6 +39,7 @@ export const FileInput = (props: FileInputProps) => {
   }
 
   async function validateAndSetFiles(filelist: FileList) {
+    setIsUploading(true);
     const uploadedFiles: Vedlegg[] = await Promise.all(
       Array.from(filelist).map(async (file) => {
         const internalErrorMessage = internalValidate(file);
@@ -69,6 +72,7 @@ export const FileInput = (props: FileInputProps) => {
     );
 
     setFiles([...files, ...uploadedFiles]);
+    setIsUploading(false);
   }
 
   return (
@@ -111,32 +115,47 @@ export const FileInput = (props: FileInputProps) => {
           }
         }}
       >
-        <input
-          onChange={(e) => {
-            if (e.target.files) {
-              validateAndSetFiles(e.target.files);
-            }
-          }}
-          data-testid={'fileinput'}
-          type={'file'}
-          id={props.id}
-          multiple={true}
-          className={'visuallyHidden'}
-          {...rest}
-        />
-        <BodyShort>{'Dra og slipp'}</BodyShort>
-        <BodyShort>{'eller'}</BodyShort>
-        <label htmlFor={props.id} aria-labelledby={props.id}>
-          <span
-            className={'fileInputButton navds-button navds-button__inner navds-body-short navds-button--secondary'}
-            role={'button'}
-            aria-controls={props.id}
-            tabIndex={0}
-          >
-            <UploadIcon title="" aria-hidden />
-            Velg dine filer for {heading.toLowerCase()}
-          </span>
-        </label>
+        {isUploading ? (
+          <Loader />
+        ) : (
+          <>
+            <input
+              id={props.id}
+              type={'file'}
+              value={''}
+              onChange={(e) => {
+                if (e.target.files) {
+                  validateAndSetFiles(e.target.files);
+                }
+              }}
+              className={'visuallyHidden'}
+              tabIndex={-1}
+              data-testid={'fileinput'}
+              multiple={true}
+              accept="image/*,.pdf"
+              ref={fileInputElement}
+              {...rest}
+            />
+            <BodyShort>{'Dra og slipp'}</BodyShort>
+            <BodyShort>{'eller'}</BodyShort>
+            <label htmlFor={props.id} aria-labelledby={props.id}>
+              <span
+                className={'fileInputButton navds-button navds-button__inner navds-body-short navds-button--secondary'}
+                role={'button'}
+                aria-controls={props.id}
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    fileInputElement?.current?.click();
+                  }
+                }}
+              >
+                <UploadIcon title="Last opp filer" aria-hidden />
+                Velg dine filer for {heading.toLowerCase()}
+              </span>
+            </label>
+          </>
+        )}
       </div>
     </div>
   );
