@@ -7,6 +7,7 @@ import { FilePanelSuccess } from './FilePanelSuccess';
 
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
+  id: string;
   setFiles: Dispatch<Vedlegg[]>;
   uploadUrl: string;
   files?: Vedlegg[];
@@ -20,17 +21,17 @@ export interface Vedlegg extends File {
 
 const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
 export const FileInput = (props: FileInputProps) => {
-  const { heading, ingress, files = [], setFiles, uploadUrl, ...rest } = props;
+  const { heading, ingress, files = [], setFiles, uploadUrl, id, ...rest } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
 
   function internalValidate(fileToUpload: File): string | undefined {
-    const totalUploadedBytes = files.reduce((acc, curr) => acc + curr.size, 0);
+    const totalUploadedSize = files.reduce((acc, curr) => acc + curr.size, 0);
 
     if (!['image/png', 'image/jpg', 'image/jpeg', 'application/pdf'].includes(fileToUpload?.type)) {
       return 'Filtypen kan ikke lastes opp. Last opp dokumentet i et annet format (PDF, PNG, JPG eller heic).';
     }
 
-    if (totalUploadedBytes + fileToUpload?.size > MAX_TOTAL_FILE_SIZE) {
+    if (totalUploadedSize + fileToUpload?.size > MAX_TOTAL_FILE_SIZE) {
       return 'Filen(e) du lastet opp er for stor. Last opp fil(er) med maksimal samlet størrelse 50 MB.';
     }
   }
@@ -78,6 +79,7 @@ export const FileInput = (props: FileInputProps) => {
         if (file.errorMessage) {
           return (
             <FilePanelError
+              id={props.id}
               file={file}
               key={index}
               onDelete={() => {
@@ -110,7 +112,6 @@ export const FileInput = (props: FileInputProps) => {
         }}
       >
         <input
-          {...rest}
           onChange={(e) => {
             if (e.target.files) {
               validateAndSetFiles(e.target.files);
@@ -121,6 +122,7 @@ export const FileInput = (props: FileInputProps) => {
           id={props.id}
           multiple={true}
           className={'visuallyHidden'}
+          {...rest}
         />
         <BodyShort>{'Dra og slipp'}</BodyShort>
         <BodyShort>{'eller'}</BodyShort>
