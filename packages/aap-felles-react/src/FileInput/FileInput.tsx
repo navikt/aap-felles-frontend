@@ -15,7 +15,6 @@ export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export interface Vedlegg extends File {
   id: string;
-  isUploaded: boolean;
   errorMessage?: string;
 }
 
@@ -24,7 +23,7 @@ export const FileInput = (props: FileInputProps) => {
   const { heading, ingress, files = [], setFiles, uploadUrl, ...rest } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
 
-  function validate(fileToUpload: File): string | undefined {
+  function internalValidate(fileToUpload: File): string | undefined {
     const totalUploadedBytes = files.reduce((acc, curr) => acc + curr.size, 0);
 
     if (!['image/png', 'image/jpg', 'image/jpeg', 'application/pdf'].includes(fileToUpload?.type)) {
@@ -37,9 +36,13 @@ export const FileInput = (props: FileInputProps) => {
   }
 
   async function validateAndSetFiles(filelist: FileList) {
-    const filesToUpload: Vedlegg[] = await Promise.all(
+    const uploadedFiles: Vedlegg[] = await Promise.all(
       Array.from(filelist).map(async (file) => {
-        const internalErrorMessage = validate(file);
+        const internalErrorMessage = internalValidate(file);
+        let uploadResult = {
+          id: uuidV4(),
+          errorMessage: '',
+        };
 
         if (!internalErrorMessage) {
           try {
@@ -48,38 +51,23 @@ export const FileInput = (props: FileInputProps) => {
             const res = await fetch(uploadUrl, { method: 'POST', body: data });
             const resData = await res.json();
 
-            if (!res.ok) {
-              const externalErrorMessage = errorText(res.status, resData.substatus);
-              return Object.assign(file, {
-                id: uuidV4(),
-                errorMessage: externalErrorMessage,
-                isUploaded: false,
-              });
+            if (res.ok) {
+              uploadResult.id = resData;
             } else {
-              return Object.assign(file, {
-                id: resData,
-                isUploaded: true,
-              });
+              uploadResult.errorMessage = externalValidate(res.status, resData.substatus);
             }
           } catch (err: any) {
-            const message = errorText(err?.status || 500);
-            return Object.assign(file, {
-              id: uuidV4(),
-              errorMessage: message,
-              isUploaded: false,
-            });
+            uploadResult.errorMessage = externalValidate(err?.status || 500);
           }
-        } else {
-          return Object.assign(file, {
-            id: uuidV4(),
-            errorMessage: internalErrorMessage,
-            isUploaded: false,
-          });
+        } else if (internalErrorMessage) {
+          uploadResult.errorMessage = internalErrorMessage;
         }
+
+        return Object.assign(file, uploadResult);
       })
     );
 
-    setFiles([...files, ...filesToUpload]);
+    setFiles([...files, ...uploadedFiles]);
   }
 
   return (
@@ -152,7 +140,7 @@ export const FileInput = (props: FileInputProps) => {
   );
 };
 
-function errorText(statusCode: number, substatus = '') {
+function externalValidate(statusCode: number, substatus = '') {
   switch (statusCode) {
     case 422:
       return error422Text(substatus);
