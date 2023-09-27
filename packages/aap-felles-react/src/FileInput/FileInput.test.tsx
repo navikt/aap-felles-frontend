@@ -210,7 +210,9 @@ describe('FileInput', () => {
   });
 });
 
-export function FileInputWithState(props: Omit<FileInputProps, 'setFiles' | 'uploadUrl' | 'heading'>): ReactElement {
+export function FileInputWithState(
+  props: Omit<FileInputProps, 'setFiles' | 'uploadUrl' | 'heading' | 'id'>
+): ReactElement {
   const [files, setFiles] = useState<Vedlegg[]>([]);
 
   return (
