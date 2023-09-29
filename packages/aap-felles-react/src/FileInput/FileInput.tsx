@@ -1,5 +1,5 @@
-import { BodyShort, Heading } from '@navikt/ds-react';
-import React, { Dispatch, InputHTMLAttributes, useMemo, useRef, useState } from 'react';
+import { BodyShort, Heading, Loader } from '@navikt/ds-react';
+import React, { InputHTMLAttributes, useMemo, useRef, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { UploadIcon } from '@navikt/aksel-icons';
 import { FilePanelError } from './FilePanelError';
@@ -8,20 +8,22 @@ import { FilePanelSuccess } from './FilePanelSuccess';
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
   id: string;
-  setFiles: Dispatch<Vedlegg[]>;
+  onUpload: (attachments: Attachment[]) => void;
+  onDelete: (attachment: Attachment) => void;
+  deleteUrl: string;
   uploadUrl: string;
-  files?: Vedlegg[];
+  files: Attachment[];
   ingress?: string;
 }
 
-export interface Vedlegg extends File {
+export interface Attachment extends File {
   id: string;
   errorMessage?: string;
 }
 
 const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
 export const FileInput = (props: FileInputProps) => {
-  const { heading, ingress, files = [], setFiles, uploadUrl, id, ...rest } = props;
+  const { heading, ingress, files, onUpload, onDelete, uploadUrl, deleteUrl, id, ...rest } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const fileInputElement = useRef<HTMLInputElement>(null);
@@ -41,7 +43,7 @@ export const FileInput = (props: FileInputProps) => {
 
   async function validateAndSetFiles(filelist: FileList) {
     setIsUploading(true);
-    const uploadedFiles: Vedlegg[] = await Promise.all(
+    const uploadedFiles: Attachment[] = await Promise.all(
       Array.from(filelist).map(async (file) => {
         const internalErrorMessage = internalValidate(file);
         let uploadResult = {
@@ -73,7 +75,7 @@ export const FileInput = (props: FileInputProps) => {
     );
 
     setIsUploading(false);
-    setFiles([...files, ...uploadedFiles]);
+    onUpload(uploadedFiles);
   }
 
   return (
@@ -82,22 +84,14 @@ export const FileInput = (props: FileInputProps) => {
       {ingress && <BodyShort>{ingress}</BodyShort>}
       {files?.map((file) => {
         if (file.errorMessage) {
-          return (
-            <FilePanelError
-              file={file}
-              key={file.id}
-              onDelete={() => {
-                setFiles(files.filter((fileInMap) => fileInMap.id !== file.id));
-              }}
-            />
-          );
+          return <FilePanelError file={file} key={file.id} deleteUrl={deleteUrl} onDelete={() => onDelete(file)} />;
         } else {
           return (
             <FilePanelSuccess
               file={file}
               key={file.id}
               onDelete={() => {
-                setFiles(files.filter((fileInMap) => fileInMap.id !== file.id));
+                onDelete(file);
               }}
             />
           );
@@ -116,8 +110,7 @@ export const FileInput = (props: FileInputProps) => {
         }}
       >
         {isUploading ? (
-          // <Loader title={'Laster'} />
-          <div>JEG LASTER</div>
+          <Loader title={'Laster'} />
         ) : (
           <>
             <input

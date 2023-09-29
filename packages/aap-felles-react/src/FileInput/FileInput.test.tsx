@@ -1,7 +1,7 @@
 import { enableFetchMocks } from 'jest-fetch-mock';
 import { v4 as uuidV4 } from 'uuid';
 import React, { ReactElement, useState } from 'react';
-import { FileInput, FileInputProps, Vedlegg } from './FileInput';
+import { FileInput, FileInputProps, Attachment } from './FileInput';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import userEvent from '@testing-library/user-event';
@@ -206,18 +206,23 @@ describe('FileInput', () => {
 });
 
 export function FileInputWithState(
-  props: Omit<FileInputProps, 'setFiles' | 'uploadUrl' | 'heading' | 'id'>
+  props: Omit<
+    FileInputProps,
+    'onChange' | 'uploadUrl' | 'heading' | 'id' | 'deleteUrl' | 'onUpload' | 'onDelete' | 'files'
+  >
 ): ReactElement {
-  const [files, setFiles] = useState<Vedlegg[]>([]);
+  const [files, setFiles] = useState<Attachment[]>([]);
 
   return (
     <FileInput
+      {...props}
       heading={heading}
       id={'filopplasting'}
-      uploadUrl={'/test'}
+      uploadUrl={'/upload'}
+      deleteUrl={'/delete'}
+      onUpload={(attachments) => setFiles([...files, ...attachments])}
+      onDelete={(attachment) => setFiles(files.filter((file) => file.id !== attachment.id))}
       files={files}
-      setFiles={setFiles}
-      {...props}
     />
   );
 }
