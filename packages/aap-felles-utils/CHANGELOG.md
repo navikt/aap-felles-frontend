@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.85 (2023-10-06)
+
+**Note:** Version bump only for package @navikt/aap-felles-utils
+
+
+
+
+
 ## 0.0.84 (2023-10-06)
 
 **Note:** Version bump only for package @navikt/aap-felles-utils
