@@ -110,9 +110,11 @@ export const FileInput = (props: FileInputProps) => {
         onDragLeave={() => setDragOver(false)}
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => {
+          e.preventDefault();
           if (e.dataTransfer.files) {
             validateAndSetFiles(e.dataTransfer.files);
           }
+          setDragOver(false);
         }}
       >
         {isUploading ? (
