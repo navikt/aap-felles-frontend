@@ -1,10 +1,10 @@
 import { BodyShort, Label, Panel } from '@navikt/ds-react';
 import { ArrowUndoIcon, FileTextIcon } from '@navikt/aksel-icons';
 import React from 'react';
-import { Vedleggg } from './FileInput';
+import { Vedlegg } from './FileInput';
 
 interface Props {
-  file: Vedleggg;
+  file: Vedlegg;
   deleteUrl: string;
   onDelete: () => void;
 }

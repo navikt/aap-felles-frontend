@@ -8,15 +8,15 @@ import { FilePanelSuccess } from './FilePanelSuccess';
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
   id: string;
-  onUpload: (attachments: Vedleggg[]) => void;
-  onDelete: (attachment: Vedleggg) => void;
+  onUpload: (attachments: Vedlegg[]) => void;
+  onDelete: (attachment: Vedlegg) => void;
   deleteUrl: string;
   uploadUrl: string;
-  files: Vedleggg[];
+  files: Vedlegg[];
   ingress?: string;
 }
 
-export interface Vedleggg {
+export interface Vedlegg {
   id: string;
   errorMessage?: string;
   size: number;
@@ -46,10 +46,10 @@ export const FileInput = (props: FileInputProps) => {
 
   async function validateAndSetFiles(filelist: FileList) {
     setIsUploading(true);
-    const uploadedFiles: Vedleggg[] = await Promise.all(
+    const uploadedFiles: Vedlegg[] = await Promise.all(
       Array.from(filelist).map(async (file) => {
         const internalErrorMessage = internalValidate(file);
-        let uploadResult: Vedleggg = {
+        let uploadResult: Vedlegg = {
           id: uuidV4(),
           errorMessage: '',
           type: file.type,
