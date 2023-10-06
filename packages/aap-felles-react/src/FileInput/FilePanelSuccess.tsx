@@ -1,10 +1,10 @@
 import { CheckmarkIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { BodyShort, Detail, Link, Panel } from '@navikt/ds-react';
 import React from 'react';
-import { Attachment } from './FileInput';
+import { Vedleggg } from './FileInput';
 
 interface Props {
-  file: Attachment;
+  file: Vedleggg;
   onDelete: () => void;
 }
 

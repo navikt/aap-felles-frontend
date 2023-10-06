@@ -1,10 +1,10 @@
 import { BodyShort, Label, Panel } from '@navikt/ds-react';
 import { ArrowUndoIcon, FileTextIcon } from '@navikt/aksel-icons';
 import React from 'react';
-import { Attachment } from './FileInput';
+import { Vedleggg } from './FileInput';
 
 interface Props {
-  file: Attachment;
+  file: Vedleggg;
   deleteUrl: string;
   onDelete: () => void;
 }

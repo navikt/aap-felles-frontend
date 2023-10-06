@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 
-import { FileInput, FileInputProps, Attachment } from './FileInput';
+import { FileInput, FileInputProps, Vedleggg } from './FileInput';
 import React, { useState } from 'react';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 export const Primary: StoryFn<FileInputProps> = (args) => {
-  const [files, setFiles] = useState<Attachment[]>([]);
+  const [files, setFiles] = useState<Vedleggg[]>([]);
   return (
     <FileInput
       {...args}

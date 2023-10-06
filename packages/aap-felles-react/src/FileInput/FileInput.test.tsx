@@ -1,7 +1,7 @@
 import { enableFetchMocks } from 'jest-fetch-mock';
 import { v4 as uuidV4 } from 'uuid';
 import React, { ReactElement, useState } from 'react';
-import { FileInput, FileInputProps, Attachment } from './FileInput';
+import { FileInput, FileInputProps, Vedleggg } from './FileInput';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import userEvent from '@testing-library/user-event';
@@ -211,7 +211,7 @@ export function FileInputWithState(
     'onChange' | 'uploadUrl' | 'heading' | 'id' | 'deleteUrl' | 'onUpload' | 'onDelete' | 'files'
   >
 ): ReactElement {
-  const [files, setFiles] = useState<Attachment[]>([]);
+  const [files, setFiles] = useState<Vedleggg[]>([]);
 
   return (
     <FileInput

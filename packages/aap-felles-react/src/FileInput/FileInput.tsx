@@ -8,17 +8,20 @@ import { FilePanelSuccess } from './FilePanelSuccess';
 export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   heading: string;
   id: string;
-  onUpload: (attachments: Attachment[]) => void;
-  onDelete: (attachment: Attachment) => void;
+  onUpload: (attachments: Vedleggg[]) => void;
+  onDelete: (attachment: Vedleggg) => void;
   deleteUrl: string;
   uploadUrl: string;
-  files: Attachment[];
+  files: Vedleggg[];
   ingress?: string;
 }
 
-export interface Attachment extends File {
+export interface Vedleggg {
   id: string;
   errorMessage?: string;
+  size: number;
+  name: string;
+  type: string;
 }
 
 const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
@@ -43,12 +46,15 @@ export const FileInput = (props: FileInputProps) => {
 
   async function validateAndSetFiles(filelist: FileList) {
     setIsUploading(true);
-    const uploadedFiles: Attachment[] = await Promise.all(
+    const uploadedFiles: Vedleggg[] = await Promise.all(
       Array.from(filelist).map(async (file) => {
         const internalErrorMessage = internalValidate(file);
-        let uploadResult = {
+        let uploadResult: Vedleggg = {
           id: uuidV4(),
           errorMessage: '',
+          type: file.type,
+          size: file.size,
+          name: file.name,
         };
 
         if (!internalErrorMessage) {
@@ -70,7 +76,7 @@ export const FileInput = (props: FileInputProps) => {
           uploadResult.errorMessage = internalErrorMessage;
         }
 
-        return Object.assign(file, uploadResult);
+        return uploadResult;
       })
     );
 
