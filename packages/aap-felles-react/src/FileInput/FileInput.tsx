@@ -90,12 +90,13 @@ export const FileInput = (props: FileInputProps) => {
       {ingress && <BodyShort>{ingress}</BodyShort>}
       {files?.map((file) => {
         if (file.errorMessage) {
-          return <FilePanelError file={file} key={file.id} deleteUrl={deleteUrl} onDelete={() => onDelete(file)} />;
+          return <FilePanelError file={file} key={file.id} onDelete={() => onDelete(file)} />;
         } else {
           return (
             <FilePanelSuccess
               file={file}
               key={file.id}
+              deleteUrl={deleteUrl}
               onDelete={() => {
                 onDelete(file);
               }}

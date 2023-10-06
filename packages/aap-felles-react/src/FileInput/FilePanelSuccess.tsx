@@ -5,10 +5,11 @@ import { Vedlegg } from './FileInput';
 
 interface Props {
   file: Vedlegg;
+  deleteUrl: string;
   onDelete: () => void;
 }
 
-export const FilePanelSuccess = ({ file, onDelete }: Props) => {
+export const FilePanelSuccess = ({ file, onDelete, deleteUrl }: Props) => {
   return (
     <Panel className={'fileCard'}>
       <div className={'fileCardLeftContent'}>
@@ -23,7 +24,12 @@ export const FilePanelSuccess = ({ file, onDelete }: Props) => {
         </div>
       </div>
       <button
-        onClick={onDelete}
+        onClick={async () => {
+          const res = await fetch(`${deleteUrl}${file.id}`, { method: 'DELETE' });
+          if (res.ok) {
+            onDelete();
+          }
+        }}
         type={'button'}
         tabIndex={0}
         className={'deleteAttachment'}
