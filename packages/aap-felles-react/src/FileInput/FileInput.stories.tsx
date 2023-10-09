@@ -24,3 +24,36 @@ export const Primary: StoryFn<FileInputProps> = (args) => {
     />
   );
 };
+
+export const Bokmål:StoryFn<FileInputProps> = (args) => {
+  const [files, setFiles] = useState<Vedlegg[]>([]);
+  return (
+    <FileInput
+      {...args}
+      heading={'Annen dokumentasjon'}
+      id={'filopplasting'}
+      uploadUrl={'/upload'}
+      deleteUrl={'/delete'}
+      onUpload={(attachments) => setFiles([...files, ...attachments])}
+      onDelete={(attachment) => setFiles(files.filter((file) => file.id !== attachment.id))}
+      files={files}
+    />
+  );
+}
+
+export const Nynorsk:StoryFn<FileInputProps> = (args) => {
+  const [files, setFiles] = useState<Vedlegg[]>([]);
+  return (
+    <FileInput
+      {...args}
+      heading={'Annen dokumentasjon'}
+      id={'filopplasting'}
+      uploadUrl={'/upload'}
+      deleteUrl={'/delete'}
+      onUpload={(attachments) => setFiles([...files, ...attachments])}
+      onDelete={(attachment) => setFiles(files.filter((file) => file.id !== attachment.id))}
+      files={files}
+      locale={'nn'}
+    />
+  );
+}
