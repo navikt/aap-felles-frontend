@@ -67,7 +67,7 @@ export const FileInput = (props: FileInputProps) => {
       default:
         return tekster.fileInputErrors.other;
     }
-  }
+  };
 
   function internalValidate(fileToUpload: File): string | undefined {
     const totalUploadedSize = files.reduce((acc, curr) => acc + curr.size, 0);
@@ -176,7 +176,7 @@ export const FileInput = (props: FileInputProps) => {
               ref={fileInputElement}
               {...rest}
             />
-            <BodyShort>{'Dra og slipp'}</BodyShort>
+            <BodyShort>{tekster.inputText}</BodyShort>
             <BodyShort>{'eller'}</BodyShort>
             <label htmlFor={inputId} aria-labelledby={props.id}>
               <span
@@ -191,7 +191,7 @@ export const FileInput = (props: FileInputProps) => {
                 }}
               >
                 <UploadIcon title="Last opp filer" aria-hidden />
-                Velg dine filer for {heading.toLowerCase()}
+                {tekster.labelText} {heading.toLowerCase()}
               </span>
             </label>
           </>
