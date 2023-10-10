@@ -25,7 +25,7 @@ export const FilePanelSuccess = ({ file, onDelete, deleteUrl }: Props) => {
       </div>
       <button
         onClick={async () => {
-          const res = await fetch(`${deleteUrl}${file.id}`, { method: 'DELETE' });
+          const res = await fetch(`${deleteUrl}${file.vedleggId}`, { method: 'DELETE' });
           if (res.ok) {
             onDelete();
           }

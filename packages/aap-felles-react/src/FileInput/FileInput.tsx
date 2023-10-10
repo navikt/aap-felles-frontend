@@ -20,7 +20,7 @@ export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export interface Vedlegg {
-  id: string;
+  vedleggId: string;
   errorMessage?: string;
   size: number;
   name: string;
@@ -87,7 +87,7 @@ export const FileInput = (props: FileInputProps) => {
       Array.from(filelist).map(async (file) => {
         const internalErrorMessage = internalValidate(file);
         let uploadResult: Vedlegg = {
-          id: uuidV4(),
+          vedleggId: uuidV4(),
           errorMessage: '',
           type: file.type,
           size: file.size,
@@ -102,7 +102,7 @@ export const FileInput = (props: FileInputProps) => {
             const resData = await res.json();
 
             if (res.ok) {
-              uploadResult.id = resData;
+              uploadResult.vedleggId = resData;
             } else {
               uploadResult.errorMessage = settFeilmelding(res.status, resData.substatus);
             }
@@ -127,12 +127,12 @@ export const FileInput = (props: FileInputProps) => {
       {ingress && <BodyShort>{ingress}</BodyShort>}
       {files?.map((file) => {
         if (file.errorMessage) {
-          return <FilePanelError file={file} key={file.id} onDelete={() => onDelete(file)} />;
+          return <FilePanelError file={file} key={file.vedleggId} onDelete={() => onDelete(file)} />;
         } else {
           return (
             <FilePanelSuccess
               file={file}
-              key={file.id}
+              key={file.vedleggId}
               deleteUrl={deleteUrl}
               onDelete={() => {
                 onDelete(file);

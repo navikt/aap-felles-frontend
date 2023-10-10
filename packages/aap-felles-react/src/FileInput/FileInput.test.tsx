@@ -221,7 +221,7 @@ export function FileInputWithState(
       uploadUrl={'/upload'}
       deleteUrl={'/delete'}
       onUpload={(attachments) => setFiles([...files, ...attachments])}
-      onDelete={(attachment) => setFiles(files.filter((file) => file.id !== attachment.id))}
+      onDelete={(attachment) => setFiles(files.filter((file) => file.vedleggId !== attachment.vedleggId))}
       files={files}
     />
   );
