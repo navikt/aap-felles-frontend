@@ -6,10 +6,11 @@ import { Vedlegg } from './FileInput';
 interface Props {
   file: Vedlegg;
   deleteUrl: string;
+  readAttachmentUrl: string;
   onDelete: () => void;
 }
 
-export const FilePanelSuccess = ({ file, onDelete, deleteUrl }: Props) => {
+export const FilePanelSuccess = ({ file, onDelete, deleteUrl, readAttachmentUrl }: Props) => {
   return (
     <Panel className={'fileCard'}>
       <div className={'fileCardLeftContent'}>
@@ -17,7 +18,7 @@ export const FilePanelSuccess = ({ file, onDelete, deleteUrl }: Props) => {
           <CheckmarkIcon color={'var(--a-icon-success)'} />
         </div>
         <div className={'fileInputText'}>
-          <Link target={'_blank'} href={`/aap/soknad/vedlegg/${file.vedleggId}`}>
+          <Link target={'_blank'} href={`${readAttachmentUrl}${file.vedleggId}`}>
             {file.name}
           </Link>
           <Detail>{fileSizeString(file.size)}</Detail>

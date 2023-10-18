@@ -217,14 +217,14 @@ describe('FileInput', () => {
       name: /filen\.pdf/i,
     });
 
-    expect(hello).toHaveAttribute('href', '/aap/soknad/vedlegg/12345');
+    expect(hello).toHaveAttribute('href', '/read/12345');
   });
 });
 
 export function FileInputWithState(
   props: Omit<
     FileInputProps,
-    'onChange' | 'uploadUrl' | 'heading' | 'id' | 'deleteUrl' | 'onUpload' | 'onDelete' | 'files'
+    'onChange' | 'uploadUrl' | 'heading' | 'id' | 'deleteUrl' | 'onUpload' | 'onDelete' | 'files' | 'readAttachmentUrl'
   >
 ): ReactElement {
   const [files, setFiles] = useState<Vedlegg[]>([]);
@@ -236,6 +236,7 @@ export function FileInputWithState(
       id={'filopplasting'}
       uploadUrl={'/upload'}
       deleteUrl={'/delete'}
+      readAttachmentUrl={'/read/'}
       onUpload={(attachments) => setFiles([...files, ...attachments])}
       onDelete={(attachment) => setFiles(files.filter((file) => file.vedleggId !== attachment.vedleggId))}
       files={files}

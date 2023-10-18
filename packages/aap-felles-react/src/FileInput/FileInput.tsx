@@ -14,6 +14,7 @@ export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
   onDelete: (attachment: Vedlegg) => void;
   deleteUrl: string;
   uploadUrl: string;
+  readAttachmentUrl: string;
   files: Vedlegg[];
   ingress?: string;
   locale?: string;
@@ -29,7 +30,19 @@ export interface Vedlegg {
 
 const MAX_TOTAL_FILE_SIZE = 52428800; // 50mb
 export const FileInput = (props: FileInputProps) => {
-  const { heading, ingress, files, onUpload, onDelete, uploadUrl, deleteUrl, id, locale = 'nb', ...rest } = props;
+  const {
+    heading,
+    ingress,
+    files,
+    onUpload,
+    onDelete,
+    uploadUrl,
+    deleteUrl,
+    id,
+    locale,
+    readAttachmentUrl = 'nb',
+    ...rest
+  } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const fileInputElement = useRef<HTMLInputElement>(null);
@@ -134,6 +147,7 @@ export const FileInput = (props: FileInputProps) => {
               file={file}
               key={file.vedleggId}
               deleteUrl={deleteUrl}
+              readAttachmentUrl={readAttachmentUrl}
               onDelete={() => {
                 onDelete(file);
               }}
