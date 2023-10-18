@@ -17,7 +17,7 @@ export const FilePanelSuccess = ({ file, onDelete, deleteUrl }: Props) => {
           <CheckmarkIcon color={'var(--a-icon-success)'} />
         </div>
         <div className={'fileInputText'}>
-          <Link target={'_blank'} href={`/aap/soknad/vedlegg/${1}`}>
+          <Link target={'_blank'} href={`/aap/soknad/vedlegg/${file.vedleggId}`}>
             {file.name}
           </Link>
           <Detail>{fileSizeString(file.size)}</Detail>

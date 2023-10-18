@@ -203,6 +203,22 @@ describe('FileInput', () => {
     await user.upload(input, fileOne);
     expect(await screen.findByText('Opplastingen feilet. Prøv på nytt')).toBeVisible();
   });
+
+  it('Skal ha korrekt url i success panel link', async () => {
+    fetchMock.mockResponseOnce(JSON.stringify('12345'), { status: 200 });
+
+    render(<FileInputWithState name={'dokumenter'} />);
+    const dropZone = screen.getByTestId('dropzone');
+    fireEvent.drop(dropZone, { dataTransfer: { files: [fileOne] } });
+
+    expect(await screen.findByText(fileOneName)).toBeVisible();
+
+    const hello = screen.getByRole('link', {
+      name: /filen\.pdf/i,
+    });
+
+    expect(hello).toHaveAttribute('href', '/aap/soknad/vedlegg/12345');
+  });
 });
 
 export function FileInputWithState(
