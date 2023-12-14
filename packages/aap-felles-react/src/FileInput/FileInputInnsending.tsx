@@ -1,6 +1,6 @@
 import { UploadIcon } from '@navikt/aksel-icons';
 import { BodyShort, Heading, Loader } from '@navikt/ds-react';
-import React, { InputHTMLAttributes, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
 import { FileInputProps, Vedlegg } from './FileInput';
