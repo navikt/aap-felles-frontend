@@ -44,7 +44,7 @@ export const tokenXApiProxy = async (opts: Opts) => {
   try {
     tokenxToken = await getTokenX(idportenToken, opts.audience);
   } catch (err: any) {
-    logger.error({ msg: 'getTokenXError', error: err });
+    logger.error({ msg: 'getTokenXError', error: err.toString() });
   }
 
   const stopTimer = opts.metricsTimer ? opts.metricsTimer.startTimer({ path: opts.prometheusPath }) : () => {};
