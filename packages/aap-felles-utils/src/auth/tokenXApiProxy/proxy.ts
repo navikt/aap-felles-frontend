@@ -4,21 +4,13 @@ import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import pino from 'pino';
 import { Counter, Histogram } from 'prom-client';
 
-import { logger } from '../../logger';
+import { logWarning, logInfo, logError } from '../../logger';
 import { getTokenX } from '../getTokenX';
 import { ErrorMedStatus } from '../lib/ErrorMedStatus';
 
 import Logger = pino.Logger;
 
 const NAV_CALLID = 'Nav-CallId';
-
-interface ErrorLog {
-  status?: number;
-  message: string;
-  [NAV_CALLID]?: string;
-  error?: string;
-  data?: string;
-}
 
 interface Opts {
   url: string;
@@ -37,14 +29,14 @@ interface Opts {
 }
 
 export const tokenXApiProxy = async (opts: Opts) => {
-  logger.info('starter request mot ' + opts.url);
+  logInfo(`${opts.req?.method} ${opts.url}`);
 
   const idportenToken = opts.bearerToken!.split(' ')[1];
   let tokenxToken;
   try {
     tokenxToken = await getTokenX(idportenToken, opts.audience);
   } catch (err: any) {
-    logger.error({ msg: 'getTokenXError', error: err.toString() });
+    logError('getTokenXError', err );
   }
 
   const stopTimer = opts.metricsTimer ? opts.metricsTimer.startTimer({ path: opts.prometheusPath }) : () => {};
@@ -72,21 +64,13 @@ export const tokenXApiProxy = async (opts: Opts) => {
     try {
       data = isJson ? await response.json() : response.text();
     } catch (err: any) {
-      const parseError: ErrorLog = {
-        message: `unable to parse data from ${opts.url}`,
-        error: err.toString(),
-      };
-      logger.error(parseError);
+      logError(`unable to parse data from ${opts.url}`, err);
     }
-    const responseErrorLog: ErrorLog = {
-      message: `tokenXProxy: status for ${opts.url} er ${response.status}: ${response.statusText}.`,
-      [NAV_CALLID]: data?.[NAV_CALLID],
-      data,
-    };
+    const message = `tokenXProxy: status for ${opts.url} er ${response.status}: ${response.statusText}.`;
     if (response.status >= 500 || response.status === 400) {
-      logger.error(responseErrorLog);
+      logError(message, undefined, data?.[NAV_CALLID]);
     } else if (response.status !== 404) {
-      logger.warn(responseErrorLog);
+      logWarning(message, undefined, data?.[NAV_CALLID]);
     }
     throw new ErrorMedStatus(
       `tokenXProxy: status for ${opts.url} er ${response.status}.`,
@@ -94,7 +78,7 @@ export const tokenXApiProxy = async (opts: Opts) => {
       data?.[NAV_CALLID]
     );
   }
-  logger.info(`Vellyket tokenXProxy-request mot ${opts.url}. Status: ${response.status}`);
+  logInfo(`${opts.req?.method} ${opts.url}. Status: ${response.status}`);
   if (opts.noResponse) {
     return undefined;
   }
@@ -123,8 +107,7 @@ export const tokenXApiStreamProxy = async (opts: AxiosOpts) => {
   const idportenToken = opts.bearerToken!.split(' ')[1];
   const tokenxToken = await getTokenX(idportenToken, opts.audience);
 
-  logger.info('Starter opplasting av fil til ' + opts.url);
-  logger.info('content-type fra klient' + opts.req?.headers['content-type']);
+  logInfo(`Filopplasting ${opts.url}, content-type: ${opts.req?.headers['content-type']}`);
   const requestId = randomUUID();
   try {
     const stopTimer = opts.metricsTimer ? opts.metricsTimer.startTimer({ path: opts.prometheusPath }) : () => {};
@@ -142,7 +125,7 @@ export const tokenXApiStreamProxy = async (opts: AxiosOpts) => {
         path: opts.prometheusPath,
         status: data.status,
       });
-    logger.info('Vellykket opplasting av fil til ' + opts.url);
+    logInfo(`Filopplasting ${opts.url} OK`);
     return data.pipe(opts.res);
   } catch (e: any) {
     if (e?.response?.status) {
@@ -154,11 +137,7 @@ export const tokenXApiStreamProxy = async (opts: AxiosOpts) => {
         });
       return opts.res.status(e.response.status);
     }
-    logger.error({
-      msg: 'tokenXAxioserror',
-      error: e.toString(),
-      navCallId: e?.request?.headers?.[NAV_CALLID],
-    });
+    logError(`tokenXAxiosError`, e, e?.request?.headers?.[NAV_CALLID]);
     return opts.res.status(500).json('tokenXAxiosProxy server error');
   }
 };

@@ -1,6 +1,5 @@
 import { Client, GrantBody, Issuer, errors } from 'openid-client';
-
-import { logger } from '../../logger';
+import { logError } from '../../logger';
 
 const OPError = errors.OPError;
 
@@ -63,12 +62,11 @@ export async function getTokenX(subject_token: string, audience: string): Promis
   } catch (err: any) {
     switch (err.constructor) {
       case OPError:
-        logger.error(
+        logError(
           `Noe gikk galt med token exchange mot TokenX.
             Feilmelding fra openid-client: (${err}).
             HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage})
-            Body fra TokenX:`,
-          err.response.body
+            Body fra TokenX:`
         );
         break;
     }

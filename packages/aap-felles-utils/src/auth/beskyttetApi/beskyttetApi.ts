@@ -1,7 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 import { isMock } from '../../environments';
-import { logger } from '../../logger';
+import { logError, logWarning, logInfo } from '../../logger';
 import { ErrorMedStatus } from '../lib/ErrorMedStatus';
 import { verifyIdportenAccessToken } from '../lib/verifyIdPortenAccessToken';
 
@@ -16,33 +16,30 @@ export function beskyttetApi(handler: NextApiHandler): unknown | Promise<unknown
 
     try {
       if (isMock()) {
-        logger.warn('handling request for mocked environment, should not happen in production');
+        logWarning('handling request for mocked environment, should not happen in production');
         return handler(req, res);
       }
       const bearerToken: string | null | undefined = req.headers['authorization'];
       if (!bearerToken) {
-        logger.warn({ message: 'ingen bearer token', path: req?.url });
+        logWarning(`beskyttetApi: ingen bearer token ${req?.url}` );
         return send401();
       }
       try {
         await verifyIdportenAccessToken(bearerToken);
       } catch (e) {
-        logger.warn({
-          message: 'kunne ikke validere idportentoken i beskyttetApi',
-          error: e?.toString(),
-        });
+        logWarning(
+          'kunne ikke validere idportentoken i beskyttetApi',
+          e
+        );
         return send401();
       }
       return handler(req, res);
     } catch (e) {
       if (e instanceof ErrorMedStatus) {
-        logger.info(`sending error with status ${e.status} and message ${e.message}`);
+        logInfo(`sending error with status ${e.status} and message ${e.message}`);
         return res.status(e.status).json({ message: e.message });
       } else {
-        logger.error({
-          message: 'handling error in beskyttetApi',
-          error: e?.toString(),
-        });
+        logError('handling error in beskyttetApi', e);
       }
       return send500();
     }
