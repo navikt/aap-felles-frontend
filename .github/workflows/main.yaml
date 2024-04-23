@@ -32,7 +32,7 @@ jobs:
       - name: "build storybook"
         run: "yarn run build-storybook"
       - name: "build packages"
-        run: "yarn workspaces foreach --all run build"
+        run: "yarn workspaces foreach --all --exclude . run build"
       - name: "Deploy storybook"
         uses: JamesIves/github-pages-deploy-action@v4
         with:
