@@ -37,14 +37,20 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: storybook-static # The folder the action should deploy.
-      - name: Creating .npmrc
+      - name: "Login"
         run: |
-          cat << EOF > "$HOME/.npmrc"
-            @navikt:registry=https://npm.pkg.github.com
-            //npm.pkg.github.com/:_authToken=$NPM_TOKEN
-          EOF
+          git config user.email "aap-innbygger@nav.no"
+          git config user.name "Team Innbygger"
+          git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/navikt/aap-felles-innbygger.git
+          git fetch origin
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: "Create a .npmrc file for the github package repository"
+        uses: "FerLuisxd/create-npmrc@3"
+        with:
+          org_name: "navikt"
+        env:
+          AUTH_TOKEN: "${{secrets.GITHUB_TOKEN}}"
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
