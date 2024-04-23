@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.0.0
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
@@ -7,177 +9,89 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.97 (2024-02-20)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.96 (2024-01-30)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.95 (2024-01-29)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.94 (2024-01-26)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.93 (2023-12-14)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.92 (2023-12-11)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.91 (2023-10-18)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.90 (2023-10-18)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.89 (2023-10-10)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.88 (2023-10-09)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.87 (2023-10-09)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.86 (2023-10-06)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.85 (2023-10-06)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.84 (2023-10-06)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.83 (2023-10-06)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.82 (2023-09-29)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.81 (2023-09-27)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.80 (2023-09-27)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.79 (2023-09-27)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.78 (2023-09-27)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
 
-
-
-
-
 ## 0.0.77 (2023-09-12)
 
 **Note:** Version bump only for package @navikt/eslint-config-aap
-
-
-
-
 
 ## 0.0.76 (2023-09-12)
 

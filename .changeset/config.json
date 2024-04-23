@@ -1,0 +1,18 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [[
+    "@navikt/aap-felles-css",
+    "@navikt/aap-felles-react",
+    "@navikt/aap-felles-prettier",
+    "@navikt/aap-felles-utils",
+    "@navikt/aap-felles-utils-client",
+    "@navikt/eslint-config-aap"]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "berry",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}
