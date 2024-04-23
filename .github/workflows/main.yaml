@@ -37,6 +37,14 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: storybook-static # The folder the action should deploy.
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            @navikt:registry=https://npm.pkg.github.com
+            //npm.pkg.github.com/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
