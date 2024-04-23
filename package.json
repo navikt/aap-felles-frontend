@@ -8,6 +8,7 @@
     "build": "yarn workspaces foreach --all run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "changeset": "changeset",
     "version:patch": "lerna version patch --yes",
     "publish:ci": " lerna publish --registry https://npm.pkg.github.com from-package --yes"
   },
@@ -24,7 +25,7 @@
   "prettier": "@navikt/aap-felles-prettier",
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@navikt/aap-felles-prettier": "^0.0.63",
+    "@navikt/aap-felles-prettier": "^0.0.98",
     "@storybook/addon-actions": "^7.6.4",
     "@storybook/addon-essentials": "^7.6.10",
     "@storybook/addon-interactions": "^7.6.10",
@@ -37,10 +38,10 @@
     "storybook": "^7.6.10"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "@navikt/aksel-icons": "^5.4.1",
     "@navikt/ds-css": "^5.4.1",
     "@navikt/ds-react": "^5.4.1",
-    "changeset": "^0.2.6",
     "css-loader": "^6.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -34,23 +34,34 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: storybook-static # The folder the action should deploy.
-      - name: "Login"
-        run: |
-          git config user.email "aap-innbygger@nav.no"
-          git config user.name "Team Innbygger"
-          git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/navikt/aap-felles-innbygger.git
-          git fetch origin
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      - name: "Create a .npmrc file for the github package repository"
-        uses: "FerLuisxd/create-npmrc@3"
+      - name: Create release Pull Request or publish to NPM
+        id: changesets
+        uses: changesets/action@v1
         with:
-          org_name: "navikt"
+          version: yarn changeset version
+          publish: yarn changeset release
+          createGithubReleases: false
         env:
-          AUTH_TOKEN: "${{secrets.GITHUB_TOKEN}}"
-      - name: "Push"
-        run: |
-          npm run version:patch
-          npm run publish:ci
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          #NPM_TOKEN: ${{ secrets.NPM_AUTOMATION }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
+#      - name: "Login"
+#        run: |
+#          git config user.email "aap-innbygger@nav.no"
+#          git config user.name "Team Innbygger"
+#          git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/navikt/aap-felles-innbygger.git
+#          git fetch origin
+#        env:
+#          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+#      - name: "Create a .npmrc file for the github package repository"
+#        uses: "FerLuisxd/create-npmrc@3"
+#        with:
+#          org_name: "navikt"
+#        env:
+#          AUTH_TOKEN: "${{secrets.GITHUB_TOKEN}}"
+#      - name: "Push"
+#        run: |
+#          npm run version:patch
+#          npm run publish:ci
+#        env:
+#          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
