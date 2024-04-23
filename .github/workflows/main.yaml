@@ -21,7 +21,7 @@ jobs:
           node-version: "20"
           registry-url: "https://npm.pkg.github.com"
       - name: "install dependencies"
-        run: "yarn"
+        run: "yarn --immutable"
         env:
           NODE_AUTH_TOKEN: "${{ secrets.READER_TOKEN }}"
       - name: "test packages"

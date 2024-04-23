@@ -2460,7 +2460,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-prettier@npm:^0.0.98, @navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
+"@navikt/aap-felles-prettier@npm:^0.0.98":
+  version: 0.0.98
+  resolution: "@navikt/aap-felles-prettier@npm:0.0.98::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F0.0.98%2F12f734c29872ee5e0074e7f3508ce71bab022037"
+  dependencies:
+    "@trivago/prettier-plugin-sort-imports": "npm:^4.2.0"
+    prettier: "npm:^3.0.3"
+  checksum: 10c0/b6a567e0e09a41f90e2b5da66af90127b6ca28a86ce91a9e1b88a4c81272e5d9ad2b269ee96b7c6b29440f8113acf51bc750888d636acb6412893f1b646dd3b1
+  languageName: node
+  linkType: hard
+
+"@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier"
   dependencies:
