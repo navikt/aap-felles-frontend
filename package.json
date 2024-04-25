@@ -24,18 +24,18 @@
   },
   "prettier": "@navikt/aap-felles-prettier",
   "devDependencies": {
-    "@babel/core": "^7.19.3",
+    "@babel/core": "^7.24.4",
     "@navikt/aap-felles-prettier": "^0.0.98",
-    "@storybook/addon-actions": "^7.6.4",
-    "@storybook/addon-essentials": "^7.6.10",
-    "@storybook/addon-interactions": "^7.6.10",
-    "@storybook/addon-links": "^7.6.10",
-    "@storybook/nextjs": "^7.6.10",
-    "@storybook/react": "^7.6.4",
+    "@storybook/addon-actions": "^8.0.9",
+    "@storybook/addon-essentials": "^8.0.9",
+    "@storybook/addon-interactions": "^8.0.9",
+    "@storybook/addon-links": "^8.0.9",
+    "@storybook/nextjs": "^8.0.9",
+    "@storybook/react": "^8.0.9",
     "@storybook/testing-library": "^0.2.2",
     "babel-loader": "^9.1.3",
     "html-webpack-plugin": "^5.6.0",
-    "storybook": "^7.6.10"
+    "storybook": "^8.0.9"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
