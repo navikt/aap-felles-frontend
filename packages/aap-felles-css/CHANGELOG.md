@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.1
+
+### Patch Changes
+
+- f263ed1: Oppgraderer avhengigheter
+
 ## 1.0.0
 
 All notable changes to this project will be documented in this file.
