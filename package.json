@@ -39,10 +39,10 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
-    "@navikt/aksel-icons": "^5.4.1",
-    "@navikt/ds-css": "^5.4.1",
-    "@navikt/ds-react": "^5.4.1",
-    "css-loader": "^6.8.1",
+    "@navikt/aksel-icons": "^6.6.1",
+    "@navikt/ds-css": "^6.6.1",
+    "@navikt/ds-react": "^6.6.1",
+    "css-loader": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "yarn": "^1.22.19"
