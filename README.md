@@ -3,18 +3,53 @@
 ## Lokal utvikling for react-komponenter
 
 ```
-npm install
-npm run storybook
+yarn
+yarn storybook
 ```
 
 Ved push til main vil storybooken også deployes til github pages https://navikt.github.io/aap-felles-frontend/
+
+## Bygg og testing av workspace
+
+Bygg av pakker
+```
+yarn workspaces foreach --all --exclude . run build
+```
+
+Test av pakker
+```
+yarn workspaces foreach --all --exclude . run test
+```
+
+Av en eller annen grunn fungerer det ikke å kjøre `yarn build` eller `yarn test` direkte fra root i prosjektet, så det er kommandoene over som må brukes.
+
+## Versjonering av pakker
+
+Vi bruker `changeset` for å styre versjonering av pakkene våre. Foreløpig er det ikke satt opp støtte for dette i CI, så kommandoene må kjøres manuelt før commit.
+
+```
+yarn changeset
+yarn changeset version
+yarn changeset publish
+```
+
+`publish` kommandoen vil feile, siden den ikke får dyttet ut pakkene til github, men den vil sette riktig versjonsnummer og oppdatere changelog som brukes av changeset før publisering i Github Actions.
+
 
 ## Legg til dependency i riktig workspace
 Pass på at dependencies legges i riktig packages/aap-felles-\*\*\*\*/package.json. Eksempler:
 
 ```
-npm install @navikt/ds-css -w "@navikt/aap-felles-react"
-npm install pino -w "@navikt/aap-felles-utils"
+yarn workspace @navikt/aap-felles-react add PACKAGENAME
+yarn workspace @navikt/aap-felles-react add PACKAGENAME -dev
+```
+
+## Oppgradering av pakker
+
+Pakker oppgraderes med yarn. Oppgradering av pakker oppdaterer alle workspaces pakken er brukt
+
+```
+yarn upgrade-interactive
 ```
 
 ## aap-felles-utils
