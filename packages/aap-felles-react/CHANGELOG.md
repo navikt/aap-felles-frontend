@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- up deps react og react-dom
+
 ## 1.0.1
 
 ### Patch Changes

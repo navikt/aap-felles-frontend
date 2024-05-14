@@ -12,7 +12,7 @@
   ],
   "linked": [],
   "access": "public",
-  "baseBranch": "berry",
+  "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": []
 }
