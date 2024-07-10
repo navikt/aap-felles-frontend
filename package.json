@@ -42,7 +42,7 @@
     "@navikt/aksel-icons": "^6.13.0",
     "@navikt/ds-css": "^6.13.0",
     "@navikt/ds-react": "^6.13.0",
-    "css-loader": "^7.1.1",
+    "css-loader": "^7.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
