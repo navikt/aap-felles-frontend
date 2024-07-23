@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- Legger til azuread service
+
 ## 1.1.0
 
 ### Minor Changes

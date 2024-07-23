@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "name": "@navikt/aap-felles-utils",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -26,6 +26,7 @@
     "clean": "rm -rf ./cjs ./esm"
   },
   "dependencies": {
+    "@navikt/oasis": "^3.3.0",
     "axios": "^1.7.2",
     "jose": "^5.6.3",
     "next": "14.2.4",
@@ -37,6 +38,6 @@
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   }
 }
