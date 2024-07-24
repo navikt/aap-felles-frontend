@@ -1,13 +1,15 @@
-import { enableFetchMocks } from 'jest-fetch-mock';
+import createFetchMock from 'vitest-fetch-mock';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { v4 as uuidV4 } from 'uuid';
 import React, { ReactElement, useState } from 'react';
 import { FileInput, FileInputProps, Vedlegg } from './FileInput';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
 
-enableFetchMocks();
+const fetchMock = createFetchMock(vi);
+
+fetchMock.enableMocks();
 
 const fileOneName = 'filEn.pdf';
 const fileTwoName = 'filTo.pdf';

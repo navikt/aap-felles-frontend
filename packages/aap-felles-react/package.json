@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.4.1",
   "name": "@navikt/aap-felles-react",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -22,7 +22,7 @@
   "scripts": {
     "clean": "rm -rf ./cjs ./esm",
     "build": "yarn run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json",
-    "test": "jest"
+    "test": "vitest --run"
   },
   "dependencies": {
     "@navikt/aksel-icons": "^6.13.0",
@@ -30,17 +30,22 @@
     "@navikt/ds-react": "^6.13.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.3.3",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "jest-fetch-mock": "^3.0.3",
-    "typescript": "^5.5.3"
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.3.1",
+    "jsdom": "^24.1.1",
+    "typescript": "^5.5.3",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^2.0.4",
+    "vitest-fetch-mock": "^0.3.0"
   }
 }

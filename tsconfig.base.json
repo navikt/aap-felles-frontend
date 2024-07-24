@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "es6",
     "lib": ["dom", "esnext", "es6"],
+    "types": ["@testing-library/jest-dom"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
