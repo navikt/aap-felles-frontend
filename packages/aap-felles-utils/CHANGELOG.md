@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.3
+
+### Patch Changes
+
+- server-only ikke server only
+
 ## 1.2.2
 
 ### Patch Changes
