@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.0
+
+### Minor Changes
+
+- Flytter formhook fra saksbehandling til felleslib"
+
 ## 1.2.4
 
 ## 1.2.3
