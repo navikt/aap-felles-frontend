@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.4
+
+### Patch Changes
+
+- Riktig import av server-only
+
 ## 1.2.3
 
 ### Patch Changes
