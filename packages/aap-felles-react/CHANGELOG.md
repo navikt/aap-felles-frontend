@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.4.0
+
+### Minor Changes
+
+- Legger inn TextField og TextArea i form
+
 ## 1.3.0
 
 ### Minor Changes
