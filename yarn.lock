@@ -3548,6 +3548,7 @@ __metadata:
   resolution: "@navikt/aap-felles-utils-client@workspace:packages/aap-felles-utils-client"
   dependencies:
     "@types/jest": "npm:^29.5.12"
+    "@types/node": "npm:^20.14.12"
     date-fns: "npm:^3.6.0"
     jest: "npm:^29.7.0"
     ts-jest: "npm:^29.2.0"
@@ -5647,6 +5648,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/bfebae8389220c0188492c82eaf328f4ba15e6e9b4abee33d6bf36d3b13f188c2f53eb695d427feb882fff09834f467405e2ed9be6aeb6ad4705509822d2ea08
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.14.12":
+  version: 20.14.12
+  resolution: "@types/node@npm:20.14.12"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/59bc5fa11fdd23fd517f859063118f54a1ab53d3399ef63c926f8902429d7453abc0db22ef4b0a6110026b6ab81b6472fee894e1d235c24b01a0b3e10cfae0bb
   languageName: node
   linkType: hard
 

@@ -1,5 +1,3 @@
-import { randomUUID } from 'crypto';
-
 import { getStringFromPossiblyArrayQuery, replaceUUIDsInString } from '../string';
 
 describe('getStringFromPossiblyArrayQuery', () => {
@@ -21,7 +19,7 @@ describe('getStringFromPossiblyArrayQuery', () => {
 
 describe('replaceUUIDsInString', () => {
   it('should replace UUIDs with [UUID]', () => {
-    const UUID = randomUUID();
+    const UUID = crypto.randomUUID();
     const string = `/some/path/${UUID}/`;
     expect(replaceUUIDsInString(string)).toBe(`/some/path/[UUID]/`);
   });

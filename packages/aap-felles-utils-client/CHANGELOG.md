@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.1
+
+### Patch Changes
+
+- Fikser test med feil import
+
 ## 1.5.0
 
 ## 1.4.1
