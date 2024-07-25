@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.0
+
+### Minor Changes
+
+- Flytter over resten av Form komponenter fra saksbehandling
+
 ## 1.4.1
 
 ## 1.4.0
