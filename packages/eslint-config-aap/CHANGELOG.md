@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.2
+
+### Patch Changes
+
+- Bruke eslint-config-import
+
 ## 1.5.1
 
 ## 1.5.0
