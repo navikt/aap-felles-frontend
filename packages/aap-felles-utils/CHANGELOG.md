@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.3
+
+### Patch Changes
+
+- Fjerner server only siden det skaper konflikter med tester og next-apper som fortsatt bruker page-router
+
 ## 1.5.2
 
 ## 1.5.1
