@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BrukerInformasjon } from '@navikt/aap-felles-utils';
+import { BrukerInformasjon } from '../../../aap-felles-utils';
 import { Dropdown, InternalHeader, Link } from '@navikt/ds-react';
 
 const Brukermeny = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => (

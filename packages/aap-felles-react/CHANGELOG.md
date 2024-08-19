@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.6.1
+
+### Patch Changes
+
+- Fikser import av typer
+
 ## 1.6.0
 
 ### Minor Changes
