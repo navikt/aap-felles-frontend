@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.6.3
+
+### Patch Changes
+
+- Eksporterer ny appheader
+
 ## 1.6.2
 
 ### Patch Changes
