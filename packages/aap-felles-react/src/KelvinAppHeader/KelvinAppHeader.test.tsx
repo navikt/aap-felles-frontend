@@ -5,9 +5,8 @@ import { render, screen } from '@testing-library/react';
 import { KelvinAppHeader } from './KelvinAppHeader';
 
 import { userEvent } from '@testing-library/user-event';
-import { BrukerInformasjon } from '@navikt/aap-felles-utils';
 
-const brukerInformasjon: BrukerInformasjon = {
+const brukerInformasjon = {
   navn: 'Kjell T Ringen',
 };
 

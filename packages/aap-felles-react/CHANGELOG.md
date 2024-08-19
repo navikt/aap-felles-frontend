@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.6.2
+
+### Patch Changes
+
+- Dupliserer type for å unngå konflikter ved import mellom pakker
+
 ## 1.6.1
 
 ### Patch Changes
