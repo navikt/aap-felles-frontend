@@ -1,0 +1,13 @@
+.kelvin-app-header {
+  justify-content: space-between;
+}
+
+.kelvin-app-header-leftSide {
+  display: flex;
+  flex-direction: row;
+  gap: var(--a-spacing-4);
+}
+
+.kelvin-app-header-link {
+  width: 100%;
+}

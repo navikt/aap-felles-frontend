@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- Legger til app header for interne flater
+
 ## 1.5.3
 
 ## 1.5.2
