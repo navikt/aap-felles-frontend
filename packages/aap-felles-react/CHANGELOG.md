@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.1
+
+### Patch Changes
+
+- Fikser bug med typer
+
 ## 1.7.0
 
 ### Minor Changes

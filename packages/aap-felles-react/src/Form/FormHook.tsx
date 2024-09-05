@@ -43,7 +43,7 @@ interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<
 
 interface FormFieldWithOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'radio' | 'checkbox' | 'select' | 'combobox';
-  options: Array<string | ValuePair>;
+  options: string[] | ValuePair[];
   defaultValue?: string;
 }
 
