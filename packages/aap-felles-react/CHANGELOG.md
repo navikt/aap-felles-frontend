@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.0
+
+### Minor Changes
+
+- Legger til Combobox i react-hook-form
+
 ## 1.6.3
 
 ### Patch Changes

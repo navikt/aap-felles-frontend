@@ -11,6 +11,7 @@ import { SelectWrapper } from './selectwrapper/SelectWrapper';
 import { CheckboxWrapper } from './checkboxwrapper/CheckboxWrapper';
 import { Checkbox, Radio } from '@navikt/ds-react';
 import { RadioGroupWrapper } from './radiogroupwrapper/RadioGroupWrapper';
+import { ComboboxWrapper } from './comboboxwrapper/ComboboxWrapper';
 
 export interface ValuePair<Enum = string> {
   value: Enum;
@@ -137,6 +138,18 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
         >
           {children}
         </RadioGroupWrapper>
+      )}
+
+      {formField.type === 'combobox' && (
+        <ComboboxWrapper
+          name={formField.name}
+          label={formField.label}
+          control={form.control}
+          rules={formField.rules}
+          description={formField.description}
+          readOnly={formField.readOnly}
+          options={formField.options}
+        />
       )}
     </>
   );
