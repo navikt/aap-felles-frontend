@@ -1,5 +1,5 @@
 import { UNSAFE_Combobox } from '@navikt/ds-react';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
 import { ValuePair } from '../FormField';
@@ -22,26 +22,34 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
   description,
   readOnly,
   options,
-}: ComboboxProps<FormFieldValues>) => (
-  <Controller
-    name={name}
-    control={control}
-    rules={rules}
-    render={({ field: { onChange, value }, fieldState: { error } }) => (
-      <UNSAFE_Combobox
-        size={'small'}
-        id={name}
-        name={name}
-        label={label}
-        description={description}
-        error={error?.message}
-        options={options}
-        value={value}
-        onChange={onChange}
-        readOnly={readOnly}
-      />
-    )}
-  />
-);
+}: ComboboxProps<FormFieldValues>) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  return (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <UNSAFE_Combobox
+          isMultiSelect={false}
+          shouldAutocomplete={false}
+          size={'small'}
+          id={name}
+          name={name}
+          label={label}
+          description={description}
+          error={error?.message}
+          options={options}
+          value={searchValue}
+          onChange={setSearchValue}
+          onToggleSelected={onChange}
+          selectedOptions={[value ?? '']}
+          readOnly={readOnly}
+        />
+      )}
+    />
+  );
+};
 
 export { ComboboxWrapper };

@@ -4,7 +4,7 @@ import { describe, test, vi } from 'vitest';
 import { useConfigForm } from '../FormHook';
 import { FormField } from '../FormField';
 import { Button } from '@navikt/ds-react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 
 describe('Combobox', () => {
   const user = userEvent.setup();
@@ -37,8 +37,8 @@ describe('Combobox', () => {
 
   test('at select har en verdi når default value er satt', () => {
     render(<ComboboxForm defaultValue={'Alternativ 3'} />);
-    const select = screen.getByRole('combobox', { name: /Velg type/ });
-    expect(select).toHaveValue('Alternativ 3');
+    const list = screen.getByRole('list');
+    expect(within(list).getByText(/alternativ 3/i)).toBeVisible();
   });
 
   test('at feilmelding skal vises når validering ikke er oppfylt', async () => {
@@ -48,14 +48,11 @@ describe('Combobox', () => {
     expect(screen.getByText('Du må velge type')).toBeVisible();
   });
 
-  // Testen er buggy :'(
-  test.skip('at feilmelding ikke skal vises når validering er oppfylt', async () => {
+  test('at feilmelding ikke skal vises når validering er oppfylt', async () => {
     render(<ComboboxForm />);
     await user.click(screen.getByRole('combobox'));
-
     await user.click(screen.getByText(/Alternativ 2/));
     await waitFor(() => user.click(screen.getByRole('button', { name: /Send inn/ })));
-    screen.logTestingPlaygroundURL();
     expect(screen.queryByText('Du må velge type')).not.toBeInTheDocument();
   });
 });
@@ -79,7 +76,6 @@ function ComboboxForm(props: Props) {
       rules: { required: 'Du må velge type' },
     },
   });
-  console.log(form.watch());
   return (
     <form onSubmit={form.handleSubmit(() => vi.fn())}>
       <FormField form={form} formField={formFields.type} />

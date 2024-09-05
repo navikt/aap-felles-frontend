@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.2
+
+### Patch Changes
+
+- Retter bug hvor valg ikke ble satt riktig
+
 ## 1.7.1
 
 ### Patch Changes
