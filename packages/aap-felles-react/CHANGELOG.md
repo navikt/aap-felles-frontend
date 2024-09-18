@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.6
+
+### Patch Changes
+
+- Prøver å publsihe på nytt
+
 ## 1.8.5
 
 ### Patch Changes
