@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.8
+
+### Patch Changes
+
+- yes
+
 ## 1.8.7
 
 ### Patch Changes

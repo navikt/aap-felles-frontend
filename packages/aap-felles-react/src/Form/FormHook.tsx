@@ -24,12 +24,12 @@ interface BaseFormField<FormFieldIds extends FieldValues> {
   rules?: RegisterOptions<FormFieldIds>;
   readOnly?: boolean;
 }
-
 interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues>
   extends BaseFormField<FormFieldIds> {
   type: 'fieldArray';
   defaultValue?: FormFieldIds[FormFieldId];
 }
+
 
 interface FormFieldText<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'text' | 'number';
