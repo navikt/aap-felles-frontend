@@ -12,11 +12,13 @@ Ved push til main vil storybooken også deployes til github pages https://navikt
 ## Bygg og testing av workspace
 
 Bygg av pakker
+
 ```
 yarn workspaces foreach --all --exclude . run build
 ```
 
 Test av pakker
+
 ```
 yarn workspaces foreach --all --exclude . run test
 ```
@@ -30,13 +32,15 @@ Vi bruker `changeset` for å styre versjonering av pakkene våre. Foreløpig er 
 ```
 yarn changeset
 yarn changeset version
-yarn changeset publish
+git add // alle endringene dine
+git commit -m "En fin melding som forklarer hvorfor endringene ble gjort"
+git push
 ```
 
 `publish` kommandoen vil feile, siden den ikke får dyttet ut pakkene til github, men den vil sette riktig versjonsnummer og oppdatere changelog som brukes av changeset før publisering i Github Actions.
 
-
 ## Legg til dependency i riktig workspace
+
 Pass på at dependencies legges i riktig packages/aap-felles-\*\*\*\*/package.json. Eksempler:
 
 ```
