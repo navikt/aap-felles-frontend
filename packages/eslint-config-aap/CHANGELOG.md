@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.10
+
+### Patch Changes
+
+- Oppdaterer yarn.lock sik at den samsvarer med package.json
+
 ## 1.8.9
 
 ### Patch Changes
