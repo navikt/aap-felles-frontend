@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.4
+
+### Patch Changes
+
+- Legger til wrappers
+
 ## 1.8.3
 
 ### Patch Changes
