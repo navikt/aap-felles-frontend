@@ -8,8 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
+    'plugin:import/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -31,14 +30,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
-    // route.ts og page.tsx er spesielle next.js-konstruksjoner og får lov til å eksportere "ubrukte"
-    'import/no-unused-modules': [
-      1,
-      {
-        unusedExports: true,
-        ignoreExports: ['**/*/route.ts', '**/*/page.tsx', '**/*/not-found.tsx', '**/*/layout.tsx', '**/*/error.tsx'],
-      },
-    ],
   },
   settings: {
     react: {

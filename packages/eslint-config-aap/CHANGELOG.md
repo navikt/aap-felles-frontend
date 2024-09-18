@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.9
+
+### Patch Changes
+
+- Fjerner no-unused-import fra eslint config
+
 ## 1.8.8
 
 ## 1.8.7

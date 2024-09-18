@@ -1,7 +1,7 @@
 {
   "name": "@navikt/eslint-config-aap",
   "author": "NAV",
-  "version": "1.8.8",
+  "version": "1.8.9",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
@@ -14,7 +14,6 @@
     "@typescript-eslint/parser": "^7.7.0",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.34.1",
