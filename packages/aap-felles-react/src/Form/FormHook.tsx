@@ -25,10 +25,10 @@ interface BaseFormField<FormFieldIds extends FieldValues> {
   readOnly?: boolean;
 }
 
-interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues> {
+interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues>
+  extends BaseFormField<FormFieldIds> {
   type: 'fieldArray';
   defaultValue?: FormFieldIds[FormFieldId];
-  label?: string;
 }
 
 interface FormFieldText<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {

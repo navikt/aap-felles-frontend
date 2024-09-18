@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.7
+
+### Patch Changes
+
+- Utvider fieldarray med baseformfield
+
 ## 1.8.6
 
 ### Patch Changes
