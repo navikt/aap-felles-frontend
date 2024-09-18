@@ -15,12 +15,19 @@ export type FormFieldConfig<FormFieldIds extends FieldValues> =
   | FormFieldWithOptions<FormFieldIds>
   | FormFieldCheckbox<FormFieldIds>
   | FormFieldRadioWithNestedOptions<FormFieldIds>
-  | FormFieldCheckboxWithNestedOptions<FormFieldIds>;
+  | FormFieldCheckboxWithNestedOptions<FormFieldIds>
+  | FormFieldArray<keyof FormFieldIds, FormFieldIds>;
+
 interface BaseFormField<FormFieldIds extends FieldValues> {
   label?: string;
   description?: string;
   rules?: RegisterOptions<FormFieldIds>;
   readOnly?: boolean;
+}
+
+interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues> {
+  type: 'fieldArray';
+  defaultValue: FormFieldIds[FormFieldId];
 }
 
 interface FormFieldText<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
@@ -93,7 +100,9 @@ export function useConfigForm<FormFieldIds extends FieldValues>(
   const entries = Object.entries(config) as Array<[FieldPath<FormFieldIds>, FormFieldConfig<FormFieldIds>]>;
 
   entries.forEach(([id, formFieldConfig]) => {
-    formFields[id] = { ...formFieldConfig, name: id, readOnly: rfhConfig?.readOnly };
+    if (formFieldConfig.type !== 'fieldArray') {
+      formFields[id] = { ...formFieldConfig, name: id, readOnly: rfhConfig?.readOnly };
+    }
 
     if (formFieldConfig.defaultValue) {
       defaultValues[id] = formFieldConfig.defaultValue;
