@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.2
+
+### Patch Changes
+
+- Formatering av index.ts
+
 ## 1.8.1
 
 ### Patch Changes
