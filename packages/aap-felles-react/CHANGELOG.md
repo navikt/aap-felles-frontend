@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.5
+
+### Patch Changes
+
+- Legger til label på formfieldArray
+
 ## 1.8.4
 
 ### Patch Changes

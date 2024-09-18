@@ -27,7 +27,8 @@ interface BaseFormField<FormFieldIds extends FieldValues> {
 
 interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues> {
   type: 'fieldArray';
-  defaultValue: FormFieldIds[FormFieldId];
+  defaultValue?: FormFieldIds[FormFieldId];
+  label?: string;
 }
 
 interface FormFieldText<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {

@@ -1,4 +1,3 @@
-//import { Checkbox, Radio } from '@navikt/ds-react';
 import React, { ReactNode } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types';
