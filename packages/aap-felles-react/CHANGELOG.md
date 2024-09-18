@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.0
+
+### Minor Changes
+
+- Eksporterer wrappers for input felter
+
 ## 1.7.2
 
 ### Patch Changes
