@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.11
+
+### Patch Changes
+
+- Fjerner referanse til config fra eslint-plugin-import
+
 ## 1.8.10
 
 ### Patch Changes
