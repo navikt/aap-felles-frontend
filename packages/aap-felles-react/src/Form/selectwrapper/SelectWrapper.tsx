@@ -8,6 +8,7 @@ export interface SelectProps<FormFieldValues extends FieldValues> {
   label?: string;
   control: Control<FormFieldValues>;
   children: React.ReactNode;
+  hideLabel?: boolean;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
   readOnly?: boolean;
@@ -19,6 +20,7 @@ export const SelectWrapper = <FormFieldValues extends FieldValues>({
   control,
   rules,
   description,
+  hideLabel,
   children,
   readOnly,
 }: SelectProps<FormFieldValues>) => (
@@ -34,6 +36,7 @@ export const SelectWrapper = <FormFieldValues extends FieldValues>({
         label={label}
         description={description}
         value={value}
+        hideLabel={hideLabel}
         onChange={onChange}
         error={error?.message}
         readOnly={readOnly}

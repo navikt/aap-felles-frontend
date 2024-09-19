@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.8.12
+
 ## 1.8.11
 
 ### Patch Changes

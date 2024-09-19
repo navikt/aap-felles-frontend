@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.12
+
+### Patch Changes
+
+- Legger på hideLabel prop på input komponenter. Gjelder TextField, TextArea, Select og Date som har støtte for dette. Legger det også til som støtte i formhook
+
 ## 1.8.11
 
 ## 1.8.10

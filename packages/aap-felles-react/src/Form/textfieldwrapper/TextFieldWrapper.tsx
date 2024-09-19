@@ -6,6 +6,7 @@ import { FieldPath } from 'react-hook-form/dist/types';
 export interface TextFieldProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
   label?: string;
+  hideLabel?: boolean;
   control: Control<FormFieldValues>;
   type: 'text' | 'number';
   description?: React.ReactNode;
@@ -16,6 +17,7 @@ export interface TextFieldProps<FormFieldValues extends FieldValues> {
 export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
   name,
   label,
+  hideLabel,
   control,
   type,
   description,
@@ -34,6 +36,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
         label={label}
         type={type}
         error={error?.message}
+        hideLabel={hideLabel}
         value={value || ''}
         onChange={onChange}
         description={description}

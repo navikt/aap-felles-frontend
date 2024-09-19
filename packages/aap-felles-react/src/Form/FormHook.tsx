@@ -10,10 +10,9 @@ export type FormFieldsConfig<FormFieldId extends FieldPath<FormFieldIds>, FormFi
 
 export type FormFieldConfig<FormFieldIds extends FieldValues> =
   | FormFieldText<FormFieldIds>
-  | FormFieldTextArea<FormFieldIds>
   | FormFieldDate<FormFieldIds>
   | FormFieldWithOptions<FormFieldIds>
-  | FormFieldCheckbox<FormFieldIds>
+  | FormFieldSelect<FormFieldIds>
   | FormFieldRadioWithNestedOptions<FormFieldIds>
   | FormFieldCheckboxWithNestedOptions<FormFieldIds>
   | FormFieldArray<keyof FormFieldIds, FormFieldIds>;
@@ -24,21 +23,17 @@ interface BaseFormField<FormFieldIds extends FieldValues> {
   rules?: RegisterOptions<FormFieldIds>;
   readOnly?: boolean;
 }
+
 interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues>
   extends BaseFormField<FormFieldIds> {
   type: 'fieldArray';
   defaultValue?: FormFieldIds[FormFieldId];
 }
 
-
 interface FormFieldText<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
-  type: 'text' | 'number';
+  type: 'text' | 'number' | 'textarea';
   defaultValue?: string;
-}
-
-interface FormFieldTextArea<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
-  type: 'textarea';
-  defaultValue?: string;
+  hideLabel?: boolean;
 }
 
 interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
@@ -47,18 +42,20 @@ interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<
   toDate?: Date;
   defaultValue?: Date;
   disableWeekends?: boolean;
+  hideLabel?: boolean;
 }
 
 interface FormFieldWithOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
-  type: 'radio' | 'checkbox' | 'select' | 'combobox';
+  type: 'radio' | 'combobox' | 'checkbox';
   options: string[] | ValuePair[];
   defaultValue?: string;
 }
 
-interface FormFieldCheckbox<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
-  type: 'checkbox';
+interface FormFieldSelect<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
+  type: 'select';
   options: Array<string | ValuePair>;
   defaultValue?: Array<string>;
+  hideLabel?: boolean;
 }
 
 interface FormFieldRadioWithNestedOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {

@@ -13,6 +13,7 @@ export interface DateProps<FormFieldValues extends FieldValues> {
   control: Control<FormFieldValues>;
   fromDate?: Date;
   toDate?: Date;
+  hideLabel?: boolean;
   selected?: Date;
   readOnly?: boolean;
 }
@@ -27,6 +28,7 @@ export const DateWrapper = <FormFieldValues extends FieldValues>({
   control,
   rules,
   disableWeekend = false,
+  hideLabel,
   fromDate = FRA_DATO,
   toDate = TIL_DATO,
   selected,
@@ -57,6 +59,7 @@ export const DateWrapper = <FormFieldValues extends FieldValues>({
               size={'small'}
               value={value}
               name={name}
+              hideLabel={hideLabel}
               description={description}
               error={error && error.message}
               label={label}

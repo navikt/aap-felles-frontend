@@ -7,6 +7,7 @@ export interface TextAreaProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
   description?: React.ReactNode;
   label?: string;
+  hideLabel?: boolean;
   rules?: RegisterOptions<FormFieldValues>;
   control: Control<FormFieldValues>;
   maxLength?: number;
@@ -19,6 +20,7 @@ export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
   label,
   control,
   maxLength,
+  hideLabel,
   rules,
   readOnly,
 }: TextAreaProps<FormFieldValues>) => (
@@ -34,6 +36,7 @@ export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
         description={description}
         value={value}
         onChange={onChange}
+        hideLabel={hideLabel}
         error={error?.message}
         name={name}
         maxLength={maxLength}
