@@ -14,7 +14,7 @@ interface RadioProps<FormFieldValues extends FieldValues> {
   readOnly?: boolean;
 }
 
-export const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
+const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
   children,
   name,
   control,
@@ -52,3 +52,5 @@ export const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
     </div>
   );
 };
+
+export { RadioGroupWrapper };
