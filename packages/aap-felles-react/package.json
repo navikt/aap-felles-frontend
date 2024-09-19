@@ -1,5 +1,5 @@
 {
-  "version": "1.8.12",
+  "version": "1.8.13",
   "name": "@navikt/aap-felles-react",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -25,9 +25,9 @@
     "test": "vitest --run"
   },
   "dependencies": {
-    "@navikt/aksel-icons": "^6.16.3",
-    "@navikt/ds-css": "^6.16.3",
-    "@navikt/ds-react": "^6.16.3",
+    "@navikt/aksel-icons": "^6.17.0",
+    "@navikt/ds-css": "^6.17.0",
+    "@navikt/ds-react": "^6.17.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

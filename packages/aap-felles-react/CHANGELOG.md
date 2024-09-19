@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.13
+
+### Patch Changes
+
+- Oppgraderer designsystemet
+
 ## 1.8.12
 
 ### Patch Changes
