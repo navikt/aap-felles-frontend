@@ -1,5 +1,5 @@
 {
-  "version": "1.8.14",
+  "version": "1.9.0",
   "name": "@navikt/aap-felles-css",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -17,7 +17,7 @@
     "watch": "postcss --watch --use postcss-import -o dist/index.css src/index.css"
   },
   "devDependencies": {
-    "postcss": "^8.4.39",
+    "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",
     "postcss-combine-duplicated-selectors": "^10.0.3",
     "postcss-import": "^16.1.0"

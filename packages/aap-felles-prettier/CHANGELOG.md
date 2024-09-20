@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.0
+
+### Minor Changes
+
+- Oppgraderer til nyeste minor versjon av alle pakker
+
 ## 1.8.14
 
 ## 1.8.13
