@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.2
+
+### Patch Changes
+
+- Tekstfix
+
 ## 1.9.1
 
 ### Patch Changes
