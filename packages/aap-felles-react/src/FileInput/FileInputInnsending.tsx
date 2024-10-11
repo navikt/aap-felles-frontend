@@ -46,7 +46,7 @@ export const FileInputInnsending = (props: FileInputProps) => {
       case 'SIZE':
         return tekster.fileInputErrors.size;
       default:
-        return '';
+        return tekster.fileInputErrors.default422;
     }
   }
 
