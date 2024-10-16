@@ -117,6 +117,7 @@ export function useConfigForm<FormFieldIds extends FieldValues>(
   const form = useForm<FormFieldIds>({
     ...rfhConfig,
     defaultValues,
+    shouldUnregister: true,
   });
 
   return { formFields, form };

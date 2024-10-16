@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.4
+
+### Patch Changes
+
+- shouldUnregister er satt til true som default i formhook for å fjerne verdien på felter som blir unregistered
+
 ## 1.9.3
 
 ### Patch Changes
