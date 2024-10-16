@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.7
+
+### Patch Changes
+
+- Fjerner defaultValue på shouldUnregister
+
 ## 1.9.6
 
 ### Patch Changes
