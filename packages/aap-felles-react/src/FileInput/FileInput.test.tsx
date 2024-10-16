@@ -193,7 +193,7 @@ describe('FileInput', () => {
     const input = screen.getByTestId('fileinput');
     await user.upload(input, fileOne);
     expect(
-      await screen.findByText('Maksimal samlet størrelse på vedlegg per bruker(50MB) er oversteget.')
+      await screen.findByText(/maksimal samlet størrelse på vedlegg per bruker \(50mb\) er oversteget\./i)
     ).toBeVisible();
   });
 

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.3
+
+### Patch Changes
+
+- Oppgraderer designsystem pakker
+
 ## 1.9.2
 
 ### Patch Changes
