@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.5
+
+### Patch Changes
+
+- Tar hensyn til at vi også kan sette shouldUnregister til false
+
 ## 1.9.4
 
 ### Patch Changes
