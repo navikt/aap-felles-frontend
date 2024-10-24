@@ -4,7 +4,7 @@ import { getToken, validateAzureToken } from '@navikt/oasis';
 import { logWarning, isLocal } from '../../index';
 
 export async function verifyUserLoggedIn(): Promise<void> {
-  const requestHeaders = headers();
+  const requestHeaders =  await headers();
 
   if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'localhost') {
     console.log('Running locally, skipping authentication');

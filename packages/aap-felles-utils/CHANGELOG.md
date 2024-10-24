@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.0
+
+### Major Changes
+
+- async-next-headers
+
 ## 1.9.7
 
 ## 1.9.6

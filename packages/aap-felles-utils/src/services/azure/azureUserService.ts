@@ -12,7 +12,7 @@ export const hentBrukerInformasjon = async (): Promise<BrukerInformasjon> => {
   if (isLocal()) {
     return { navn: 'Iren Panikk', NAVident: 'z123456' };
   }
-  const requestHeaders = headers();
+  const requestHeaders = await headers();
   const token = getAccessTokenOrRedirectToLogin(requestHeaders);
 
   const JWTVerifyResult = await validerToken(token);
