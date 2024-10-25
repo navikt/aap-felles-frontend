@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.1
+
+### Patch Changes
+
+- Fjerner cssmodules-spesifik selector i aap-felles-css
+
 ## 2.0.0
 
 ## 1.9.7
