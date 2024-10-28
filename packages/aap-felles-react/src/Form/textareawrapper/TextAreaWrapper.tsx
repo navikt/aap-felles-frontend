@@ -12,6 +12,7 @@ export interface TextAreaProps<FormFieldValues extends FieldValues> {
   control: Control<FormFieldValues>;
   maxLength?: number;
   readOnly?: boolean;
+  className?: string;
 }
 
 export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
@@ -23,6 +24,7 @@ export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
   hideLabel,
   rules,
   readOnly,
+  className,
 }: TextAreaProps<FormFieldValues>) => (
   <Controller
     name={name}
@@ -41,6 +43,7 @@ export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
         name={name}
         maxLength={maxLength}
         readOnly={readOnly}
+        className={className}
       />
     )}
   />

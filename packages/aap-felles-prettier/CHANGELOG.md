@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- Eksponerer className for TextAreaWrapper
+
 ## 2.0.1
 
 ### Patch Changes
