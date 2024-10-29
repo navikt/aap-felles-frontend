@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.4
+
+### Patch Changes
+
+- Hadde glemt å legge inn className for TextField
+
 ## 2.0.3
 
 ### Patch Changes

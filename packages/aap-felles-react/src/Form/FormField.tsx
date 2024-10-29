@@ -40,6 +40,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           hideLabel={formField.hideLabel}
           description={formField.description}
           readOnly={formField.readOnly}
+          className={className}
         />
       )}
       {formField.type === 'textarea' && (
