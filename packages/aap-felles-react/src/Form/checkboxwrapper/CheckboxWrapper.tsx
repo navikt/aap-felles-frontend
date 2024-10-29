@@ -11,6 +11,7 @@ interface CheckboxProps<FormFieldValues extends FieldValues> {
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
   readOnly?: boolean;
+  className?: string;
 }
 
 const CheckboxWrapper = <FormFieldValues extends FieldValues>({
@@ -21,6 +22,7 @@ const CheckboxWrapper = <FormFieldValues extends FieldValues>({
   children,
   description,
   readOnly,
+  className,
 }: CheckboxProps<FormFieldValues>) => (
   <Controller
     name={name}
@@ -37,6 +39,7 @@ const CheckboxWrapper = <FormFieldValues extends FieldValues>({
         value={value || []}
         onChange={onChange}
         readOnly={readOnly}
+        className={className}
       >
         {children}
       </CheckboxGroup>

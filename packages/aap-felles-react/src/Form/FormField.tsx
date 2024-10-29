@@ -22,10 +22,11 @@ interface Props<FormFieldIds extends FieldValues> {
   formField: FormFieldType<FormFieldIds>;
   children?: ReactNode;
   horizontalRadio?: boolean;
+  className?: string;
 }
 
 export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFieldIds>) => {
-  const { formField, form, children, horizontalRadio } = props;
+  const { formField, form, children, className, horizontalRadio } = props;
 
   return (
     <>
@@ -50,6 +51,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           hideLabel={formField.hideLabel}
           description={formField.description}
           readOnly={formField.readOnly}
+          className={className}
         />
       )}
       {formField.type === 'radio' && (
@@ -92,6 +94,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           rules={formField.rules}
           description={formField.description}
           readOnly={formField.readOnly}
+          className={className}
         >
           {formField.options.map(mapToValuePair).map((option) => (
             <Checkbox value={option.value} key={option.value}>
@@ -109,6 +112,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           rules={formField.rules}
           readOnly={formField.readOnly}
+          className={className}
         >
           {formField.options.map(mapToValuePair).map((option) => (
             <option key={option.value} value={option.value}>
@@ -125,6 +129,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           rules={formField.rules}
           readOnly={formField.readOnly}
+          className={className}
         >
           {children}
         </CheckboxWrapper>
@@ -138,6 +143,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           rules={formField.rules}
           readOnly={formField.readOnly}
+          className={className}
         >
           {children}
         </RadioGroupWrapper>

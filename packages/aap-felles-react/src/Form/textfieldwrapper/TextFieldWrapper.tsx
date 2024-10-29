@@ -12,6 +12,7 @@ export interface TextFieldProps<FormFieldValues extends FieldValues> {
   description?: React.ReactNode;
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
+  className?: string;
 }
 
 export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
@@ -23,6 +24,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
   description,
   rules,
   readOnly,
+  className,
 }: TextFieldProps<FormFieldValues>) => (
   <Controller
     name={name}
@@ -41,6 +43,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
         onChange={onChange}
         description={description}
         readOnly={readOnly}
+        className={className}
       />
     )}
   />

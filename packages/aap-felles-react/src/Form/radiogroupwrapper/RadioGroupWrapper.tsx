@@ -12,6 +12,7 @@ interface RadioProps<FormFieldValues extends FieldValues> {
   description?: ReactNode;
   horisontal?: boolean;
   readOnly?: boolean;
+  className?: string;
 }
 
 const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
@@ -23,7 +24,9 @@ const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
   label,
   horisontal = false,
   readOnly,
+  className,
 }: RadioProps<FormFieldValues>) => {
+  const classNames = `${className} ${horisontal ? 'radiowrapper_horizontal' : ''}`;
   return (
     <div className="radiowrapper_radiogroup">
       <Controller
@@ -41,7 +44,7 @@ const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
               error={error?.message}
               onChange={onChange}
               description={description}
-              className={horisontal ? 'radiowrapper_horizontal' : ''}
+              className={classNames}
               readOnly={readOnly}
             >
               {children}

@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.3
+
+### Patch Changes
+
+- Eksponerer className via FormField
+
 ## 2.0.2
 
 ### Patch Changes

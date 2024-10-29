@@ -12,6 +12,7 @@ interface ComboboxProps<FormFieldValues extends FieldValues> {
   description?: ReactNode;
   readOnly?: boolean;
   options: string[] | ValuePair[];
+  className?: string;
 }
 
 const ComboboxWrapper = <FormFieldValues extends FieldValues>({
@@ -22,6 +23,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
   description,
   readOnly,
   options,
+  className,
 }: ComboboxProps<FormFieldValues>) => {
   const [searchValue, setSearchValue] = useState('');
 
@@ -46,6 +48,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
           onToggleSelected={onChange}
           selectedOptions={[value ?? '']}
           readOnly={readOnly}
+          className={className}
         />
       )}
     />
