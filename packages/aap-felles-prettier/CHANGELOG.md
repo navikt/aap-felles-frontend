@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.6
+
+### Patch Changes
+
+- Legger inn støtte for datoer på format ddmmyy
+
 ## 2.0.5
 
 ### Patch Changes

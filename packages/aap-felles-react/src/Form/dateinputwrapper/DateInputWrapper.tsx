@@ -2,6 +2,7 @@ import { TextField } from '@navikt/ds-react';
 import React from 'react';
 import { ReactNode } from 'react';
 import { Control, Controller, FieldPath, FieldValues, RegisterOptions } from 'react-hook-form';
+import { mapShortDateToDateString } from './dateMapper';
 
 export type DateInputWrapperProps<FormFieldValues extends FieldValues> = {
   name: FieldPath<FormFieldValues>;
@@ -11,6 +12,7 @@ export type DateInputWrapperProps<FormFieldValues extends FieldValues> = {
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
   className?: string;
+  allowShortDates?: boolean;
 };
 
 export const DateInputWrapper = <FormFieldValues extends FieldValues>({
@@ -21,8 +23,15 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
   rules,
   readOnly,
   className,
+  allowShortDates = false,
 }: DateInputWrapperProps<FormFieldValues>) => {
   const classNames = `aap_date_input ${className}`;
+  const transform = (input: React.FormEvent<HTMLInputElement>) => {
+    if (allowShortDates) {
+      return mapShortDateToDateString(input.currentTarget.value);
+    }
+    return input;
+  };
   return (
     <Controller
       name={name}
@@ -37,7 +46,7 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
           type={'text'}
           error={error?.message}
           value={value || ''}
-          onChange={onChange}
+          onChange={(value) => onChange(transform(value))}
           description={description}
           readOnly={readOnly}
           className={classNames}

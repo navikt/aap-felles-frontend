@@ -44,6 +44,22 @@ describe('DateInputWrapper', () => {
     await user.click(screen.getByRole('button', { name: 'Send' }));
     expect(screen.queryByText('Ugyldig datoformat')).not.toBeInTheDocument();
   });
+
+  test('håndterer ikke korte datoer uten at det er enablet', async () => {
+    render(<TestForm />);
+    const input = screen.getByRole('textbox', { name: 'Dato' });
+    await user.type(input, '120280');
+    screen.getByRole('button', { name: 'Send' }).focus();
+    expect(input).toHaveValue('120280');
+  });
+
+  test('kan håndtere korte datoer når det er enablet', async () => {
+    render(<TestForm allowShortDates />);
+    const input = screen.getByRole('textbox', { name: 'Dato' });
+    await user.type(input, '120280');
+    screen.getByRole('button', { name: 'Send' }).focus();
+    expect(input).toHaveValue('12.02.1980');
+  });
 });
 
 type FormFields = {
@@ -52,6 +68,7 @@ type FormFields = {
 
 type Props = {
   defaultValue?: string;
+  allowShortDates?: boolean;
 };
 
 const TestForm = (props: Props) => {
@@ -62,6 +79,7 @@ const TestForm = (props: Props) => {
       description: 'Datoformat: dd.mm.åååå',
       defaultValue: props.defaultValue,
       rules: { maxLength: { value: 10, message: 'Ugyldig datoformat' } },
+      allowShortDates: props.allowShortDates,
     },
   });
   return (

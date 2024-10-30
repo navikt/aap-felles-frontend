@@ -49,7 +49,8 @@ interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<
 
 interface FormFieldDateInput<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'date_input';
-  defaultValue?: string; 
+  defaultValue?: string;
+  allowShortDates?: boolean;
 }
 
 interface FormFieldWithOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
