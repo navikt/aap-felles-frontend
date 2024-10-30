@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.5
+
+### Patch Changes
+
+- Legger til DateInputWrapper for bruk i skjemaer
+
 ## 2.0.4
 
 ### Patch Changes

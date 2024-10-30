@@ -11,6 +11,7 @@ export type FormFieldsConfig<FormFieldId extends FieldPath<FormFieldIds>, FormFi
 export type FormFieldConfig<FormFieldIds extends FieldValues> =
   | FormFieldText<FormFieldIds>
   | FormFieldDate<FormFieldIds>
+  | FormFieldDateInput<FormFieldIds>
   | FormFieldWithOptions<FormFieldIds>
   | FormFieldSelect<FormFieldIds>
   | FormFieldCheckbox<FormFieldIds>
@@ -44,6 +45,11 @@ interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<
   defaultValue?: Date;
   disableWeekends?: boolean;
   hideLabel?: boolean;
+}
+
+interface FormFieldDateInput<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
+  type: 'date_input';
+  defaultValue?: string; 
 }
 
 interface FormFieldWithOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {

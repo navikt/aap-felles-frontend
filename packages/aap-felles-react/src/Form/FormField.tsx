@@ -11,6 +11,7 @@ import { CheckboxWrapper } from './checkboxwrapper/CheckboxWrapper';
 import { Checkbox, Radio } from '@navikt/ds-react';
 import { RadioGroupWrapper } from './radiogroupwrapper/RadioGroupWrapper';
 import { ComboboxWrapper } from './comboboxwrapper/ComboboxWrapper';
+import { DateInputWrapper } from './dateinputwrapper/DateInputWrapper';
 
 export interface ValuePair<Enum = string> {
   value: Enum;
@@ -85,6 +86,17 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           disableWeekend={formField.disableWeekends}
           selected={form.getValues(formField.name)}
           readOnly={formField.readOnly}
+        />
+      )}
+      {formField.type === 'date_input' && (
+        <DateInputWrapper
+          name={formField.name}
+          label={formField.label}
+          control={form.control}
+          rules={formField.rules}
+          description={formField.description}
+          readOnly={formField.readOnly}
+          className={className}
         />
       )}
       {formField.type === 'checkbox' && (

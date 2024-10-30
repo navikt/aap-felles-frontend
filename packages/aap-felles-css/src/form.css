@@ -12,3 +12,6 @@
   margin-left: 1rem;
 }
 
+.aap_date_input > input {
+  max-width: 14ch;
+}

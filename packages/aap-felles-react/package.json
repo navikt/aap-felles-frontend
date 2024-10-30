@@ -1,5 +1,5 @@
 {
-  "version": "2.0.4",
+  "version": "2.0.5",
   "name": "@navikt/aap-felles-react",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -22,7 +22,8 @@
   "scripts": {
     "clean": "rm -rf ./cjs ./esm",
     "build": "yarn run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "test:watch": "vitest --watch"
   },
   "dependencies": {
     "@navikt/aksel-icons": "^7.2.1",

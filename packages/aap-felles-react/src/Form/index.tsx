@@ -7,3 +7,4 @@ export * from './radiogroupwrapper/RadioGroupWrapper';
 export * from './selectwrapper/SelectWrapper';
 export * from './textareawrapper/TextAreaWrapper';
 export * from './textfieldwrapper/TextFieldWrapper';
+export * from './dateinputwrapper/DateInputWrapper';
