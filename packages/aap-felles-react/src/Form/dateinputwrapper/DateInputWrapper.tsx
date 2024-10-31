@@ -12,7 +12,6 @@ export type DateInputWrapperProps<FormFieldValues extends FieldValues> = {
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
   className?: string;
-  allowShortDates?: boolean;
 };
 
 export const DateInputWrapper = <FormFieldValues extends FieldValues>({
@@ -23,15 +22,10 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
   rules,
   readOnly,
   className,
-  allowShortDates = false,
 }: DateInputWrapperProps<FormFieldValues>) => {
   const classNames = `aap_date_input ${className}`;
-  const transform = (input: React.FormEvent<HTMLInputElement>) => {
-    if (allowShortDates) {
-      return mapShortDateToDateString(input.currentTarget.value);
-    }
-    return input;
-  };
+  const transform = (input: React.FormEvent<HTMLInputElement>) => mapShortDateToDateString(input.currentTarget.value);
+
   return (
     <Controller
       name={name}

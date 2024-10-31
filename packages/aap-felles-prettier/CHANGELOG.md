@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.7
+
+### Patch Changes
+
+- Fjerner allowShortDates-property
+
 ## 2.0.6
 
 ### Patch Changes

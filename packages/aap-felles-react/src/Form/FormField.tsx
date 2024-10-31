@@ -97,7 +97,6 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           readOnly={formField.readOnly}
           className={className}
-          allowShortDates={formField.allowShortDates}
         />
       )}
       {formField.type === 'checkbox' && (
