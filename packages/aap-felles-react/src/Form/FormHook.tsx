@@ -45,6 +45,7 @@ interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<
   defaultValue?: Date;
   disableWeekends?: boolean;
   hideLabel?: boolean;
+  strategy?: 'fixed' | 'absolute';
 }
 
 interface FormFieldDateInput<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {

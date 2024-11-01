@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.8
+
+### Patch Changes
+
+- Eksponer strategy for DatePicker
+
 ## 2.0.7
 
 ### Patch Changes

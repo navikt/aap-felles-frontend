@@ -16,6 +16,7 @@ export interface DateProps<FormFieldValues extends FieldValues> {
   hideLabel?: boolean;
   selected?: Date;
   readOnly?: boolean;
+  strategy?: 'absolute' | 'fixed';
 }
 
 const FRA_DATO = subYears(new Date(), 80);
@@ -33,6 +34,7 @@ export const DateWrapper = <FormFieldValues extends FieldValues>({
   toDate = TIL_DATO,
   selected,
   readOnly,
+  strategy,
 }: DateProps<FormFieldValues>) => {
   const { datepickerProps, inputProps } = useDatepicker({ defaultSelected: selected });
 
@@ -52,6 +54,7 @@ export const DateWrapper = <FormFieldValues extends FieldValues>({
             dropdownCaption
             fromDate={fromDate}
             toDate={toDate}
+            strategy={strategy}
           >
             <DatePicker.Input
               onChange={onChange}
