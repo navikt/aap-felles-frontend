@@ -170,6 +170,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           rules={formField.rules}
           description={formField.description}
+          isMultiSelect={formField.isMultiSelect}
           readOnly={formField.readOnly}
           options={formField.options}
         />

@@ -15,6 +15,7 @@ export type FormFieldConfig<FormFieldIds extends FieldValues> =
   | FormFieldWithOptions<FormFieldIds>
   | FormFieldSelect<FormFieldIds>
   | FormFieldCheckbox<FormFieldIds>
+  | FormFieldCombobox<FormFieldIds>
   | FormFieldRadioWithNestedOptions<FormFieldIds>
   | FormFieldCheckboxWithNestedOptions<FormFieldIds>
   | FormFieldArray<keyof FormFieldIds, FormFieldIds>;
@@ -54,8 +55,15 @@ interface FormFieldDateInput<FormFieldIds extends FieldValues> extends BaseFormF
 }
 
 interface FormFieldWithOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
-  type: 'radio' | 'combobox';
+  type: 'radio';
   options: string[] | ValuePair[];
+  defaultValue?: string;
+}
+
+interface FormFieldCombobox<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
+  type: 'combobox';
+  options: string[] | ValuePair[];
+  isMultiSelect?: boolean;
   defaultValue?: string;
 }
 

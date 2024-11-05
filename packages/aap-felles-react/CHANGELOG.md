@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.9
+
+### Patch Changes
+
+- Legger til multiselect på combobox
+
 ## 2.0.8
 
 ### Patch Changes
