@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.12
+
+### Patch Changes
+
+- Fjerner multiselect som valg på formhook
+
 ## 2.0.11
 
 ### Patch Changes

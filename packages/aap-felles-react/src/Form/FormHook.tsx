@@ -64,14 +64,12 @@ interface FormFieldWithOptions<FormFieldIds extends FieldValues> extends BaseFor
 interface FormFieldCombobox<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'combobox';
   options: string[] | ValuePair[];
-  isMultiSelect?: boolean;
   defaultValue?: string;
 }
 
 interface FormFieldMultipleCombobox<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'combobox_multiple';
   options: string[] | ValuePair[];
-  isMultiSelect?: boolean;
   defaultValue?: string[];
 }
 
