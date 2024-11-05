@@ -11,6 +11,7 @@ import { CheckboxWrapper } from './checkboxwrapper/CheckboxWrapper';
 import { Checkbox, Radio } from '@navikt/ds-react';
 import { RadioGroupWrapper } from './radiogroupwrapper/RadioGroupWrapper';
 import { ComboboxWrapper } from './comboboxwrapper/ComboboxWrapper';
+import { MultipleComboboxWrapper } from './multiplecomboboxwrapper/MultipleComboboxWrapper';
 import { DateInputWrapper } from './dateinputwrapper/DateInputWrapper';
 
 export interface ValuePair<Enum = string> {
@@ -170,7 +171,18 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           rules={formField.rules}
           description={formField.description}
-          isMultiSelect={formField.isMultiSelect}
+          readOnly={formField.readOnly}
+          options={formField.options}
+        />
+      )}
+
+      {formField.type === 'combobox_multiple' && (
+        <MultipleComboboxWrapper
+          name={formField.name}
+          label={formField.label}
+          control={form.control}
+          rules={formField.rules}
+          description={formField.description}
           readOnly={formField.readOnly}
           options={formField.options}
         />

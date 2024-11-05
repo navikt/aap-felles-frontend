@@ -8,7 +8,6 @@ interface ComboboxProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
   control: Control<FormFieldValues>;
   options: string[] | ValuePair[];
-  isMultiSelect?: boolean;
   label?: string;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
@@ -21,7 +20,6 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
   label,
   control,
   rules,
-  isMultiSelect = false,
   description,
   readOnly,
   options,
@@ -36,7 +34,6 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
       rules={rules}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <UNSAFE_Combobox
-          isMultiSelect={isMultiSelect}
           shouldAutocomplete={false}
           size={'small'}
           id={name}
