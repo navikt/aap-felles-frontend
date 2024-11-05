@@ -1,8 +1,8 @@
 import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import React, { ReactNode } from 'react';
-import { ValuePair } from '@navikt/aap-felles-react';
 import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
 import { UNSAFE_Combobox } from '@navikt/ds-react';
+import { ValuePair } from '../FormField';
 
 interface ComboboxProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
