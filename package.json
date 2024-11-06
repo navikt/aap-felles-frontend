@@ -26,22 +26,22 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@navikt/aap-felles-prettier": "^1.0.1",
-    "@storybook/addon-actions": "^8.3.2",
-    "@storybook/addon-essentials": "^8.3.2",
-    "@storybook/addon-interactions": "^8.3.2",
-    "@storybook/addon-links": "^8.3.2",
-    "@storybook/nextjs": "^8.3.2",
-    "@storybook/react": "^8.3.2",
+    "@storybook/addon-actions": "^8.4.2",
+    "@storybook/addon-essentials": "^8.4.2",
+    "@storybook/addon-interactions": "^8.4.2",
+    "@storybook/addon-links": "^8.4.2",
+    "@storybook/nextjs": "^8.4.2",
+    "@storybook/react": "^8.4.2",
     "@storybook/testing-library": "^0.2.2",
     "babel-loader": "^9.2.1",
     "html-webpack-plugin": "^5.6.0",
-    "storybook": "^8.3.2"
+    "storybook": "^8.4.2"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.8",
-    "@navikt/aksel-icons": "^7.2.1",
-    "@navikt/ds-css": "^7.2.1",
-    "@navikt/ds-react": "^7.2.1",
+    "@navikt/aksel-icons": "^7.4.3",
+    "@navikt/ds-css": "^7.4.3",
+    "@navikt/ds-react": "^7.4.3",
     "css-loader": "^7.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
