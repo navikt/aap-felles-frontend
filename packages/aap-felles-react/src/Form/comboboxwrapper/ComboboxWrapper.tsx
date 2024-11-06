@@ -7,7 +7,7 @@ import { ValuePair } from '../FormField';
 interface ComboboxProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
   control: Control<FormFieldValues>;
-  options: string[] | ValuePair[];
+  options: ValuePair[];
   label?: string;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
@@ -41,7 +41,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
           error={error?.message}
           options={options}
           onToggleSelected={onChange}
-          selectedOptions={[value ?? '']}
+          selectedOptions={[options.find((option) => option.value === value)?.label ?? '']}
           readOnly={readOnly}
           className={className}
         />

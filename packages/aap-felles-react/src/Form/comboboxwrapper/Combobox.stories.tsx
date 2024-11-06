@@ -21,8 +21,11 @@ export const ComboboxForm: StoryFn = () => {
       type: 'combobox',
       label: 'Velg type',
       description: 'Velg en type',
-      defaultValue: 'Alternativ 3',
-      options: ['Alternativ 1', 'Alternativ 2', 'Alternativ 3'],
+      defaultValue: 'alt1',
+      options: [
+        { label: 'Alternativ 1', value: 'alt1' },
+        { label: 'Alternativ 2', value: 'alt2' },
+      ],
       rules: { required: 'Du må velge type' },
     },
   });
@@ -44,8 +47,11 @@ export const MultipleComboboxForm: StoryFn = () => {
       type: 'combobox_multiple',
       label: 'Velg type',
       description: 'Velg en type',
-      defaultValue: ['Alternativ 1'],
-      options: ['Alternativ 1', 'Alternativ 2', 'Alternativ 3'],
+      defaultValue: ['alt1'],
+      options: [
+        { label: 'Alternativ 1', value: 'alt1' },
+        { label: 'Alternativ 2', value: 'alt2' },
+      ],
       rules: { required: 'Du må velge type' },
     },
   });

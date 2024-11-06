@@ -172,7 +172,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           rules={formField.rules}
           description={formField.description}
           readOnly={formField.readOnly}
-          options={formField.options}
+          options={formField.options.map((option) => mapToValuePair(option))}
         />
       )}
 
@@ -184,7 +184,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           rules={formField.rules}
           description={formField.description}
           readOnly={formField.readOnly}
-          options={formField.options}
+          options={formField.options.map((option) => mapToValuePair(option))}
         />
       )}
     </>
