@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.16
+
+### Patch Changes
+
+- Støtte for valuepair i combobox
+
 ## 2.0.15
 
 ### Patch Changes
