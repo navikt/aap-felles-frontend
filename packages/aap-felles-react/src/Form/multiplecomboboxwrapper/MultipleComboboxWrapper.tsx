@@ -42,6 +42,7 @@ const MultipleComboboxWrapper = <FormFieldValues extends FieldValues>({
             error={fieldState.error?.message}
             readOnly={readOnly}
             className={className}
+            selectedOptions={field.value || []}
             ref={field.ref}
             name={field.name}
             size={'small'}

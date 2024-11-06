@@ -35,7 +35,7 @@ describe('Combobox', () => {
     expect(select).toHaveValue('');
   });
 
-  test.skip('at select har en verdi når default value er satt', () => {
+  test('at select har en verdi når default value er satt', () => {
     render(<MultipleComboboxForm defaultValue={['Alternativ 3']} />);
     const list = screen.getByRole('list');
     expect(within(list).getByText(/alternativ 3/i)).toBeVisible();

@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.14
+
+### Patch Changes
+
+- Støtte for defaultValue i combobox
+
 ## 2.0.13
 
 ### Patch Changes

@@ -44,6 +44,7 @@ export const MultipleComboboxForm: StoryFn = () => {
       type: 'combobox_multiple',
       label: 'Velg type',
       description: 'Velg en type',
+      defaultValue: ['Alternativ 1'],
       options: ['Alternativ 1', 'Alternativ 2', 'Alternativ 3'],
       rules: { required: 'Du må velge type' },
     },
