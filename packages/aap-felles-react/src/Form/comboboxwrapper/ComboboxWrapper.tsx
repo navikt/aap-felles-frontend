@@ -1,5 +1,5 @@
 import { UNSAFE_Combobox } from '@navikt/ds-react';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
 import { ValuePair } from '../FormField';
@@ -25,8 +25,6 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
   options,
   className,
 }: ComboboxProps<FormFieldValues>) => {
-  const [searchValue, setSearchValue] = useState('');
-
   return (
     <Controller
       name={name}
@@ -42,8 +40,6 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
           description={description}
           error={error?.message}
           options={options}
-          value={searchValue}
-          onChange={setSearchValue}
           onToggleSelected={onChange}
           selectedOptions={[value ?? '']}
           readOnly={readOnly}

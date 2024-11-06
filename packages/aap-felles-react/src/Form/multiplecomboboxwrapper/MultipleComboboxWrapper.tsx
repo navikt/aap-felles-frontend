@@ -34,7 +34,7 @@ const MultipleComboboxWrapper = <FormFieldValues extends FieldValues>({
       render={({ field, fieldState }) => {
         return (
           <UNSAFE_Combobox
-            id="transportmiddel"
+            id={name}
             label={label}
             options={options}
             isMultiSelect

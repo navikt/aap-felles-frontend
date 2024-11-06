@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.13
+
+### Patch Changes
+
+- Fjerner usestate i combobox og bruker generisk name i multiplecombobox
+
 ## 2.0.12
 
 ### Patch Changes
