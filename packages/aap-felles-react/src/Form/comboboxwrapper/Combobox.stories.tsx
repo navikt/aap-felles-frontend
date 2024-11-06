@@ -1,33 +1,21 @@
-import { BodyShort, Button } from '@navikt/ds-react';
+import { Button } from '@navikt/ds-react';
 import { Meta, StoryFn } from '@storybook/react';
 import { useConfigForm } from '../FormHook';
 import React from 'react';
 import { FormField } from '../FormField';
+import { ComboboxWrapper } from './ComboboxWrapper';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Combobox',
-  component: ComboboxForm,
+  component: ComboboxWrapper,
 } as Meta;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: StoryFn<{}> = (args) => <ComboboxForm {...args} />;
-
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  children: <BodyShort spacing>Dette er tekst som havner inne i Luca</BodyShort>,
-};
 
 interface FormFields {
   type: string;
 }
 
-interface Props {
-  defaultValue?: string;
-}
-
-function ComboboxForm(props: Props) {
+export const ComboboxForm: StoryFn = () => {
   const { formFields, form } = useConfigForm<FormFields>({
     type: {
       type: 'combobox',
@@ -38,10 +26,36 @@ function ComboboxForm(props: Props) {
       rules: { required: 'Du må velge type' },
     },
   });
+
   return (
-    <form onSubmit={form.handleSubmit(() => console.log('submitting'))}>
+    <form
+      onSubmit={form.handleSubmit(() => console.log('submitting'))}
+      style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+    >
       <FormField form={form} formField={formFields.type} />
       <Button variant={'primary'}>Send inn</Button>
     </form>
   );
-}
+};
+
+export const MultipleComboboxForm: StoryFn = () => {
+  const { formFields, form } = useConfigForm<FormFields>({
+    type: {
+      type: 'combobox_multiple',
+      label: 'Velg type',
+      description: 'Velg en type',
+      options: ['Alternativ 1', 'Alternativ 2', 'Alternativ 3'],
+      rules: { required: 'Du må velge type' },
+    },
+  });
+
+  return (
+    <form
+      onSubmit={form.handleSubmit(() => console.log('submitting'))}
+      style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+    >
+      <FormField form={form} formField={formFields.type} />
+      <Button variant={'primary'}>Send inn</Button>
+    </form>
+  );
+};
