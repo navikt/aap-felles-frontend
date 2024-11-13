@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- force bump av pakker
+- 66a17fc: react-19-again
+
+## 2.0.17
+
+### Patch Changes
+
 - react-19
 
 ## 2.0.16
