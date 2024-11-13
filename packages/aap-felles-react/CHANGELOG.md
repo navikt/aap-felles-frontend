@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.0.15
+## 2.0.17
 
 ### Patch Changes
 
@@ -10,7 +10,7 @@
 
 ### Patch Changes
 
-- Støtte for valuepair i combobox
+- react-19
 
 ## 2.0.15
 
