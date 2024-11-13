@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.18
+
+### Patch Changes
+
+- Setter riktig override på react 19
+
 ## 2.0.17
 
 ### Patch Changes
