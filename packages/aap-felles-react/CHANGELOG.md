@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.19
+
+### Patch Changes
+
+- :shrug:
+
 ## 2.0.18
 
 ### Patch Changes
