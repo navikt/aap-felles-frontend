@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.15
+
+### Patch Changes
+
+- react-19
+
 ## 2.0.16
 
 ### Patch Changes
