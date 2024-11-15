@@ -6,8 +6,9 @@ import { mapShortDateToDateString } from './dateMapper';
 
 export type DateInputWrapperProps<FormFieldValues extends FieldValues> = {
   name: FieldPath<FormFieldValues>;
-  label?: string;
   control: Control<FormFieldValues>;
+  label?: string;
+  hideLabel?: boolean;
   description?: ReactNode;
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
@@ -22,6 +23,7 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
   rules,
   readOnly,
   className,
+  hideLabel,
 }: DateInputWrapperProps<FormFieldValues>) => {
   const classNames = `aap_date_input ${className}`;
   const transform = (input: React.FormEvent<HTMLInputElement>) => mapShortDateToDateString(input.currentTarget.value);
@@ -37,6 +39,7 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
           name={name}
           size={'small'}
           label={label}
+          hideLabel={hideLabel}
           type={'text'}
           error={error?.message}
           value={value || ''}

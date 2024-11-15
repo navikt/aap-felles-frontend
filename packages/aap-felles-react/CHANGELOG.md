@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.20
+
+### Patch Changes
+
+- HideLabel på inputdate
+
 ## 2.0.19
 
 ### Patch Changes
