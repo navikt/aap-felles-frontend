@@ -1,5 +1,5 @@
 {
-  "version": "2.0.22",
+  "version": "2.0.23",
   "name": "@navikt/aap-felles-react",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -26,9 +26,9 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
-    "@navikt/aksel-icons": "^7.5.2",
-    "@navikt/ds-css": "^7.5.2",
-    "@navikt/ds-react": "^7.5.2",
+    "@navikt/aksel-icons": "^7.4.3",
+    "@navikt/ds-css": "^7.4.3",
+    "@navikt/ds-react": "^7.4.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-hook-form": "^7.53.2",

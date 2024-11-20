@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.23
+
+### Patch Changes
+
+- Revert oppgradering av aksel
+
 ## 2.0.22
 
 ### Patch Changes
