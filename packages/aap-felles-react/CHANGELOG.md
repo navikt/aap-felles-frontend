@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.24
+
+### Patch Changes
+
+- Setter korrekt react versjon
+
 ## 2.0.23
 
 ### Patch Changes

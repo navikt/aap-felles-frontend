@@ -43,11 +43,15 @@
     "@navikt/ds-css": "^7.5.2",
     "@navikt/ds-react": "^7.5.2",
     "css-loader": "^7.1.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106"
   },
   "workspaces": [
     "packages/*"
   ],
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
+  },
   "packageManager": "yarn@4.5.0"
 }

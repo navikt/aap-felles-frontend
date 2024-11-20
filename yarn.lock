@@ -3504,9 +3504,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-react@workspace:packages/aap-felles-react"
   dependencies:
-    "@navikt/aksel-icons": "npm:^7.4.3"
-    "@navikt/ds-css": "npm:^7.4.3"
-    "@navikt/ds-react": "npm:^7.4.3"
+    "@navikt/aksel-icons": "npm:^7.5.2"
+    "@navikt/ds-css": "npm:^7.5.2"
+    "@navikt/ds-react": "npm:^7.5.2"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.0.1"
@@ -3558,21 +3558,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aksel-icons@npm:^7.4.3, @navikt/aksel-icons@npm:^7.5.2":
+"@navikt/aksel-icons@npm:^7.5.2":
   version: 7.5.2
   resolution: "@navikt/aksel-icons@npm:7.5.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.5.2%2Ff4647ae294f8a7a76dc1755c332bfca48c21f0a4"
   checksum: 10c0/db293e5b66edd5cb00c8b63fd1081945ab387dccb2b9f2f5894fd19972f738c53f17909210edfbfd5a7df9c2c4a30d7d822574c463407213830c0538a9b82966
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^7.4.3, @navikt/ds-css@npm:^7.5.2":
+"@navikt/ds-css@npm:^7.5.2":
   version: 7.5.2
   resolution: "@navikt/ds-css@npm:7.5.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F7.5.2%2F7e9a91f4a2f2850bd9115ac1d44748dc21b6c9a8"
   checksum: 10c0/b029cc1abc0509700c47a1e154c28931a8182c4088f31c3b3f03f98957e465ccc40068be82a812e09afd82d7771ef3843cd6b14a8b7ab2789d427010a7ae99c2
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^7.4.3, @navikt/ds-react@npm:^7.5.2":
+"@navikt/ds-react@npm:^7.5.2":
   version: 7.5.2
   resolution: "@navikt/ds-react@npm:7.5.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F7.5.2%2F9cfe81d5167219ce5ab93c2c5bbb5431f8246aef"
   dependencies:
@@ -5144,8 +5144,8 @@ __metadata:
     babel-loader: "npm:^9.2.1"
     css-loader: "npm:^7.1.2"
     html-webpack-plugin: "npm:^5.6.0"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
+    react: "npm:19.0.0-rc-66855b96-20241106"
+    react-dom: "npm:19.0.0-rc-66855b96-20241106"
     storybook: "npm:^8.4.2"
   languageName: unknown
   linkType: soft
@@ -11119,18 +11119,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.3.1":
-  version: 18.3.1
-  resolution: "react-dom@npm:18.3.1"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.2"
-  peerDependencies:
-    react: ^18.3.1
-  checksum: 10c0/a752496c1941f958f2e8ac56239172296fcddce1365ce45222d04a1947e0cc5547df3e8447f855a81d6d39f008d7c32eab43db3712077f09e3f67c4874973e85
-  languageName: node
-  linkType: hard
-
 "react-hook-form@npm:^7.53.2":
   version: 7.53.2
   resolution: "react-hook-form@npm:7.53.2"
@@ -11181,15 +11169,6 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10c0/b562d9b569b0cb315e44b48099f7712283d93df36b19a39a67c254c6686479d3980b7f013dc931f4a5a3ae7645eae6386b4aa5eea933baa54ecd0f9acb0902b8
-  languageName: node
-  linkType: hard
-
-"react@npm:^18.3.1":
-  version: 18.3.1
-  resolution: "react@npm:18.3.1"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10c0/283e8c5efcf37802c9d1ce767f302dd569dd97a70d9bb8c7be79a789b9902451e0d16334b05d73299b20f048cbc3c7d288bbbde10b701fa194e2089c237dbea3
   languageName: node
   linkType: hard
 
@@ -11673,15 +11652,6 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10c0/b777f7ca0115e6d93e126ac490dbd82642d14983b3079f58f35519d992fa46260be7d6e6cede433a92db70306310c6f5f06e144f0e40c484199e09c1f7be53dd
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.23.2":
-  version: 0.23.2
-  resolution: "scheduler@npm:0.23.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10c0/26383305e249651d4c58e6705d5f8425f153211aef95f15161c151f7b8de885f24751b377e4a0b3dd42cce09aad3f87a61dab7636859c0d89b7daf1a1e2a5c78
   languageName: node
   linkType: hard
 
