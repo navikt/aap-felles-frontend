@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.22
+
+### Patch Changes
+
+- Oppgrader aksel
+
 ## 2.0.21
 
 ### Patch Changes
