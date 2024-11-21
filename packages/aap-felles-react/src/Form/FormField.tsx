@@ -29,7 +29,7 @@ interface Props<FormFieldIds extends FieldValues> {
 }
 
 export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFieldIds>) => {
-  const { formField, form, children, className, horizontalRadio } = props;
+  const { formField, form, children, className, horizontalRadio, size } = props;
 
   return (
     <>
@@ -40,6 +40,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           type={formField.type}
           control={form.control}
           rules={formField.rules}
+          size={size}
           hideLabel={formField.hideLabel}
           description={formField.description}
           readOnly={formField.readOnly}
@@ -52,6 +53,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           label={formField.label}
           control={form.control}
           rules={formField.rules}
+          size={size}
           hideLabel={formField.hideLabel}
           description={formField.description}
           readOnly={formField.readOnly}
@@ -66,6 +68,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           hideLabel={formField.hideLabel}
           description={formField.description}
           rules={formField.rules}
+          size={size}
           horisontal={horizontalRadio}
           readOnly={formField.readOnly}
         >
@@ -82,6 +85,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           label={formField.label}
           control={form.control}
           rules={formField.rules}
+          size={size}
           hideLabel={formField.hideLabel}
           description={formField.description}
           fromDate={formField.fromDate}
@@ -98,6 +102,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           label={formField.label}
           control={form.control}
           rules={formField.rules}
+          size={size}
           hideLabel={formField.hideLabel}
           description={formField.description}
           readOnly={formField.readOnly}
@@ -111,6 +116,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           hideLabel={formField.hideLabel}
           control={form.control}
           rules={formField.rules}
+          size={size}
           description={formField.description}
           readOnly={formField.readOnly}
           className={className}
@@ -130,6 +136,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           hideLabel={formField.hideLabel}
           control={form.control}
           rules={formField.rules}
+          size={size}
           readOnly={formField.readOnly}
           className={className}
         >
@@ -148,6 +155,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           control={form.control}
           rules={formField.rules}
+          size={size}
           readOnly={formField.readOnly}
           className={className}
         >
@@ -162,6 +170,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           control={form.control}
           rules={formField.rules}
+          size={size}
           hideLabel={formField.hideLabel}
           readOnly={formField.readOnly}
           className={className}
@@ -177,6 +186,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           hideLabel={formField.hideLabel}
           rules={formField.rules}
+          size={size}
           description={formField.description}
           readOnly={formField.readOnly}
           options={formField.options.map((option) => mapToValuePair(option))}
@@ -190,6 +200,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           control={form.control}
           hideLabel={formField.hideLabel}
           rules={formField.rules}
+          size={size}
           description={formField.description}
           readOnly={formField.readOnly}
           options={formField.options.map((option) => mapToValuePair(option))}
