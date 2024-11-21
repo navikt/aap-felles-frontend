@@ -24,6 +24,7 @@ export type FormFieldConfig<FormFieldIds extends FieldValues> =
 interface BaseFormField<FormFieldIds extends FieldValues> {
   label?: string;
   description?: string;
+  hideLabel?: boolean;
   rules?: RegisterOptions<FormFieldIds>;
   readOnly?: boolean;
 }
@@ -37,7 +38,6 @@ interface FormFieldArray<FormFieldId extends keyof FormFieldIds, FormFieldIds ex
 interface FormFieldText<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'text' | 'number' | 'textarea';
   defaultValue?: string;
-  hideLabel?: boolean;
 }
 
 interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
@@ -46,7 +46,6 @@ interface FormFieldDate<FormFieldIds extends FieldValues> extends BaseFormField<
   toDate?: Date;
   defaultValue?: Date;
   disableWeekends?: boolean;
-  hideLabel?: boolean;
   strategy?: 'fixed' | 'absolute';
 }
 
@@ -83,7 +82,6 @@ interface FormFieldSelect<FormFieldIds extends FieldValues> extends BaseFormFiel
   type: 'select';
   options: Array<string | ValuePair>;
   defaultValue?: string;
-  hideLabel?: boolean;
 }
 
 interface FormFieldRadioWithNestedOptions<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {

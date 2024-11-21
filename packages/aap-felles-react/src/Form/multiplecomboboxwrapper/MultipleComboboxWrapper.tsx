@@ -8,6 +8,7 @@ interface ComboboxProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
   control: Control<FormFieldValues>;
   options: ValuePair[];
+  hideLabel?: boolean;
   isMultiSelect?: boolean;
   label?: string;
   rules?: RegisterOptions<FormFieldValues>;
@@ -22,6 +23,7 @@ const MultipleComboboxWrapper = <FormFieldValues extends FieldValues>({
   control,
   rules,
   description,
+    hideLabel,
   readOnly,
   options,
   className,
@@ -38,6 +40,7 @@ const MultipleComboboxWrapper = <FormFieldValues extends FieldValues>({
             label={label}
             options={options}
             isMultiSelect
+            hideLabel={hideLabel}
             description={description}
             error={fieldState.error?.message}
             readOnly={readOnly}

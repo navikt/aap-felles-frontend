@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.26
+
+### Patch Changes
+
+- Flagg for å skjule label på alle komponenter
+
 ## 2.0.25
 
 ### Patch Changes

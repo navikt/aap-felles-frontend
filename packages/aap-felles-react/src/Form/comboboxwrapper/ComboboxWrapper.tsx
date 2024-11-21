@@ -8,6 +8,7 @@ interface ComboboxProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
   control: Control<FormFieldValues>;
   options: ValuePair[];
+  hideLabel?: boolean;
   label?: string;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
@@ -19,6 +20,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
   name,
   label,
   control,
+  hideLabel,
   rules,
   description,
   readOnly,
@@ -37,6 +39,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
           id={name}
           name={name}
           label={label}
+          hideLabel={hideLabel}
           description={description}
           error={error?.message}
           options={options}
