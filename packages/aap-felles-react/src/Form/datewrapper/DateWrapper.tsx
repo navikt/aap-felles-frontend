@@ -12,6 +12,7 @@ export interface DateProps<FormFieldValues extends FieldValues> {
   rules?: RegisterOptions<FormFieldValues>;
   control: Control<FormFieldValues>;
   fromDate?: Date;
+  size?: 'small' | 'medium';
   toDate?: Date;
   hideLabel?: boolean;
   selected?: Date;
@@ -29,6 +30,7 @@ export const DateWrapper = <FormFieldValues extends FieldValues>({
   control,
   rules,
   disableWeekend = false,
+  size = 'small',
   hideLabel,
   fromDate = FRA_DATO,
   toDate = TIL_DATO,
@@ -59,7 +61,7 @@ export const DateWrapper = <FormFieldValues extends FieldValues>({
             <DatePicker.Input
               onChange={onChange}
               onInput={onChange}
-              size={'small'}
+              size={size}
               value={value}
               name={name}
               hideLabel={hideLabel}

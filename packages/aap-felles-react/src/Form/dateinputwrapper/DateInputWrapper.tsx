@@ -9,6 +9,7 @@ export type DateInputWrapperProps<FormFieldValues extends FieldValues> = {
   control: Control<FormFieldValues>;
   label?: string;
   hideLabel?: boolean;
+  size?: 'small' | 'medium';
   description?: ReactNode;
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
@@ -22,6 +23,7 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
   description,
   rules,
   readOnly,
+  size = 'small',
   className,
   hideLabel,
 }: DateInputWrapperProps<FormFieldValues>) => {
@@ -37,7 +39,7 @@ export const DateInputWrapper = <FormFieldValues extends FieldValues>({
         <TextField
           id={name}
           name={name}
-          size={'small'}
+          size={size}
           label={label}
           hideLabel={hideLabel}
           type={'text'}

@@ -9,6 +9,7 @@ export interface TextFieldProps<FormFieldValues extends FieldValues> {
   hideLabel?: boolean;
   control: Control<FormFieldValues>;
   type: 'text' | 'number';
+  size?: 'small' | 'medium';
   description?: React.ReactNode;
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
@@ -22,6 +23,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
   control,
   type,
   description,
+  size = 'small',
   rules,
   readOnly,
   className,
@@ -34,7 +36,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
       <TextField
         id={name}
         name={name}
-        size={'small'}
+        size={size}
         label={label}
         type={type}
         error={error?.message}

@@ -24,6 +24,7 @@ interface Props<FormFieldIds extends FieldValues> {
   formField: FormFieldType<FormFieldIds>;
   children?: ReactNode;
   horizontalRadio?: boolean;
+  size?: 'small' | 'medium';
   className?: string;
 }
 

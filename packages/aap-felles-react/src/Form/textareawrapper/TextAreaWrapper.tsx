@@ -9,6 +9,7 @@ export interface TextAreaProps<FormFieldValues extends FieldValues> {
   label?: string;
   hideLabel?: boolean;
   rules?: RegisterOptions<FormFieldValues>;
+  size?: 'small' | 'medium';
   control: Control<FormFieldValues>;
   maxLength?: number;
   readOnly?: boolean;
@@ -20,6 +21,7 @@ export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
   description,
   label,
   control,
+  size = 'small',
   maxLength,
   hideLabel,
   rules,
@@ -34,7 +36,7 @@ export const TextAreaWrapper = <FormFieldValues extends FieldValues>({
       <Textarea
         id={name}
         label={label}
-        size={'small'}
+        size={size}
         description={description}
         value={value}
         onChange={onChange}

@@ -9,6 +9,7 @@ interface RadioProps<FormFieldValues extends FieldValues> {
   children: ReactNode;
   hideLabel?: boolean;
   label?: string;
+  size?: 'small' | 'medium';
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
   horisontal?: boolean;
@@ -24,6 +25,7 @@ const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
   description,
   hideLabel,
   label,
+  size = 'small',
   horisontal = false,
   readOnly,
   className,
@@ -39,7 +41,7 @@ const RadioGroupWrapper = <FormFieldValues extends FieldValues>({
           return (
             <RadioGroup
               id={name}
-              size={'small'}
+              size={size}
               value={value || ''}
               hideLegend={hideLabel}
               name={name}

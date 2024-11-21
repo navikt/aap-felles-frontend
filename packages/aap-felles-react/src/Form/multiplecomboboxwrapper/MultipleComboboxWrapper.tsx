@@ -11,6 +11,7 @@ interface ComboboxProps<FormFieldValues extends FieldValues> {
   hideLabel?: boolean;
   isMultiSelect?: boolean;
   label?: string;
+  size?: 'small' | 'medium';
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
   readOnly?: boolean;
@@ -23,7 +24,8 @@ const MultipleComboboxWrapper = <FormFieldValues extends FieldValues>({
   control,
   rules,
   description,
-    hideLabel,
+  hideLabel,
+  size = 'small',
   readOnly,
   options,
   className,
@@ -53,7 +55,7 @@ const MultipleComboboxWrapper = <FormFieldValues extends FieldValues>({
             })}
             ref={field.ref}
             name={field.name}
-            size={'small'}
+            size={size}
             onBlur={field.onBlur}
             onToggleSelected={(option, isSelected) => {
               if (isSelected) {

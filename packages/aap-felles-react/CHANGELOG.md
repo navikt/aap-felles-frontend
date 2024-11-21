@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.27
+
+### Patch Changes
+
+- Støtte for forskjellig size på formfield
+
 ## 2.0.26
 
 ### Patch Changes

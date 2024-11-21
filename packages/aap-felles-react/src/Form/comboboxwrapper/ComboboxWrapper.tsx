@@ -9,6 +9,7 @@ interface ComboboxProps<FormFieldValues extends FieldValues> {
   control: Control<FormFieldValues>;
   options: ValuePair[];
   hideLabel?: boolean;
+  size?: 'small' | 'medium';
   label?: string;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
@@ -21,6 +22,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
   label,
   control,
   hideLabel,
+  size = 'small',
   rules,
   description,
   readOnly,
@@ -35,7 +37,7 @@ const ComboboxWrapper = <FormFieldValues extends FieldValues>({
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <UNSAFE_Combobox
           shouldAutocomplete={false}
-          size={'small'}
+          size={size}
           id={name}
           name={name}
           label={label}

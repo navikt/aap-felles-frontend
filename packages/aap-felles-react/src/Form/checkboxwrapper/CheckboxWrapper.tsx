@@ -8,6 +8,7 @@ interface CheckboxProps<FormFieldValues extends FieldValues> {
   control: Control<FormFieldValues>;
   children: ReactNode;
   hideLabel?: boolean;
+  size?: 'small' | 'medium';
   label?: string;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
@@ -21,6 +22,7 @@ const CheckboxWrapper = <FormFieldValues extends FieldValues>({
   control,
   rules,
   children,
+  size = 'small',
   description,
   hideLabel,
   readOnly,
@@ -32,7 +34,7 @@ const CheckboxWrapper = <FormFieldValues extends FieldValues>({
     rules={rules}
     render={({ field: { onChange, value }, fieldState: { error } }) => (
       <CheckboxGroup
-        size={'small'}
+        size={size}
         id={name}
         name={name}
         legend={label}
