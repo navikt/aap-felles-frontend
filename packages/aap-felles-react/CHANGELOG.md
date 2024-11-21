@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.25
+
+### Patch Changes
+
+- Flagg for å skjule label på checkboxwrapper
+
 ## 2.0.24
 
 ### Patch Changes

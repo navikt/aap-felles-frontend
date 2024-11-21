@@ -5,9 +5,10 @@ import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
 
 interface CheckboxProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
-  label?: string;
   control: Control<FormFieldValues>;
   children: ReactNode;
+  hideLabel?: boolean;
+  label?: string;
   rules?: RegisterOptions<FormFieldValues>;
   description?: ReactNode;
   readOnly?: boolean;
@@ -21,6 +22,7 @@ const CheckboxWrapper = <FormFieldValues extends FieldValues>({
   rules,
   children,
   description,
+  hideLabel,
   readOnly,
   className,
 }: CheckboxProps<FormFieldValues>) => (
@@ -34,6 +36,7 @@ const CheckboxWrapper = <FormFieldValues extends FieldValues>({
         id={name}
         name={name}
         legend={label}
+        hideLegend={hideLabel}
         description={description}
         error={error?.message}
         value={value || []}
