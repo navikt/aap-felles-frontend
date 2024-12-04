@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.0
+
+### Major Changes
+
+- endrer type på config i formhook slik at den ikke bryr seg om felter som ikke er på topp nivå
+
 ## 3.0.0
 
 ### Major Changes

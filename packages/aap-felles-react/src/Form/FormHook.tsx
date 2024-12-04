@@ -3,7 +3,7 @@ import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
 
 import { ValuePair } from './FormField';
 
-export type FormFieldsConfig<FormFieldId extends FieldPath<FormFieldIds>, FormFieldIds extends FieldValues> = Record<
+export type FormFieldsConfig<FormFieldId extends keyof FormFieldIds, FormFieldIds extends FieldValues> = Record<
   FormFieldId,
   FormFieldConfig<FormFieldIds>
 >;
@@ -75,10 +75,7 @@ interface FormFieldMultipleCombobox<FormFieldIds extends FieldValues> extends Ba
 
 interface FormFieldAsyncCombobox<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
   type: 'async_combobox';
-  fetcher: (value: string) => Promise<ValuePair[]>;
-  defaultOptions?: ValuePair[] | boolean;
   defaultValue?: ValuePair | ValuePair[];
-  isMulti?: boolean;
 }
 
 interface FormFieldCheckbox<FormFieldIds extends FieldValues> extends BaseFormField<FormFieldIds> {
@@ -121,7 +118,7 @@ type ReactFormHookConfiguration<FormFieldIds extends FieldValues> = Omit<
 > & { readOnly?: boolean };
 
 export function useConfigForm<FormFieldIds extends FieldValues>(
-  config: FormFieldsConfig<FieldPath<FormFieldIds>, FormFieldIds>,
+  config: FormFieldsConfig<keyof FormFieldIds, FormFieldIds>,
   rfhConfig?: ReactFormHookConfiguration<FormFieldIds>
 ): {
   formFields: FormFields<FieldPath<FormFieldIds>, FormFieldIds>;
@@ -133,7 +130,7 @@ export function useConfigForm<FormFieldIds extends FieldValues>(
   const entries = Object.entries(config) as Array<[FieldPath<FormFieldIds>, FormFieldConfig<FormFieldIds>]>;
 
   entries.forEach(([id, formFieldConfig]) => {
-    if (formFieldConfig.type !== 'fieldArray') {
+    if (!['fieldArray', 'async_combobox'].includes(formFieldConfig.type)) {
       formFields[id] = { ...formFieldConfig, name: id, readOnly: rfhConfig?.readOnly };
     }
 

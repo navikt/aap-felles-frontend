@@ -1,9 +1,10 @@
 import React from 'react';
 import { useConfigForm } from '../FormHook';
-import { FormField, ValuePair } from '../FormField';
+import { ValuePair } from '../FormField';
 import { render, screen } from '@testing-library/react';
 import { expect } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { AsyncComboSearch } from './AsyncComboSearch';
 
 const user = userEvent.setup();
 
@@ -116,7 +117,7 @@ describe('async combosearch', () => {
 });
 
 interface FormFields {
-  diagnose: ValuePair[];
+  diagnose: ValuePair;
 }
 
 async function fetcher(value: string) {
@@ -131,19 +132,22 @@ async function fetcher(value: string) {
 }
 
 function TestComponent({ isMulti }: { isMulti: boolean }) {
-  const { form, formFields } = useConfigForm<FormFields>({
+  const { form } = useConfigForm<FormFields>({
     diagnose: {
       type: 'async_combobox',
-      isMulti: isMulti,
-      label: 'Diagnose',
-      rules: { required: 'Du må oppgi en diagnose' },
-      fetcher: fetcher,
     },
   });
 
   return (
-    <form onSubmit={form.handleSubmit(() => console.log('wtf'))}>
-      <FormField form={form} formField={formFields.diagnose} />
+    <form onSubmit={form.handleSubmit((value) => console.log(value))}>
+      <AsyncComboSearch
+        form={form}
+        name={'diagnose'}
+        label={'Diagnose'}
+        fetcher={fetcher}
+        isMulti={isMulti}
+        rules={{ required: 'Du må oppgi en diagnose' }}
+      />
       <button>Send inn</button>
     </form>
   );

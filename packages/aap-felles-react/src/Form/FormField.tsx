@@ -13,7 +13,6 @@ import { RadioGroupWrapper } from './radiogroupwrapper/RadioGroupWrapper';
 import { ComboboxWrapper } from './comboboxwrapper/ComboboxWrapper';
 import { MultipleComboboxWrapper } from './multiplecomboboxwrapper/MultipleComboboxWrapper';
 import { DateInputWrapper } from './dateinputwrapper/DateInputWrapper';
-import { AsyncComboSearch } from './asynccombosearch/AsyncComboSearch';
 
 export interface ValuePair<Enum = string> {
   value: Enum;
@@ -205,18 +204,6 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           readOnly={formField.readOnly}
           options={formField.options.map((option) => mapToValuePair(option))}
-        />
-      )}
-
-      {formField.type === 'async_combobox' && (
-        <AsyncComboSearch
-          form={form}
-          label={formField.label!}
-          rules={formField.rules}
-          name={formField.name}
-          fetcher={formField.fetcher}
-          isMulti={formField.isMulti}
-          defaultOptions={formField.defaultOptions}
         />
       )}
     </>
