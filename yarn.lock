@@ -3729,7 +3729,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-prettier@npm:^2.0.21, @navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
+"@navikt/aap-felles-prettier@npm:^2.0.21":
+  version: 2.0.28
+  resolution: "@navikt/aap-felles-prettier@npm:2.0.28::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F2.0.28%2F252678786dd523913c3db0764991c4ece80a493d"
+  dependencies:
+    "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
+    prettier: "npm:^3.3.3"
+  checksum: 10c0/ca8dea03e51d3d276fbb0648c128aac1a63e8cbee5f4991435583f7724f1826f1c496deb110a1af57b42885ad11ca1b2b36c3db15065a222b302201f40d8fa51
+  languageName: node
+  linkType: hard
+
+"@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier"
   dependencies:
