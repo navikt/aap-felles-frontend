@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.0
+
+### Major Changes
+
+- Legger til async combosearch
+
 ## 2.0.28
 
 ### Patch Changes
