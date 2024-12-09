@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.1
+
+### Patch Changes
+
+- Prop for å sette størrelse på label
+
 ## 4.0.0
 
 ## 3.0.0
