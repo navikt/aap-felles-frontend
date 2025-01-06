@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.0
+
+### Minor Changes
+
+- Oppgraderer til react 19
+
 ## 4.0.1
 
 ### Patch Changes
