@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Dropdown, InternalHeader, Link } from '@navikt/ds-react';
+import { Oppgavesøk } from './Oppgavesøk';
 
 interface BrukerInformasjon {
   navn: string;
@@ -27,6 +28,7 @@ export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: Bruk
   <InternalHeader className="kelvin-app-header">
     <div className="kelvin-app-header-leftSide">
       <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
+      <Oppgavesøk />
       <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/sanity`}>Sanity</Link>
       <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/saksoversikt`}>Saksoversikt</Link>
       <Link href={`${process.env.NEXT_PUBLIC_OPPGAVESTYRING_URL}/oppgaveliste`}>Oppgaveliste</Link>
