@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.2
+
+### Patch Changes
+
+- no-overrides
+
 ## 4.1.1
 
 ### Patch Changes

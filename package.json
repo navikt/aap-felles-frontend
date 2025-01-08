@@ -49,9 +49,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "overrides": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
-  },
   "packageManager": "yarn@4.5.0"
 }
