@@ -1,5 +1,6 @@
 .kelvin-app-header {
   justify-content: space-between;
+  max-height: 4rem;
 }
 
 .kelvin-app-header-leftSide {
