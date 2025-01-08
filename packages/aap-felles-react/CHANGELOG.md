@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.4
+
+### Patch Changes
+
+- sakssøk-oppgavesøk
+
 ## 4.1.3
 
 ## 4.1.2
