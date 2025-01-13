@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.0
+
+### Minor Changes
+
+- Oppgraderer react-hook-form
+
 ## 4.1.4
 
 ### Patch Changes
