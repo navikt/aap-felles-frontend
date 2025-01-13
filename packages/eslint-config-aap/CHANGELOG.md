@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.1
+
+### Patch Changes
+
+- Krever eslint-react-hooks 5.1.0 som peer-dep
+
 ## 4.2.0
 
 ## 4.1.4

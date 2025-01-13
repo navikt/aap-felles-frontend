@@ -1,7 +1,7 @@
 {
   "name": "@navikt/eslint-config-aap",
   "author": "NAV",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
@@ -17,6 +17,6 @@
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^5.1.0"
   }
 }
