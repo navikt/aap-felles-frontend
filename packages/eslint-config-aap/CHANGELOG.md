@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.2
+
+### Patch Changes
+
+- Må ta med yarn.lock
+
 ## 4.2.1
 
 ### Patch Changes
