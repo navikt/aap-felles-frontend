@@ -76,9 +76,23 @@ export const FileInputInnsending = (props: FileInputProps) => {
   }
 
   async function validateAndSetFiles(filelist: FileList) {
+    const fileArray = Array.from(filelist);
+    const totalSize = fileArray.reduce((acc, curr) => acc + curr.size, 0);
+    if(totalSize > MAX_TOTAL_FILE_SIZE) {
+      setIsUploading(false);
+      onUpload([
+        {
+          vedleggId: uuidV4(),
+          errorMessage: tekster.fileInputErrors.fileTooLarge,
+          type: '',
+          size: totalSize,
+          name: `${fileArray.length} filer`,
+        }
+      ]);
+    }
     setIsUploading(true);
     const uploadedFiles: Vedlegg[] = await Promise.all(
-      Array.from(filelist).map(async (file) => {
+      fileArray.map(async (file) => {
         const internalErrorMessage = internalValidate(file);
         let uploadResult: Vedlegg = {
           vedleggId: uuidV4(),

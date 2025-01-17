@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.3
+
+### Patch Changes
+
+- totalsize-fileinputinnsending
+
 ## 4.2.2
 
 ### Patch Changes
