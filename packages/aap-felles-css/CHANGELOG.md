@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.5
+
+### Patch Changes
+
+- kelvinsok
+
 ## 4.2.4
 
 ## 4.2.3

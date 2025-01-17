@@ -1,6 +1,20 @@
 .kelvin-app-header {
+  display: flex;
+  flex-direction: column;
+}
+.kelvin-app-header a {
+  color: var(--a-white);
+}
+
+.kelvin-app-main-header {
+  display: flex;
   justify-content: space-between;
   max-height: 4rem;
+  width: 100%;
+}
+
+.kelvin-app-main-header-borderBottom {
+  border-bottom: 1px solid grey; //TODO: riktig farge
 }
 
 .kelvin-app-header-leftSide {
@@ -16,13 +30,15 @@
 .kelvin-oppgavesok-form {
   padding-top: var(--a-spacing-2);
   background-color: var(--a-surface-inverted);
-  overflow: visible;
+}
+
+.kelvin-oppgavesok-resultat-container {
+  padding: var(--a-spacing-2);
 }
 
 .kelvin-oppgavesok-resultat {
-  overflow: visible;
-  position: relative;
   background-color: var(--a-surface-inverted);
   list-style: none;
-  padding: 0 var(--a-spacing-2) var(--a-spacing-2) var(--a-spacing-2);
+  padding: 0;
+  margin: 0;
 }

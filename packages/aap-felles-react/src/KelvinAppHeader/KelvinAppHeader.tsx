@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Dropdown, InternalHeader, Link } from '@navikt/ds-react';
-import { Oppgavesøk } from './Oppgavesøk';
+import React, {useState} from 'react';
+import {Button, Dropdown, HStack, InternalHeader, Link, VStack} from '@navikt/ds-react';
+import { Kelvinsøk} from './Kelvinsøk';
+import {Kelvinsøkeresultat, Søkeresultat} from "./Kelvinsøkeresultat";
 
 interface BrukerInformasjon {
   navn: string;
@@ -24,17 +25,29 @@ const Brukermeny = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjo
   </Dropdown>
 );
 
-export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => (
-  <InternalHeader className="kelvin-app-header">
-    <div className="kelvin-app-header-leftSide">
-      <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
-      <Oppgavesøk />
-      <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/sanity`}>Sanity</Link>
-      <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/saksoversikt`}>Saksoversikt</Link>
-      <Link href={`${process.env.NEXT_PUBLIC_OPPGAVESTYRING_URL}/oppgaveliste`}>Oppgaveliste</Link>
-      <Link href={`${process.env.NEXT_PUBLIC_POSTMOTTAK_URL}/postmottak`}>Postmottak</Link>
-    </div>
-
-    <Brukermeny brukerInformasjon={brukerInformasjon} />
-  </InternalHeader>
-);
+export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => {
+  const [søkeresultat, setSøkeresultat] = useState<Søkeresultat | undefined>(undefined);
+  return (
+    <InternalHeader className="kelvin-app-header">
+      <div className={`kelvin-app-main-header ${søkeresultat ? 'kelvin-app-main-header-borderBottom' : ''}`}>
+        <div className="kelvin-app-header-leftSide">
+          <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
+          <Kelvinsøk setSøkeresultat={setSøkeresultat}/>
+          <Link href={`${process.env.NEXT_PUBLIC_OPPGAVESTYRING_URL}/`}>Oppgaveliste</Link>
+          <Link href={`${process.env.NEXT_PUBLIC_PRODUKSJONSSTYRING_URL}/`}>Oppgaveliste</Link>
+          <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/saksoversikt`}>Saksoversikt</Link>
+          <Link href={`${process.env.NEXT_PUBLIC_POSTMOTTAK_URL}/postmottak`}>Postmottak</Link>
+          <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/sanity`}>Sanity</Link>
+        </div>
+        <Brukermeny brukerInformasjon={brukerInformasjon}/>
+      </div>
+      {søkeresultat && <VStack padding={'2'}>
+          <HStack justify={'space-between'} className={'kelvin-oppgavesok-resultat-container'}>
+              <p>Søkeresultater</p>
+              <Button variant={'secondary'} size={'small'} onClick={() => setSøkeresultat(undefined)}>Lukk</Button>
+          </HStack>
+          <Kelvinsøkeresultat søkeresultat={søkeresultat}/>
+      </VStack>}
+    </InternalHeader>
+  );
+}
