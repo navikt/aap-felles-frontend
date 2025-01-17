@@ -5,14 +5,12 @@
 .kelvin-app-header a {
   color: var(--a-white);
 }
-
 .kelvin-app-main-header {
   display: flex;
   justify-content: space-between;
   max-height: 4rem;
   width: 100%;
 }
-
 .kelvin-app-main-header-borderBottom {
   border-bottom: 1px solid grey; //TODO: riktig farge
 }
@@ -30,10 +28,6 @@
 .kelvin-oppgavesok-form {
   padding-top: var(--a-spacing-2);
   background-color: var(--a-surface-inverted);
-}
-
-.kelvin-oppgavesok-resultat-container {
-  padding: var(--a-spacing-2);
 }
 
 .kelvin-oppgavesok-resultat {

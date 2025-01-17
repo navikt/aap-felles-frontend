@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.6
+
+### Patch Changes
+
+- skrivefeil
+
 ## 4.2.5
 
 ### Patch Changes

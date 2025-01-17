@@ -34,7 +34,7 @@ export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: Bruk
           <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
           <Kelvinsøk setSøkeresultat={setSøkeresultat}/>
           <Link href={`${process.env.NEXT_PUBLIC_OPPGAVESTYRING_URL}/`}>Oppgaveliste</Link>
-          <Link href={`${process.env.NEXT_PUBLIC_PRODUKSJONSSTYRING_URL}/`}>Oppgaveliste</Link>
+          <Link href={`${process.env.NEXT_PUBLIC_PRODUKSJONSSTYRING_URL}/`}>Produksjonsstyring</Link>
           <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/saksoversikt`}>Saksoversikt</Link>
           <Link href={`${process.env.NEXT_PUBLIC_POSTMOTTAK_URL}/postmottak`}>Postmottak</Link>
           <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/sanity`}>Sanity</Link>
@@ -42,7 +42,7 @@ export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: Bruk
         <Brukermeny brukerInformasjon={brukerInformasjon}/>
       </div>
       {søkeresultat && <VStack padding={'2'}>
-          <HStack justify={'space-between'} className={'kelvin-oppgavesok-resultat-container'}>
+          <HStack justify={'space-between'} >
               <p>Søkeresultater</p>
               <Button variant={'secondary'} size={'small'} onClick={() => setSøkeresultat(undefined)}>Lukk</Button>
           </HStack>
