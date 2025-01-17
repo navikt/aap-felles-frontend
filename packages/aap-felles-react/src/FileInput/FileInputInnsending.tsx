@@ -89,44 +89,45 @@ export const FileInputInnsending = (props: FileInputProps) => {
           name: `${fileArray.length} filer`,
         }
       ]);
-    }
-    setIsUploading(true);
-    const uploadedFiles: Vedlegg[] = await Promise.all(
-      fileArray.map(async (file) => {
-        const internalErrorMessage = internalValidate(file);
-        let uploadResult: Vedlegg = {
-          vedleggId: uuidV4(),
-          errorMessage: '',
-          type: file.type,
-          size: file.size,
-          name: file.name,
-        };
+    } else {
+      setIsUploading(true);
+      const uploadedFiles: Vedlegg[] = await Promise.all(
+        fileArray.map(async (file) => {
+          const internalErrorMessage = internalValidate(file);
+          let uploadResult: Vedlegg = {
+            vedleggId: uuidV4(),
+            errorMessage: '',
+            type: file.type,
+            size: file.size,
+            name: file.name,
+          };
 
-        if (!internalErrorMessage) {
-          try {
-            const data = new FormData();
-            data.append('vedlegg', file);
-            const res = await fetch(uploadUrl, { method: 'POST', body: data });
-            const resData = await res.json();
+          if (!internalErrorMessage) {
+            try {
+              const data = new FormData();
+              data.append('vedlegg', file);
+              const res = await fetch(uploadUrl, { method: 'POST', body: data });
+              const resData = await res.json();
 
-            if (res.ok) {
-              uploadResult.vedleggId = resData.filId;
-            } else {
-              uploadResult.errorMessage = settFeilmelding(res.status, resData.substatus);
+              if (res.ok) {
+                uploadResult.vedleggId = resData.filId;
+              } else {
+                uploadResult.errorMessage = settFeilmelding(res.status, resData.substatus);
+              }
+            } catch (err: any) {
+              uploadResult.errorMessage = settFeilmelding(err?.status || 500);
             }
-          } catch (err: any) {
-            uploadResult.errorMessage = settFeilmelding(err?.status || 500);
+          } else if (internalErrorMessage) {
+            uploadResult.errorMessage = internalErrorMessage;
           }
-        } else if (internalErrorMessage) {
-          uploadResult.errorMessage = internalErrorMessage;
-        }
 
-        return uploadResult;
-      })
-    );
+          return uploadResult;
+        })
+      );
 
-    setIsUploading(false);
-    onUpload(uploadedFiles);
+      setIsUploading(false);
+      onUpload(uploadedFiles);
+    }
   }
 
   return (
