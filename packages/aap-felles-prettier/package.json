@@ -1,7 +1,7 @@
 {
   "name": "@navikt/aap-felles-prettier",
   "author": "NAV",
-  "version": "4.2.7",
+  "version": "4.2.8",
   "main": "index.json",
   "license": "MIT",
   "dependencies": {

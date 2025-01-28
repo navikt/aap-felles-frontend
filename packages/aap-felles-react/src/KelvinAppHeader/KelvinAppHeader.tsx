@@ -4,10 +4,33 @@ import React, {useState} from 'react';
 import {Button, Dropdown, HStack, InternalHeader, Link, VStack} from '@navikt/ds-react';
 import { Kelvinsøk} from './Kelvinsøk';
 import {Kelvinsøkeresultat, Søkeresultat} from "./Kelvinsøkeresultat";
-
+type SystemUrl = {
+  dev: string;
+  prod: string;
+}
+const saksbehandlingUrl: SystemUrl = {
+  dev: "https://aap-saksbehandling.ansatt.dev.nav.no",
+  prod: 'TBD'
+}
+const produksjonsstyringUrl: SystemUrl = {
+  dev: "https://aap-produksjonsstyring.ansatt.dev.nav.no",
+  prod: 'TBD'
+}
+const postmottakUrl: SystemUrl = {
+  dev: "https://aap-postmottak.ansatt.dev.nav.no",
+  prod: 'TBD'
+}
 interface BrukerInformasjon {
   navn: string;
   NAVident?: string;
+}
+function getUrl(systemUrl: SystemUrl) {
+  if(window && window.location) {
+    if(window.location.href.includes('intern.dev') || window.location.href.includes('ansatt.dev')) {
+      return systemUrl.dev;
+    }
+    return systemUrl.prod;
+  }
 }
 
 const Brukermeny = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => (
@@ -24,7 +47,6 @@ const Brukermeny = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjo
     </Dropdown.Menu>
   </Dropdown>
 );
-
 export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => {
   const [søkeresultat, setSøkeresultat] = useState<Søkeresultat | undefined>(undefined);
   return (
@@ -33,11 +55,11 @@ export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: Bruk
         <div className="kelvin-app-header-leftSide">
           <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
           <Kelvinsøk setSøkeresultat={setSøkeresultat}/>
-          <Link href={`${process.env.NEXT_PUBLIC_PRODUKSJONSSTYRING_URL}/oppgave`}>Oppgaveliste</Link>
-          <Link href={`${process.env.NEXT_PUBLIC_PRODUKSJONSSTYRING_URL}/produksjonsstyring`}>Produksjonsstyring</Link>
-          <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/saksoversikt`}>Saksoversikt</Link>
-          <Link href={`${process.env.NEXT_PUBLIC_POSTMOTTAK_URL}/postmottak`}>Postmottak</Link>
-          <Link href={`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/sanity`}>Sanity</Link>
+          <Link href={`${getUrl(produksjonsstyringUrl)}/oppgave`}>Oppgaveliste</Link>
+          <Link href={`${getUrl(produksjonsstyringUrl)}/produksjonsstyring`}>Produksjonsstyring</Link>
+          <Link href={`${getUrl(saksbehandlingUrl)}/saksoversikt`}>Saksoversikt</Link>
+          <Link href={`${getUrl(postmottakUrl)}/postmottak`}>Postmottak</Link>
+          <Link href={`${getUrl(saksbehandlingUrl)}/sanity`}>Sanity</Link>
         </div>
         <Brukermeny brukerInformasjon={brukerInformasjon}/>
       </div>

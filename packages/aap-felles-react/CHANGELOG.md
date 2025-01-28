@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.8
+
+### Patch Changes
+
+- url-i-komponent
+
 ## 4.2.7
 
 ### Patch Changes
