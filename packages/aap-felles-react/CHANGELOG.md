@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.3.1
+
+### Patch Changes
+
+- Forrige pakke ble ikke releaset
+
 ## 4.3.0
 
 ### Minor Changes
