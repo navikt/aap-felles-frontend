@@ -1,5 +1,5 @@
 import { Select } from '@navikt/ds-react';
-import React, { ReactNode } from 'react';
+import React, { HTMLInputAutoCompleteAttribute, ReactNode } from 'react';
 import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
 
@@ -14,6 +14,7 @@ export interface SelectProps<FormFieldValues extends FieldValues> {
   description?: ReactNode;
   readOnly?: boolean;
   className?: string;
+  autocomplete?: HTMLInputAutoCompleteAttribute;
 }
 
 export const SelectWrapper = <FormFieldValues extends FieldValues>({
@@ -27,6 +28,7 @@ export const SelectWrapper = <FormFieldValues extends FieldValues>({
   children,
   readOnly,
   className,
+  autocomplete,
 }: SelectProps<FormFieldValues>) => (
   <Controller
     name={name}
@@ -45,6 +47,7 @@ export const SelectWrapper = <FormFieldValues extends FieldValues>({
         error={error?.message}
         readOnly={readOnly}
         className={className}
+        autoComplete={autocomplete}
       >
         {children}
       </Select>

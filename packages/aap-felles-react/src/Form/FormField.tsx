@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLInputAutoCompleteAttribute, ReactNode } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types';
 
@@ -26,10 +26,11 @@ interface Props<FormFieldIds extends FieldValues> {
   horizontalRadio?: boolean;
   size?: 'small' | 'medium';
   className?: string;
+  autocomplete?: HTMLInputAutoCompleteAttribute;
 }
 
 export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFieldIds>) => {
-  const { formField, form, children, className, horizontalRadio, size } = props;
+  const { formField, form, children, className, horizontalRadio, size, autocomplete = 'off' } = props;
 
   return (
     <>
@@ -45,6 +46,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           readOnly={formField.readOnly}
           className={className}
+          autocomplete={autocomplete}
         />
       )}
       {formField.type === 'textarea' && (
@@ -58,6 +60,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           readOnly={formField.readOnly}
           className={className}
+          autocomplete={autocomplete}
         />
       )}
       {formField.type === 'radio' && (
@@ -107,6 +110,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           description={formField.description}
           readOnly={formField.readOnly}
           className={className}
+          autocomplete={autocomplete}
         />
       )}
       {formField.type === 'checkbox' && (
@@ -139,6 +143,7 @@ export const FormField = <FormFieldIds extends FieldValues>(props: Props<FormFie
           size={size}
           readOnly={formField.readOnly}
           className={className}
+          autocomplete={autocomplete}
         >
           {formField.options.map(mapToValuePair).map((option) => (
             <option key={option.value} value={option.value}>

@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.3.0
+
+### Minor Changes
+
+- Kan styre autocomplete. Default av.
+
 ## 4.2.8
 
 ### Patch Changes

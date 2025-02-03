@@ -1,5 +1,5 @@
 import { TextField } from '@navikt/ds-react';
-import React from 'react';
+import React, { HTMLInputAutoCompleteAttribute } from 'react';
 import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
 import { FieldPath } from 'react-hook-form/dist/types';
 
@@ -14,6 +14,7 @@ export interface TextFieldProps<FormFieldValues extends FieldValues> {
   rules?: RegisterOptions<FormFieldValues>;
   readOnly?: boolean;
   className?: string;
+  autocomplete?: HTMLInputAutoCompleteAttribute;
 }
 
 export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
@@ -27,6 +28,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
   rules,
   readOnly,
   className,
+  autocomplete,
 }: TextFieldProps<FormFieldValues>) => (
   <Controller
     name={name}
@@ -46,6 +48,7 @@ export const TextFieldWrapper = <FormFieldValues extends FieldValues>({
         description={description}
         readOnly={readOnly}
         className={className}
+        autoComplete={autocomplete}
       />
     )}
   />
