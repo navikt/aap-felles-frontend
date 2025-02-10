@@ -25,12 +25,12 @@ interface BrukerInformasjon {
   NAVident?: string;
 }
 function getUrl(systemUrl: SystemUrl) {
-  if(window && window.location) {
-    if(window.location.href.includes('intern.dev') || window.location.href.includes('ansatt.dev')) {
-      return systemUrl.dev;
-    }
+  if(['dev', 'localhost'].includes(process.env.NEXT_PUBLIC_ENVIRONMENT || '')) {
+    return systemUrl.dev;
+  } else if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'prod') {
     return systemUrl.prod;
   }
+  throw new Error('NEXT_PUBLIC_ENVIRONMENT er ikke satt');
 }
 
 const Brukermeny = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => (

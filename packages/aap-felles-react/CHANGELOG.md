@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.3.3
+
+### Patch Changes
+
+- avoid-window
+
 ## 4.3.2
 
 ### Patch Changes
