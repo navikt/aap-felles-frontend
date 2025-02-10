@@ -1,8 +1,7 @@
 import { DatePicker, useDatepicker } from '@navikt/ds-react';
 import { subYears, addYears } from 'date-fns';
 import React from 'react';
-import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
-import { FieldPath } from 'react-hook-form/dist/types';
+import { Control, Controller, FieldValues, RegisterOptions, FieldPath } from 'react-hook-form';
 
 export interface DateProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;

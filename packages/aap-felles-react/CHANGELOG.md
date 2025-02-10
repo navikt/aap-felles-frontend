@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.0
+
+### Major Changes
+
+- Oppdaterer imports fra riktig sted i alle input
+
 ## 4.3.4
 
 ### Patch Changes

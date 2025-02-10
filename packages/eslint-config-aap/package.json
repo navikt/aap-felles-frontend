@@ -1,7 +1,7 @@
 {
   "name": "@navikt/eslint-config-aap",
   "author": "NAV",
-  "version": "4.3.4",
+  "version": "5.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",

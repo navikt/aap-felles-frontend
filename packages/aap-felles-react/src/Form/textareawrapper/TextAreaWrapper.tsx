@@ -1,7 +1,6 @@
 import { Textarea } from '@navikt/ds-react';
 import React, { HTMLInputAutoCompleteAttribute } from 'react';
-import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
-import { FieldPath } from 'react-hook-form/dist/types';
+import { Control, Controller, FieldValues, RegisterOptions, FieldPath } from 'react-hook-form';
 
 export interface TextAreaProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;

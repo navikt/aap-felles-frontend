@@ -1,7 +1,6 @@
 import { Select } from '@navikt/ds-react';
 import React, { HTMLInputAutoCompleteAttribute, ReactNode } from 'react';
-import { Control, Controller, RegisterOptions } from 'react-hook-form';
-import { FieldPath, FieldValues } from 'react-hook-form/dist/types';
+import { Control, Controller, RegisterOptions, FieldPath, FieldValues } from 'react-hook-form';
 
 export interface SelectProps<FormFieldValues extends FieldValues> {
   name: FieldPath<FormFieldValues>;
