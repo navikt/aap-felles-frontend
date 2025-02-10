@@ -2,8 +2,8 @@
 
 import React, {useState} from 'react';
 import {Button, Dropdown, HStack, InternalHeader, Link, VStack} from '@navikt/ds-react';
-import { Kelvinsøk} from './Kelvinsøk';
-import {Kelvinsøkeresultat, Søkeresultat} from "./Kelvinsøkeresultat";
+import { Kelvinsøk, SøkeResultat} from './Kelvinsøk';
+import {Kelvinsøkeresultat} from "./Kelvinsøkeresultat";
 type SystemUrl = {
   dev: string;
   prod: string;
@@ -48,7 +48,7 @@ const Brukermeny = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjo
   </Dropdown>
 );
 export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: BrukerInformasjon }) => {
-  const [søkeresultat, setSøkeresultat] = useState<Søkeresultat | undefined>(undefined);
+  const [søkeresultat, setSøkeresultat] = useState<SøkeResultat | undefined>(undefined);
   return (
     <InternalHeader className="kelvin-app-header">
       <div className={`kelvin-app-main-header ${søkeresultat ? 'kelvin-app-main-header-borderBottom' : ''}`}>

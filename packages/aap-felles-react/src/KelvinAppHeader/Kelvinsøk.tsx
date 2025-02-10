@@ -3,54 +3,33 @@
 import {Dispatch, SetStateAction} from "react";
 import {  Search} from "@navikt/ds-react";
 import React from "react";
-import {Søkeresultat} from "./Kelvinsøkeresultat";
-interface OppgavesøkeResultat {
-  label: string;
-  href: string;
-}
-interface SaksøkeResultat {
-  saksnummer: string;
-  periode: {
-    fom: string;
-    tom: string;
-  };
+
+export interface SøkeResultat {
+  oppgaver?: {
+    label: string;
+    href: string;
+  }[],
+  saker?: {href: string; label: string}[];
 }
 interface Props {
-  setSøkeresultat:  Dispatch<SetStateAction<Søkeresultat | undefined>>;
+  setSøkeresultat:  Dispatch<SetStateAction<SøkeResultat | undefined>>;
 }
+
 export const Kelvinsøk = ({ setSøkeresultat }: Props) => {
 
   async function utførSøk(søketekst: string) {
-    const isFnr = søketekst.length === 11;
-    let oppgaveData: OppgavesøkeResultat[] = [];
+    let søkedata: SøkeResultat = {};
     try {
-      oppgaveData = await fetch(`${process.env.NEXT_PUBLIC_OPPGAVESTYRING_URL}/api/oppgave/sok`, {
+      søkedata = await fetch(`/api/kelvinsok`, {
         method: 'POST',
         body: JSON.stringify({ søketekst }),
       }).then((res) => res.json());
     } catch (error) {
       console.error(error)
     }
-    let sakData: SaksøkeResultat[] = [];
-    if(isFnr){
-      try {
-        sakData = await fetch(`${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/api/sak/finn`, {
-          method: 'POST',
-          body: JSON.stringify({ ident: søketekst }),
-        }).then((res) => res.json());
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    const resData: Søkeresultat = {
-      oppgaver: oppgaveData,
-      saker: sakData.map(sak => ({
-        href: `${process.env.NEXT_PUBLIC_SAKSBEHANDLING_URL}/sak/${sak.saksnummer}`,
-        label: `${sak.periode.fom} - ${sak.periode.tom}  (${sak.saksnummer})`
-      }))
-    }
-    setSøkeresultat(resData);
+    setSøkeresultat(søkedata);
   }
+
   return (
     <form
       data-theme={'dark'}
