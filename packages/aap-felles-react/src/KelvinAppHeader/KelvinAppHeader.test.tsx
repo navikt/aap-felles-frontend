@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { KelvinAppHeader } from './KelvinAppHeader';
@@ -11,6 +11,7 @@ const brukerInformasjon = {
 };
 
 describe('Header', () => {
+  vi.stubEnv('NEXT_PUBLIC_ENVIRONMENT', 'dev');
   const user = userEvent.setup();
   it('skal vise overskrift i header', async () => {
     render(<KelvinAppHeader brukerInformasjon={brukerInformasjon} />);
