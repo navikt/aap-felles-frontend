@@ -1,6 +1,6 @@
 'use client'
 
-import {Dispatch, SetStateAction} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import {  Search} from "@navikt/ds-react";
 import React from "react";
 
@@ -16,8 +16,10 @@ interface Props {
 }
 
 export const Kelvinsøk = ({ setSøkeresultat }: Props) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function utførSøk(søketekst: string) {
+    setIsLoading(true);
     let søkedata: SøkeResultat = {};
     try {
       søkedata = await fetch(`/api/kelvinsok`, {
@@ -28,6 +30,7 @@ export const Kelvinsøk = ({ setSøkeresultat }: Props) => {
       console.error(error)
     }
     setSøkeresultat(søkedata);
+    setIsLoading(false);
   }
 
   return (
@@ -43,7 +46,9 @@ export const Kelvinsøk = ({ setSøkeresultat }: Props) => {
         e.preventDefault();
       }}
     >
-      <Search label={'Søk etter person eller sak'} variant="secondary" hideLabel={true} size={'small'} />
+      <Search  label={'Søk etter person eller sak'} variant="secondary" hideLabel={true} size={'small'}>
+        <Search.Button loading={isLoading} />
+      </Search>
     </form>
   );
 };

@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.1
+
+### Patch Changes
+
+- kelvinsok-loading
+
 ## 5.0.0
 
 ### Major Changes
