@@ -9,15 +9,15 @@ type SystemUrl = {
   prod: string;
 }
 const saksbehandlingUrl: SystemUrl = {
-  dev: "https://aap-saksbehandling.ansatt.dev.nav.no",
+  dev: "https://kelvin.ansatt.dev.nav.no/saksbehandling",
   prod: 'TBD'
 }
 const produksjonsstyringUrl: SystemUrl = {
-  dev: "https://aap-produksjonsstyring.ansatt.dev.nav.no",
+  dev: "https://kelvin.ansatt.dev.nav.no/oppgave",
   prod: 'TBD'
 }
 const postmottakUrl: SystemUrl = {
-  dev: "https://aap-postmottak.ansatt.dev.nav.no",
+  dev: "https://kelvin.ansatt.dev.nav.no/postmottak",
   prod: 'TBD'
 }
 interface BrukerInformasjon {
@@ -55,10 +55,10 @@ export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: Bruk
         <div className="kelvin-app-header-leftSide">
           <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
           <Kelvinsøk setSøkeresultat={setSøkeresultat}/>
-          <Link href={`${getUrl(produksjonsstyringUrl)}/oppgave`}>Oppgaveliste</Link>
+          <Link href={`${getUrl(produksjonsstyringUrl)}/`}>Oppgaveliste</Link>
           <Link href={`${getUrl(produksjonsstyringUrl)}/produksjonsstyring`}>Produksjonsstyring</Link>
           <Link href={`${getUrl(saksbehandlingUrl)}/saksoversikt`}>Saksoversikt</Link>
-          <Link href={`${getUrl(postmottakUrl)}/postmottak`}>Postmottak</Link>
+          <Link href={`${getUrl(postmottakUrl)}/`}>Postmottak</Link>
           <Link href={`${getUrl(saksbehandlingUrl)}/sanity`}>Sanity</Link>
         </div>
         <Brukermeny brukerInformasjon={brukerInformasjon}/>
