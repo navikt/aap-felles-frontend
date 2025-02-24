@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.4
+
+### Patch Changes
+
+- Bedre håndtering av URL i app-header
+
 ## 5.0.3
 
 ### Patch Changes
