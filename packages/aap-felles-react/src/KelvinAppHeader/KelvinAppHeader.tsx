@@ -31,11 +31,21 @@ export const KelvinAppHeader = ({ brukerInformasjon }: { brukerInformasjon: Bruk
         <div className="kelvin-app-header-leftSide">
           <InternalHeader.Title href="/">Kelvin</InternalHeader.Title>
           <Kelvinsøk setSøkeresultat={setSøkeresultat}/>
-          <Link href={`/oppgave/`}>Oppgaveliste</Link>
-          <Link href={`/oppgave/produksjonsstyring`}>Produksjonsstyring</Link>
-          <Link href={`/saksbehandling/saksoversikt`}>Saksoversikt</Link>
-          <Link href={`/postmottak/`}>Postmottak</Link>
-          <Link href={`/saksbehandling/sanity`}>Sanity</Link>
+          <Link className="kelvin-app-header-link" href={`/oppgave/`}>
+            Oppgaveliste
+          </Link>
+          <Link className="kelvin-app-header-link" href={`/oppgave/produksjonsstyring`}>
+            Produksjonsstyring
+          </Link>
+          <Link className="kelvin-app-header-link" href={`/saksbehandling/saksoversikt`}>
+            Saksoversikt
+          </Link>
+          <Link className="kelvin-app-header-link" href={`/postmottak/`}>
+            Postmottak
+          </Link>
+          <Link className="kelvin-app-header-link" href={`/saksbehandling/sanity`}>
+            Sanity
+          </Link>
         </div>
         <Brukermeny brukerInformasjon={brukerInformasjon}/>
       </div>

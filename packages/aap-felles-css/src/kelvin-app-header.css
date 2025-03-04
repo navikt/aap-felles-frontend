@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
 }
-.kelvin-app-header a {
+.kelvin-app-header-link {
   color: var(--a-white);
 }
 .kelvin-app-main-header {
