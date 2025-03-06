@@ -1,38 +1,15 @@
-.kelvin-app-header {
-  display: flex;
-  flex-direction: column;
-}
-.kelvin-app-header-link {
+.kelvin-app-header-link,
+.kelvin-app-header-search-result p,
+.kelvin-app-header-search-result label,
+.kelvin-app-header-search-result .navds-heading {
   color: var(--a-white);
 }
-.kelvin-app-main-header {
-  display: flex;
-  justify-content: space-between;
-  max-height: 4rem;
-  width: 100%;
-}
-.kelvin-app-main-header-borderBottom {
-  border-bottom: 1px solid grey; //TODO: riktig farge
-}
 
-.kelvin-app-header-leftSide {
-  display: flex;
-  flex-direction: row;
-  gap: var(--a-spacing-4);
-}
-
-.kelvin-app-header-link {
-  width: 100%;
+.kelvin-app-header-search-result {
+  border-top: 1px solid var(--a-gray-50);
 }
 
 .kelvin-oppgavesok-form {
   padding-top: var(--a-spacing-2);
   background-color: var(--a-surface-inverted);
-}
-
-.kelvin-oppgavesok-resultat {
-  background-color: var(--a-surface-inverted);
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
