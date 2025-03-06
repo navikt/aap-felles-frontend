@@ -2,6 +2,7 @@
 .yarn/install-state.gz
 
 .idea
+*.iml
 node_modules
 .cache
 dist
