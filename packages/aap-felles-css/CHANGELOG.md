@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- Oppdatere CSS for app header
+
 ## 5.0.5
 
 ### Patch Changes
