@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.2
+
+### Patch Changes
+
+- combobox_multiple
+
 ## 5.1.1
 
 ### Patch Changes
