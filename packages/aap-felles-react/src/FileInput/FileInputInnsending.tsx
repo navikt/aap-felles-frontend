@@ -1,6 +1,6 @@
 import { UploadIcon } from '@navikt/aksel-icons';
 import { BodyShort, Heading, Loader } from '@navikt/ds-react';
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState} from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
 import { FileInputProps, Vedlegg } from './FileInput';
@@ -26,6 +26,7 @@ export const FileInputInnsending = (props: FileInputProps) => {
   } = props;
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [totalSizeIInnsending, setTotalSizeIInnsending] = useState<number>(0);
   const fileInputElement = useRef<HTMLInputElement>(null);
   const inputId = useMemo(() => uuidV4(), []);
   const tekster = useMemo(() => {
@@ -89,6 +90,17 @@ export const FileInputInnsending = (props: FileInputProps) => {
           name: `${fileArray.length} filer`,
         }
       ]);
+    } else if (totalSize + totalSizeIInnsending > MAX_TOTAL_FILE_SIZE) {
+      setIsUploading(false);
+      onUpload([
+        {
+          vedleggId: uuidV4(),
+          errorMessage: tekster.fileInputErrors.fileTooLarge,
+          type: '',
+          size: totalSize,
+          name: `${fileArray.length} filer`,
+        }
+      ]);
     } else {
       setIsUploading(true);
       const uploadedFiles: Vedlegg[] = await Promise.all(
@@ -125,6 +137,8 @@ export const FileInputInnsending = (props: FileInputProps) => {
         })
       );
 
+      const successfullyUploadedFiles = uploadedFiles.filter(file => !file.errorMessage)
+      setTotalSizeIInnsending(totalSizeIInnsending + successfullyUploadedFiles.reduce((acc, curr) => acc + curr.size, 0))
       setIsUploading(false);
       onUpload(uploadedFiles);
     }

@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.1
+
+### Patch Changes
+
+- valider-total-filstørrelse-i-innsending
+
 ## 5.1.0
 
 ## 5.0.5
