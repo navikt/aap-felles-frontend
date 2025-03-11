@@ -3,4 +3,3 @@ export * from './ScanningGuide/ScanningGuide';
 export * from './FileInput/FileInput';
 export * from './FileInput/FileInputInnsending';
 export * from './Form';
-export * from './KelvinAppHeader/KelvinAppHeader';
