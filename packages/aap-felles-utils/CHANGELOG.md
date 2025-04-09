@@ -1,5 +1,8 @@
 # Change Log
 
+## 5.1.4
+- Justere formatering av errorlogg slik at hovedmelding ikke overskrives.
+
 ## 5.1.3
 
 ## 5.1.2
