@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.2.0
+
+### Minor Changes
+
+- Bumpe avhengigheter
+
 ## 5.1.3
 
 ## 5.1.2

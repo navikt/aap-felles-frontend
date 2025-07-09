@@ -1,6 +1,13 @@
 # Change Log
 
+## 5.2.0
+
+### Minor Changes
+
+- Bumpe avhengigheter
+
 ## 5.1.4
+
 - Justere formatering av errorlogg slik at hovedmelding ikke overskrives.
 
 ## 5.1.3
