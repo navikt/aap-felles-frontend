@@ -25,7 +25,7 @@
   "prettier": "@navikt/aap-felles-prettier",
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@navikt/aap-felles-prettier": "^2.0.21",
+    "@navikt/aap-felles-prettier": "^5.2.0",
     "@storybook/addon-actions": "^8.4.2",
     "@storybook/addon-essentials": "^8.4.2",
     "@storybook/addon-interactions": "^8.4.2",
