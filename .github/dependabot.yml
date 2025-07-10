@@ -12,5 +12,8 @@ updates:
           interval: daily
     - package-ecosystem: npm
       directory: "/"
+      registries:
+        - npm-github
       schedule:
           interval: daily
+          
