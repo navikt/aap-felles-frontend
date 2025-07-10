@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.0
+
+### Minor Changes
+
+- Versjonsoppdateringer
+
 ## 5.2.0
 
 ### Minor Changes

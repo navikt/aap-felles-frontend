@@ -8,5 +8,6 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['vitestSetup.ts'],
+    exclude: ['**/node_modules/**', '**/cjs/**'],
   },
 });
