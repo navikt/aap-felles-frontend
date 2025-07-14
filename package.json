@@ -44,7 +44,7 @@
     "@navikt/ds-react": "^7.5.2",
     "css-loader": "^7.1.2",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.1.0"
   },
   "workspaces": [
     "packages/*"
