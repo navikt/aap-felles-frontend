@@ -3962,24 +3962,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aksel-icons@npm:7.25.1":
+"@navikt/aksel-icons@npm:7.25.1, @navikt/aksel-icons@npm:^7.13.0, @navikt/aksel-icons@npm:^7.5.2":
   version: 7.25.1
   resolution: "@navikt/aksel-icons@npm:7.25.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.25.1%2F5b2b3d04a018be264b322ccfcffcb055c33098a2"
   checksum: 10c0/ab1f6e020869d32165c616b3b70cf76fbde9a45bfc26f65a2e53b678160683b57ff7b060626e2b034e2421539020a2b57a9171ec913487c3fd160a5e647a83b5
-  languageName: node
-  linkType: hard
-
-"@navikt/aksel-icons@npm:^7.13.0":
-  version: 7.13.0
-  resolution: "@navikt/aksel-icons@npm:7.13.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.13.0%2F23160e57540df4f599acc7b744a08e8a34b05b70"
-  checksum: 10c0/2c47f9d5ff2c3cd55c7cf0f6d5184531e32bbeadc30daba845dd5e6fc9ad1f16ce50dbb9a42bbc20ac16a9254a93415c129522b5e4b1113a9c39894a06819377
-  languageName: node
-  linkType: hard
-
-"@navikt/aksel-icons@npm:^7.5.2":
-  version: 7.5.2
-  resolution: "@navikt/aksel-icons@npm:7.5.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.5.2%2Ff4647ae294f8a7a76dc1755c332bfca48c21f0a4"
-  checksum: 10c0/db293e5b66edd5cb00c8b63fd1081945ab387dccb2b9f2f5894fd19972f738c53f17909210edfbfd5a7df9c2c4a30d7d822574c463407213830c0538a9b82966
   languageName: node
   linkType: hard
 
