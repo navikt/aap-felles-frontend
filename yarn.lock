@@ -3907,7 +3907,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-react@workspace:packages/aap-felles-react"
   dependencies:
-    "@navikt/aksel-icons": "npm:7.25.1"
+    "@navikt/aksel-icons": "npm:7.25.2"
     "@navikt/ds-css": "npm:7.25.1"
     "@navikt/ds-react": "npm:7.13.0"
     "@testing-library/dom": "npm:^10.4.0"
@@ -3962,10 +3962,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aksel-icons@npm:7.25.1":
-  version: 7.25.1
-  resolution: "@navikt/aksel-icons@npm:7.25.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.25.1%2F5b2b3d04a018be264b322ccfcffcb055c33098a2"
-  checksum: 10c0/ab1f6e020869d32165c616b3b70cf76fbde9a45bfc26f65a2e53b678160683b57ff7b060626e2b034e2421539020a2b57a9171ec913487c3fd160a5e647a83b5
+"@navikt/aksel-icons@npm:7.25.2":
+  version: 7.25.2
+  resolution: "@navikt/aksel-icons@npm:7.25.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F7.25.2%2Fadad3140d8b5598ced14215e3762db22f9137adf"
+  checksum: 10c0/cad23b7fa25bc2c9398bacae2f0d81ad525c9ca2b100db393dfa7fda294e8a9f983638cef109294918dbef830c038daf955e168b4fcd304eeaf2e7f8f25d5acb
   languageName: node
   linkType: hard
 
