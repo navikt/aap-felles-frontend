@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.0
+
+### Minor Changes
+
+- Oppgradert react til 19.1.1
+
 ## 5.3.0
 
 ### Minor Changes
