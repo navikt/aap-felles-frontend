@@ -29,7 +29,7 @@
     "@storybook/addon-actions": "^8.4.2",
     "@storybook/addon-essentials": "^8.4.2",
     "@storybook/addon-interactions": "^8.4.2",
-    "@storybook/addon-links": "^8.4.2",
+    "@storybook/addon-links": "^9.1.7",
     "@storybook/nextjs": "^8.4.2",
     "@storybook/react": "^9.0.16",
     "@storybook/testing-library": "^0.2.2",
