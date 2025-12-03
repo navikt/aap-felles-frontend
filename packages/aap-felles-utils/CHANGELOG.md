@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.1
+
+### Patch Changes
+
+- next-security-patch
+
 ## 5.4.0
 
 ### Minor Changes
