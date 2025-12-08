@@ -1,5 +1,5 @@
 {
-  "version": "5.4.1",
+  "version": "5.5.0",
   "name": "@navikt/aap-felles-utils",
   "author": "NAV",
   "homepage": "https://github.com/navikt/aap-felles-frontend#readme",
@@ -29,7 +29,7 @@
     "@navikt/oasis": "^3.4.0",
     "axios": "^1.7.7",
     "jose": "^5.9.2",
-    "next": "15.4.8",
+    "next": "15.5.7",
     "openid-client": "^5.7.0",
     "pino": "^9.4.0",
     "prom-client": "^15.1.3",
