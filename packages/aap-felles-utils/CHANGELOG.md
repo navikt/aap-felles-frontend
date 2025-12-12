@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.5.1
+
+### Patch Changes
+
+- release-next-security-bump
+
 ## 5.5.0
 
 ### Minor Changes
