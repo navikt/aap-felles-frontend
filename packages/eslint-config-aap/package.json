@@ -3,6 +3,10 @@
   "author": "NAV",
   "version": "5.5.1",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./flat": "./flat.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "echo \"Building\"",
