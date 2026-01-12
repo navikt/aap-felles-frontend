@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.6.0
+
+### Minor Changes
+
+- Støtte for flat-config
+
 ## 5.5.1
 
 ## 5.5.0
