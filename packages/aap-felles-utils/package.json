@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@navikt/oasis": "^3.4.0",
-    "axios": "^1.7.7",
+    "axios": "1.13.5",
     "jose": "^5.9.2",
     "next": "15.5.9",
     "openid-client": "^5.7.0",
