@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.6.1
+
+### Patch Changes
+
+- deps
+
 ## 5.6.0
 
 ## 5.5.1
