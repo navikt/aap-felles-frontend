@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.6.2
+
+### Patch Changes
+
+- Bump axios
+
 ## 5.6.1
 
 ### Patch Changes
