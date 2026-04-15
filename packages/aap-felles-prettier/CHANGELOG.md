@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.6.3
+
+### Patch Changes
+
+- Next js bump
+
 ## 5.6.2
 
 ### Patch Changes
