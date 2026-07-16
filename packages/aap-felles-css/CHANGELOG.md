@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.7.0
+
+### Minor Changes
+
+- Fjerne felles-react
+
 ## 5.6.3
 
 ### Patch Changes
