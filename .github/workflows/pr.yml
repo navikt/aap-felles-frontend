@@ -24,6 +24,15 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
       - name: Enable Corepack
         run: corepack enable
+      - name: "Update lockfile for Dependabot"
+        if: github.actor == 'dependabot[bot]'
+        run: |
+          yarn install
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add yarn.lock
+          git diff --staged --quiet || git commit -m "chore: update yarn.lock"
+          git push origin HEAD:${{ github.head_ref }}
       - name: "install dependencies"
         run: "yarn --immutable"
       - name: "test packages"
