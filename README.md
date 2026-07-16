@@ -1,14 +1,5 @@
 # aap-felles-frontend
 
-## Lokal utvikling for react-komponenter
-
-```
-yarn
-yarn storybook
-```
-
-Ved push til main vil storybooken også deployes til github pages https://navikt.github.io/aap-felles-frontend/
-
 ## Bygg og testing av workspace
 
 Bygg av pakker
@@ -44,8 +35,8 @@ git push
 Pass på at dependencies legges i riktig packages/aap-felles-\*\*\*\*/package.json. Eksempler:
 
 ```
-yarn workspace @navikt/aap-felles-react add PACKAGENAME
-yarn workspace @navikt/aap-felles-react add PACKAGENAME -dev
+yarn workspace @navikt/aap-felles-utils add PACKAGENAME
+yarn workspace @navikt/aap-felles-utils add PACKAGENAME -dev
 ```
 
 ## Oppgradering av pakker
@@ -68,10 +59,6 @@ auth-biblopteket krever at følgende env-variabler settes i appen:
 |TOKEN_X_WELL_KNOWN_URL|nais|
 |TOKEN_X_PRIVATE_JWK|nais|
 |TOKEN_X_CLIENT_ID|nais|
-
-## aap-felles-react
-
-Felles react-komponenter.
 
 ## aap-felles-utils-client
 

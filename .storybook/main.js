@@ -1,9 +1,6 @@
 import { dirname, join } from "path";
 module.exports = {
-  stories: [
-    "../packages/aap-felles-react/**/*.stories.mdx",
-    "../packages/aap-felles-react/**/*.stories.tsx",
-  ],
+  stories: [],
 
   addons: [
     getAbsolutePath("@storybook/addon-links"),
