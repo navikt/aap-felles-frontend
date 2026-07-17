@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.8.0
+
+### Minor Changes
+
+- Diverse versjonsbumps, deprekere bruk av openapi-client
+
 ## 5.7.0
 
 ### Minor Changes

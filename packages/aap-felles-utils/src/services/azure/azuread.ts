@@ -3,14 +3,19 @@ import {
     JWSHeaderParameters,
     jwtVerify,
     createRemoteJWKSet,
-    FlattenedJWSInput
+    FlattenedJWSInput,
+    GetKeyFunction
 } from "jose";
-import { GetKeyFunction } from "jose/dist/types/types";
+import { logWarning } from "../../logger";
+
+const DEPRECATION_WARNING =
+  'Denne funksjonen er deprecated og vil bli fjernet. Bruk @navikt/oasis i stedet.';
 
 let _issuer: Issuer<Client>;
 let _remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
 
 export async function validerToken(token: string | Uint8Array) {
+    logWarning(DEPRECATION_WARNING);
     return jwtVerify(token, await jwks(), {
         issuer: (await issuer()).metadata.issuer,
     });

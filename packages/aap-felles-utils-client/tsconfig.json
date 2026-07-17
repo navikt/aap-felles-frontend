@@ -3,8 +3,9 @@
   "include": ["src", "types"],
   "compilerOptions": {
     "outDir": "./cjs",
+    "rootDir": "./src",
     "module": "commonjs",
     "noImplicitAny": false
   },
-  "exclude": ["node_modules", "cjs", "esm", "**/*.stories.tsx"]
+  "exclude": ["node_modules", "cjs", "esm", "**/*.stories.tsx", "**/*.test.ts", "**/*.test.tsx"]
 }

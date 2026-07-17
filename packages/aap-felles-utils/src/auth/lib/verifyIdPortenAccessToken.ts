@@ -1,6 +1,9 @@
-import { createRemoteJWKSet, FlattenedJWSInput, JWSHeaderParameters, jwtVerify } from 'jose';
-import { GetKeyFunction } from 'jose/dist/types/types';
+import { createRemoteJWKSet, FlattenedJWSInput, GetKeyFunction, JWSHeaderParameters, jwtVerify } from 'jose';
 import { Client, Issuer } from 'openid-client';
+import { logWarning } from '../../logger';
+
+const DEPRECATION_WARNING =
+  'Denne funksjonen er deprecated og vil bli fjernet. Bruk @navikt/oasis i stedet.';
 
 let _issuer: Issuer<Client>;
 let _remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
@@ -30,6 +33,7 @@ async function issuer() {
 }
 
 export async function verifyIdportenAccessToken(bearerToken: string) {
+  logWarning(DEPRECATION_WARNING);
   const token = bearerToken.split(' ')[1];
 
   const verified = await validerToken(token);

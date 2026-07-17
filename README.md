@@ -52,13 +52,13 @@ yarn upgrade-interactive
 Felles funksjoner som brukes til å logge inn og autentisere med idporten.
 
 auth-biblopteket krever at følgende env-variabler settes i appen:
-| env-variabel | kilde |
-|--------------|-------|
-|WONDERWALL_REDIRECT_DESTINATION|app|
-|IDPORTEN_WELL_KNOWN_URL|nais|
-|TOKEN_X_WELL_KNOWN_URL|nais|
-|TOKEN_X_PRIVATE_JWK|nais|
-|TOKEN_X_CLIENT_ID|nais|
+| env-variabel                    | kilde |
+|---------------------------------|-------|
+| WONDERWALL_REDIRECT_DESTINATION | app   |
+| IDPORTEN_WELL_KNOWN_URL         | nais  |
+| TOKEN_X_WELL_KNOWN_URL          | nais  |
+| TOKEN_X_PRIVATE_JWK             | nais  |
+| TOKEN_X_CLIENT_ID               | nais  |
 
 ## aap-felles-utils-client
 

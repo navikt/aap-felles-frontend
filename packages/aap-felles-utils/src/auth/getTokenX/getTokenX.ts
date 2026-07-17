@@ -1,5 +1,8 @@
 import { Client, GrantBody, Issuer, errors } from 'openid-client';
-import { logError } from '../../logger';
+import { logError, logWarning } from '../../logger';
+
+const DEPRECATION_WARNING =
+  'Denne funksjonen er deprecated og vil bli fjernet. Bruk @navikt/oasis i stedet.';
 
 const OPError = errors.OPError;
 
@@ -38,6 +41,7 @@ async function client() {
 }
 
 export async function getTokenX(subject_token: string, audience: string): Promise<string | undefined> {
+  logWarning(DEPRECATION_WARNING);
   const _client = await client();
 
   const now = Math.floor(Date.now() / 1000);
