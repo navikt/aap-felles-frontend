@@ -1,4 +1,4 @@
-import { getStringFromPossiblyArrayQuery, replaceUUIDsInString } from '../string';
+import { getStringFromPossiblyArrayQuery, replaceUUIDsInString } from './string';
 
 describe('getStringFromPossiblyArrayQuery', () => {
   it('should return the first element of an array', () => {

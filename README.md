@@ -59,7 +59,3 @@ auth-biblopteket krever at følgende env-variabler settes i appen:
 | TOKEN_X_WELL_KNOWN_URL          | nais  |
 | TOKEN_X_PRIVATE_JWK             | nais  |
 | TOKEN_X_CLIENT_ID               | nais  |
-
-## aap-felles-utils-client
-
-Felles hjelpemetoder
