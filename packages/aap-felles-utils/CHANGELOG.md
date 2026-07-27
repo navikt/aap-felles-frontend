@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.10.0
+
+### Minor Changes
+
+- Fjerne ubrukte pakker
+
 ## 5.9.0
 
 ## 5.8.0
