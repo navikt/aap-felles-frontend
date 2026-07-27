@@ -781,17 +781,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-utils-client@workspace:packages/aap-felles-utils-client":
-  version: 0.0.0-use.local
-  resolution: "@navikt/aap-felles-utils-client@workspace:packages/aap-felles-utils-client"
-  dependencies:
-    "@types/node": "npm:^20.19.43"
-    date-fns: "npm:^4.4.0"
-    typescript: "npm:^6.0.3"
-    vitest: "npm:^4.1.10"
-  languageName: unknown
-  linkType: soft
-
 "@navikt/aap-felles-utils@workspace:packages/aap-felles-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-utils@workspace:packages/aap-felles-utils"

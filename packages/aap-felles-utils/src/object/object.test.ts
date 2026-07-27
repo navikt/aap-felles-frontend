@@ -1,4 +1,4 @@
-import { flattenObject } from '.';
+import { flattenObject } from './object';
 
 describe('Object', () => {
   it('should flatten nested object to key-value pair', () => {

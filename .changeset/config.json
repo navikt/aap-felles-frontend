@@ -6,7 +6,6 @@
     "@navikt/aap-felles-css",
     "@navikt/aap-felles-prettier",
     "@navikt/aap-felles-utils",
-    "@navikt/aap-felles-utils-client",
     "@navikt/eslint-config-aap"]
   ],
   "linked": [],
