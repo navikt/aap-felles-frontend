@@ -1,5 +1,7 @@
 # Change Log
 
+## 6.0.0
+
 ## 5.10.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.0
+
+### Major Changes
+
+- bump eslint to newest version
+
 ## 5.10.0
 
 ### Minor Changes
