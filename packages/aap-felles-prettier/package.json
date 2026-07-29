@@ -7,5 +7,12 @@
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "prettier": "^3.9.5"
+  },
+  "devDependencies": {
+    "@navikt/eslint-config-aap": "workspace:*",
+    "eslint": "^10.8.0"
+  },
+  "scripts": {
+    "lint": "eslint ."
   }
 }

@@ -23,7 +23,8 @@
   "scripts": {
     "test": "vitest run",
     "build": "yarn run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json",
-    "clean": "rm -rf ./cjs ./esm"
+    "clean": "rm -rf ./cjs ./esm",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@navikt/oasis": "^4.1.4",
@@ -36,6 +37,8 @@
     "server-only": "^0.0.1"
   },
   "devDependencies": {
+    "@navikt/eslint-config-aap": "workspace:*",
+    "eslint": "^10.8.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   }

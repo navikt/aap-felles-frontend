@@ -1,34 +1,57 @@
-import js from '@eslint/js';
-import { baseRules } from './base';
+const js = require('@eslint/js');
+const { fixupPluginRules } = require('@eslint/compat');
+const globals = require('globals');
+const reactPlugin = require('eslint-plugin-react');
+const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
+const reactHooksPlugin = require('eslint-plugin-react-hooks');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const jestPlugin = require('eslint-plugin-jest');
 
-export default [
-  ...js.configs.recommended,
-  {
-    plugins: { react: 'eslint-plugin-react' },
-    rules: require('eslint-plugin-react').configs.recommended.rules,
-  },
-  {
-    plugins: { 'jsx-a11y': 'eslint-plugin-jsx-a11y' },
-    rules: require('eslint-plugin-jsx-a11y').configs.recommended.rules,
-  },
-  {
-    plugins: { 'react-hooks': 'eslint-plugin-react-hooks' },
-    rules: require('eslint-plugin-react-hooks').configs.recommended.rules,
-  },
+module.exports = [
+  js.configs.recommended,
+  jsxA11yPlugin.flatConfigs.recommended,
+  reactHooksPlugin.configs.flat['recommended-latest'],
   {
     languageOptions: {
-      parser: '@typescript-eslint/parser',
+      parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: { jsx: true },
       },
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+        ...globals.node,
+      },
     },
     plugins: {
-      react: 'eslint-plugin-react',
-      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
-      jest: 'eslint-plugin-jest',
+      react: fixupPluginRules(reactPlugin),
+      '@typescript-eslint': tsPlugin,
+      jest: jestPlugin,
     },
-    ...baseRules,
+    settings: {
+      react: { version: 'detect' },
+      jest: { version: 29 },
+    },
+    rules: {
+      ...reactPlugin.configs.recommended.rules,
+      'react/jsx-indent-props': ['error', 2],
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error'],
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'error',
+      'jest/no-identical-title': 'error',
+      'jest/prefer-to-have-length': 'warn',
+      'jest/valid-expect': 'error',
+    },
+  },
+  // Turn off no-undef for TypeScript files — the TS compiler handles this
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: { 'no-undef': 'off' },
   },
 ];
