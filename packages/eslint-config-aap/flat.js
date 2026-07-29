@@ -1,34 +1,42 @@
-import js from '@eslint/js';
-import { baseRules } from './base';
+const js = require('@eslint/js');
+const { fixupPluginRules } = require('@eslint/compat');
+const globals = require('globals');
+const { rules, settings, overrides } = require('./base');
+const reactPlugin = require('eslint-plugin-react');
+const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
+const reactHooksPlugin = require('eslint-plugin-react-hooks');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const jestPlugin = require('eslint-plugin-jest');
 
-export default [
-  ...js.configs.recommended,
+module.exports = [
+  js.configs.recommended,
   {
-    plugins: { react: 'eslint-plugin-react' },
-    rules: require('eslint-plugin-react').configs.recommended.rules,
+    plugins: { react: fixupPluginRules(reactPlugin) },
+    rules: reactPlugin.configs.recommended.rules,
   },
-  {
-    plugins: { 'jsx-a11y': 'eslint-plugin-jsx-a11y' },
-    rules: require('eslint-plugin-jsx-a11y').configs.recommended.rules,
-  },
-  {
-    plugins: { 'react-hooks': 'eslint-plugin-react-hooks' },
-    rules: require('eslint-plugin-react-hooks').configs.recommended.rules,
-  },
+  jsxA11yPlugin.flatConfigs.recommended,
+  reactHooksPlugin.configs['recommended-latest'],
   {
     languageOptions: {
-      parser: '@typescript-eslint/parser',
+      parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: { jsx: true },
       },
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+      },
     },
     plugins: {
-      react: 'eslint-plugin-react',
-      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
-      jest: 'eslint-plugin-jest',
+      '@typescript-eslint': tsPlugin,
+      jest: jestPlugin,
     },
-    ...baseRules,
+    rules,
+    settings,
   },
+  // overrides from base.js converted to flat config file-specific objects
+  ...overrides.map(({ files, rules: overrideRules }) => ({ files, rules: overrideRules })),
 ];

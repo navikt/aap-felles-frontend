@@ -8,7 +8,8 @@
     "build": "yarn workspaces foreach --all run build",
     "changeset": "changeset",
     "version:patch": "lerna version patch --yes",
-    "publish:ci": " lerna publish --registry https://npm.pkg.github.com from-package --yes"
+    "publish:ci": " lerna publish --registry https://npm.pkg.github.com from-package --yes",
+    "lint": "yarn workspaces foreach --all --exclude . run lint"
   },
   "repository": {
     "type": "git",

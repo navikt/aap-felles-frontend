@@ -26,6 +26,8 @@ jobs:
         run: corepack enable
       - name: "install dependencies"
         run: "yarn --immutable"
+      - name: "lint packages"
+        run: "yarn lint"
       - name: "test packages"
         run: "yarn workspaces foreach --all --exclude . run test"
       - name: "build packages"
