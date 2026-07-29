@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.3
+
+### Patch Changes
+
+- Eslint på alle pakker
+
 ## 6.1.2
 
 ### Patch Changes
