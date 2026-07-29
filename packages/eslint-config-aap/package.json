@@ -1,7 +1,7 @@
 {
   "name": "@navikt/eslint-config-aap",
   "author": "NAV",
-  "version": "6.0.0",
+  "version": "6.1.2",
   "main": "index.js",
   "exports": {
     ".": "./index.js",

@@ -1,5 +1,23 @@
 # Change Log
 
+## 6.1.2
+
+### Patch Changes
+
+- Minibump
+
+## 6.1.1
+
+### Patch Changes
+
+- Tvinge bump
+
+## 6.1.0
+
+### Minor Changes
+
+- Tvinge bump
+
 ## 6.0.0
 
 ## 5.10.0

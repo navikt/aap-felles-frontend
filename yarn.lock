@@ -772,17 +772,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-prettier@npm:^5.2.0":
-  version: 5.10.0
-  resolution: "@navikt/aap-felles-prettier@npm:5.10.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.10.0%2Feec80ef0fcb4a478f83240786576759439c47cf5"
-  dependencies:
-    "@trivago/prettier-plugin-sort-imports": "npm:^6.0.2"
-    prettier: "npm:^3.9.5"
-  checksum: 10c0/c61826b551aba152e092c3a47c4a25cd3dcc2349f11e7b32c4e25357346de443221b9a9693fcc9e5216ea7ff3a417208b6e46f2a85f2486d2441084159b7d392
-  languageName: node
-  linkType: hard
-
-"@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
+"@navikt/aap-felles-prettier@npm:^6.0.0, @navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier"
   dependencies:
@@ -1279,7 +1269,7 @@ __metadata:
   resolution: "aap-felles-frontend@workspace:."
   dependencies:
     "@changesets/cli": "npm:^2.31.1"
-    "@navikt/aap-felles-prettier": "npm:^5.2.0"
+    "@navikt/aap-felles-prettier": "npm:^6.0.0"
   languageName: unknown
   linkType: soft
 
