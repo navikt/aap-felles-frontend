@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.2.0
+
+### Minor Changes
+
+- Fjern plugin for sortering
+
 ## 6.1.3
 
 ### Patch Changes
