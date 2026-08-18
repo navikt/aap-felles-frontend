@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@navikt/eslint-config-aap": "workspace:*",
+    "@types/node": "^22",
     "eslint": "^10.8.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
