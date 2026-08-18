@@ -941,7 +941,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/aap-felles-prettier@npm:^6.0.0, @navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
+"@navikt/aap-felles-prettier@npm:^6.3.0, @navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier":
   version: 0.0.0-use.local
   resolution: "@navikt/aap-felles-prettier@workspace:packages/aap-felles-prettier"
   dependencies:
@@ -1704,7 +1704,7 @@ __metadata:
   resolution: "aap-felles-frontend@workspace:."
   dependencies:
     "@changesets/cli": "npm:^3.0.0"
-    "@navikt/aap-felles-prettier": "npm:^6.0.0"
+    "@navikt/aap-felles-prettier": "npm:^6.3.0"
   languageName: unknown
   linkType: soft
 
