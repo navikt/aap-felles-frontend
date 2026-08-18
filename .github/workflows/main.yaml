@@ -47,14 +47,11 @@ jobs:
           AUTH_TOKEN: "${{secrets.GITHUB_TOKEN}}"
       - name: Create release Pull Request or publish to NPM
         id: changesets
-        uses: changesets/action@v2
+        uses: changesets/action@v1
         with:
-          version-script: yarn changeset version
-          publish-script: yarn changeset publish
-          create-github-releases: false
-          push-with-git-cli: true
-          push-git-tags: false
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version: yarn changeset version
+          publish: yarn changeset publish
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
