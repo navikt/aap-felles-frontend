@@ -49,9 +49,12 @@ jobs:
         id: changesets
         uses: changesets/action@v2
         with:
-          version: yarn changeset version
-          publish: yarn changeset publish
-          createGithubReleases: false
+          version-script: yarn changeset version
+          publish-script: yarn changeset publish
+          create-github-releases: false
+          push-with-git-cli: true
+          push-git-tags: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
