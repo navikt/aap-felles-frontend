@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.3.0
+
+### Minor Changes
+
+- Deps
+
 ## 6.2.0
 
 ### Minor Changes

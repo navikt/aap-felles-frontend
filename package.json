@@ -23,7 +23,7 @@
   },
   "prettier": "@navikt/aap-felles-prettier",
   "devDependencies": {
-    "@navikt/aap-felles-prettier": "^6.0.0"
+    "@navikt/aap-felles-prettier": "^6.3.0"
   },
   "dependencies": {
     "@changesets/cli": "^3.0.0"
