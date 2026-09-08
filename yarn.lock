@@ -1374,10 +1374,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rolldown/binding-android-arm64@npm:1.1.5":
-  version: 1.1.5
-  resolution: "@rolldown/binding-android-arm64@npm:1.1.5"
- 
 "@rollup/rollup-android-arm-eabi@npm:4.63.1":
   version: 4.63.1
   resolution: "@rollup/rollup-android-arm-eabi@npm:4.63.1"
