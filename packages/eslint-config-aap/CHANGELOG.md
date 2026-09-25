@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.4.0
+
+### Minor Changes
+
+- 73f7046: Deps bumps
+
 ## 6.3.3
 
 ### Patch Changes
