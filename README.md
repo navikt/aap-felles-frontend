@@ -21,7 +21,7 @@ Av en eller annen grunn fungerer det ikke å kjøre `yarn build` eller `yarn tes
 Vi bruker `changeset` for å styre versjonering av pakkene våre. Foreløpig er det ikke satt opp støtte for dette i CI, så kommandoene må kjøres manuelt før commit.
 
 ```
-yarn changeset
+yarn changesetyarn changesetyarn changeset
 yarn changeset version
 git add // alle endringene dine
 git commit -m "En fin melding som forklarer hvorfor endringene ble gjort"
