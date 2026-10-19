@@ -17,6 +17,7 @@ jobs:
       contents: write
       id-token: write
       packages: write
+      pull-requests: write
     steps:
       - uses: "actions/checkout@v7"
       - uses: "actions/setup-node@v7"
@@ -35,7 +36,7 @@ jobs:
         run: |
           git config user.email "aap-innbygger@nav.no"
           git config user.name "Team Innbygger"
-          git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/navikt/aap-felles-innbygger.git
+          git remote set-url origin "https://github-actions[bot]:$GITHUB_TOKEN@github.com/${GITHUB_REPOSITORY}.git"
           git fetch origin
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
