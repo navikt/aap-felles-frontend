@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## Manual changelog
+
+19-10-2026: deps
 
 ## 0.0.98 (2024-04-22)
 
