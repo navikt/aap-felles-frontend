@@ -18,17 +18,21 @@ Av en eller annen grunn fungerer det ikke å kjøre `yarn build` eller `yarn tes
 
 ## Versjonering av pakker
 
-Vi bruker `changeset` for å styre versjonering av pakkene våre. Foreløpig er det ikke satt opp støtte for dette i CI, så kommandoene må kjøres manuelt før commit.
+Vi bruker `changeset` for å styre versjonering av pakkene våre. Ta med `PATCH`, `MINOR` eller `MAJOR` i commit-meldingen for å starte en release med tilsvarende versjonsendring.
+
+Github Actions oppretter da automatisk en changeset og en `Version Packages`-pull request. Når denne pull requesten merges, publiseres pakkene automatisk.
+
+Det er også mulig å opprette og anvende en changeset manuelt før commit:
 
 ```
-yarn changesetyarn changesetyarn changeset
+yarn changeset
 yarn changeset version
-git add // alle endringene dine
+git add .
 git commit -m "En fin melding som forklarer hvorfor endringene ble gjort"
 git push
 ```
 
-`publish` kommandoen vil feile, siden den ikke får dyttet ut pakkene til github, men den vil sette riktig versjonsnummer og oppdatere changelog som brukes av changeset før publisering i Github Actions.
+Github Actions publiserer pakkene etter at versjonsendringene er pushet til `main`.
 
 ## Legg til dependency i riktig workspace
 

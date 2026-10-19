@@ -45,6 +45,34 @@ jobs:
           org_name: "navikt"
         env:
           AUTH_TOKEN: "${{secrets.GITHUB_TOKEN}}"
+      - name: Create changeset from commit message
+        if: >-
+          contains(github.event.head_commit.message, 'MINOR') ||
+          contains(github.event.head_commit.message, 'MAJOR') ||
+          contains(github.event.head_commit.message, 'PATCH')
+        env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$COMMIT_MESSAGE" == *"MAJOR"* ]]; then
+            release_type="major"
+          elif [[ "$COMMIT_MESSAGE" == *"MINOR"* ]]; then
+            release_type="minor"
+          else
+            release_type="patch"
+          fi
+
+          cat > ".changeset/automatic-${GITHUB_RUN_ID}.md" <<EOF
+          ---
+          '@navikt/aap-felles-css': ${release_type}
+          '@navikt/aap-felles-prettier': ${release_type}
+          '@navikt/aap-felles-utils': ${release_type}
+          '@navikt/eslint-config-aap': ${release_type}
+          ---
+
+          Automated ${release_type} release triggered by commit ${GITHUB_SHA}.
+          EOF
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
