@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.9.0
+
+### Minor Changes
+
+- Automated minor release triggered by commit 8509fa79e5de15e8579b7adb0239e52eb716c2a7.
+
 ## 6.8.0
 
 ### Minor Changes
